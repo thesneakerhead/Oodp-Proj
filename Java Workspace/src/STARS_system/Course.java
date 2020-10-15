@@ -54,7 +54,7 @@ public class Course
 				System.out.println("Course index "+index+" is full");
 			else
 			{
-				System.out.println("Course "+courseName+" has been added");
+				System.out.println("Course "+courseName+" Index "+Algoindex+" has been added");
 				courseIndex[i].minusVacancy(1);
 			}
 		}

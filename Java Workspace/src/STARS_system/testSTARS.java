@@ -9,6 +9,15 @@ public class testSTARS {
 		System.out.println(starSaccount.getAccountID());
 		System.out.println(starSaccount.getAccountPW());
 		System.out.println(starSaccount.getStudent().getGender());
+		
+		Course course = new Course("OODP");
+		System.out.println(course.getCourse());
+		course.printAvalIndex();
+		for(int i=0;i<11;i++)
+		{
+			course.addCourse(7901);
+		}
+		course.printAvalIndex();
 	}
 
 }
