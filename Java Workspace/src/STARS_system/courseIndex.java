@@ -6,10 +6,10 @@ public class courseIndex
 	private int vacancy;
 	//private String classtime;
 	
-	public courseIndex(int course_index)
+	public courseIndex(int course_index, int vacancy)
 	{
 		this.course_index = course_index;
-		vacancy = 10;
+		this.vacancy = vacancy;
 	}
 	
 	public int getIndex()
@@ -20,6 +20,16 @@ public class courseIndex
 	public int getVacancy()
 	{
 		return vacancy;
+	}
+	
+	public void changeIndex (int newIndex)
+	{
+		course_index = newIndex;
+	}
+	
+	public void changeVacancy(int newVacancy)
+	{
+		vacancy = newVacancy;
 	}
 	
 	public void minusVacancy(int i)
