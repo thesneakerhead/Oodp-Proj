@@ -38,15 +38,20 @@ public class Course
 	
 	public void editCurrIndex(int oldIndex, int newIndex)
 	{
+		Boolean found = false;
 		for(int i=0; i<numIndex; i++)
 		{
 			if (oldIndex == courseIndex[i].getIndex())
 			{
+				found = true;
 				courseIndex[i].changeIndex(newIndex);
 				System.out.println("Index "+oldIndex +" has been changed to Index "+ newIndex);
 				break;
 			}
 		}
+		
+		if (!found)
+			System.out.println("Course does not have index "+oldIndex);
 	}
 	
 	public void addNewIndex (int newIndex, int vacancy)
@@ -66,19 +71,16 @@ public class Course
 			if (deleteIndex == courseIndex[i].getIndex())
 			{
 				found = true;
+				for(int j=pos; j<numIndex-1;j++)
+					courseIndex[j]=courseIndex[j+1];
+				
+				System.out.println("Index "+ deleteIndex + " has been deleted");
+				numIndex--;
 				break;
 			}
 			pos++;
 		}
-		if (found)
-		{
-			for(int j=pos; j<numIndex-1;j++)
-				courseIndex[j]=courseIndex[j+1];
-			
-			System.out.println("Index "+ deleteIndex + " has been deleted");
-			numIndex--;
-		}
-		else
+		if (!found)
 			System.out.println("Course does not have index "+deleteIndex);
 	}
 	
@@ -89,6 +91,22 @@ public class Course
 		{	
 			courseIndex[i]= new courseIndex(indexAR[i], vacancy);	
 		}
+	}
+	
+	public void printVacancy(int index)
+	{
+		Boolean found = false;
+		for(int i=0; i<numIndex; i++)
+		{
+			if (index == courseIndex[i].getIndex())
+			{
+				found = true;
+				System.out.println("Vacancy for Index "+ index +" is " + courseIndex[i].getVacancy());
+				break;
+			}
+		}
+		if (!found)
+			System.out.println("Course does not have index "+index);
 	}
 	
 	public void printAvalIndex()
