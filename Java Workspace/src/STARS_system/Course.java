@@ -4,7 +4,7 @@ public class Course
 {
 	private int courseCode;
 	private String school;
-	private courseIndex courseIndex[] = new courseIndex[10];
+	private courseIndex courseIndex[] = new courseIndex[20];
 	private int numIndex;
 	
 	public Course(String school, int courseCode, int numIndex, int indexAR[], int vacancy)
@@ -26,6 +26,71 @@ public class Course
 		return courseCode;
 	}
 	
+	public String getSchool()
+	{
+		return school;
+	}
+	
+	public void editCourseCode(int newCourseCode)
+	{
+		courseCode = newCourseCode;
+	}
+	
+	public void editCurrIndex(int oldIndex, int newIndex)
+	{
+		for(int i=0; i<numIndex; i++)
+		{
+			if (oldIndex == courseIndex[i].getIndex())
+			{
+				courseIndex[i].changeIndex(newIndex);
+				System.out.println("Index "+oldIndex +" has been changed to Index "+ newIndex);
+				break;
+			}
+		}
+	}
+	
+	public void addNewIndex (int newIndex, int vacancy)
+	{
+		courseIndex[numIndex] = new courseIndex(newIndex,vacancy);
+		System.out.println("Index "+ newIndex + " has been added");
+		numIndex++;
+		
+	}
+	
+	public void deleteIndex(int deleteIndex)
+	{
+		int pos=0;
+		Boolean found = false;
+		for(int i=0; i<numIndex; i++)
+		{
+			if (deleteIndex == courseIndex[i].getIndex())
+			{
+				found = true;
+				break;
+			}
+			pos++;
+		}
+		if (found)
+		{
+			for(int j=pos; j<numIndex-1;j++)
+				courseIndex[j]=courseIndex[j+1];
+			
+			System.out.println("Index "+ deleteIndex + " has been deleted");
+			numIndex--;
+		}
+		else
+			System.out.println("Course does not have index "+deleteIndex);
+	}
+	
+	public void changeAllIndex(int numIndex,int indexAR[], int vacancy)
+	{
+		this.numIndex = numIndex;
+		for(int i=0;i<this.numIndex;i++)
+		{	
+			courseIndex[i]= new courseIndex(indexAR[i], vacancy);	
+		}
+	}
+	
 	public void printAvalIndex()
 	{
 		 
@@ -39,8 +104,7 @@ public class Course
 				System.out.print(" avaliable: "+courseIndex[i].getVacancy());
 				
 			System.out.println();
-		}
-		
+		}	
 	}
 	
 	public void addCourse(int index)
