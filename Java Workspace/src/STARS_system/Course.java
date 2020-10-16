@@ -2,14 +2,14 @@ package STARS_system;
 
 public class Course 
 {
-	private String courseName;
+	private int courseCode;
 	private String school;
 	private courseIndex courseIndex[] = new courseIndex[10];
 	private int numIndex;
 	
-	public Course(String school, String course_name, int numIndex, int indexAR[], int vacancy)
+	public Course(String school, int courseCode, int numIndex, int indexAR[], int vacancy)
 	{
-		courseName = course_name;
+		this.courseCode = courseCode;
 		this.school = school;
 		this.numIndex = numIndex;
 		//char first_letter = course_name.charAt(0);
@@ -21,9 +21,9 @@ public class Course
 		
 	}
 	
-	public String getCourse()
+	public int getCourse()
 	{
-		return courseName;
+		return courseCode;
 	}
 	
 	public void printAvalIndex()
@@ -62,7 +62,7 @@ public class Course
 				System.out.println("Course index "+index+" is full");
 			else
 			{
-				System.out.println("Course "+courseName+" Index "+courseIndex[pos].getIndex()+" has been added");
+				System.out.println("Course "+courseCode+" Index "+courseIndex[pos].getIndex()+" has been added");
 				courseIndex[pos].minusVacancy(1);
 			}
 		}

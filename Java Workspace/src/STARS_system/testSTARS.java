@@ -16,8 +16,11 @@ public class testSTARS {
 		
 		//Course Testing
 		System.out.println("Add Course");
-		System.out.println("Course name: ");
-		String courseName = sc.nextLine();
+		System.out.println("Course code: ");
+		int courseCode = sc.nextInt();
+		System.out.println("Add school");
+		System.out.println("school: ");
+		String school = sc.nextLine();
 		System.out.println("number of indexes: ");
 		int numIndex = sc.nextInt();
 		System.out.println("Enter indexes: ");
@@ -29,7 +32,7 @@ public class testSTARS {
 		System.out.println("Enter vacancy: ");
 		int vacancy = sc.nextInt();
 		
-		Course course = new Course(courseName,numIndex,indexAR,vacancy);
+		Course course = new Course(school,courseCode,numIndex,indexAR,vacancy);
 		System.out.println(course.getCourse());
 		course.printAvalIndex();
 		
