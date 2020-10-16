@@ -3,12 +3,14 @@ package STARS_system;
 public class Course 
 {
 	private String courseName;
+	private String school;
 	private courseIndex courseIndex[] = new courseIndex[10];
 	private int numIndex;
 	
-	public Course(String course_name, int numIndex, int indexAR[], int vacancy)
+	public Course(String school, String course_name, int numIndex, int indexAR[], int vacancy)
 	{
 		courseName = course_name;
+		this.school = school;
 		this.numIndex = numIndex;
 		//char first_letter = course_name.charAt(0);
 		//int index = (int) first_letter*100 + 1;
