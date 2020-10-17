@@ -84,27 +84,5 @@ public class StudentDatabase {
 	    }
 	    return data;
 	  }
-	  
-	  public static void main(String[] aArgs)  {
-	    	StudentDatabase studDB = new StudentDatabase();
-	    	String filename = "student.txt" ;
-			try {
-				// read file containing Professor records.
-				ArrayList al = studDB.readStudent(filename) ;
-				for (int i = 0 ; i < al.size() ; i++) {
-						Student stud = (Student)al.get(i);
-						System.out.println("Name " + stud.getName() );
-						System.out.println("Matric No " + stud.getMatricNo() );
-				}
-				Student s1 = new Student("U1920006F", "Lam Kim Fai", "M", "Singaporean");
-				// al is an array list containing Professor objs
-				al.add(s1);
-				// write Professor record/s to file.
-				StudentDatabase.saveStudent(filename, al);
-			}catch (IOException e) {
-				System.out.println("IOException > " + e.getMessage());
-			}
-	  }
-	  
-		
+	 	
 }

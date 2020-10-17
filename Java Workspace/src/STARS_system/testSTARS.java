@@ -1,4 +1,6 @@
 package STARS_system;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner; 
 
 
@@ -13,6 +15,26 @@ public class testSTARS {
 		System.out.println(starSaccount.getAccountID());
 		System.out.println(starSaccount.getAccountPW());
 		System.out.println(starSaccount.getStudent().getGender());
+		
+		//TESTING DATABASE STUFF
+		StudentDatabase studDB = new StudentDatabase();
+    	String filename = "student.txt" ;
+		try {
+			// read file containing Professor records.
+			ArrayList al = studDB.readStudent(filename) ;
+			for (int i = 0 ; i < al.size() ; i++) {
+					Student stud = (Student)al.get(i);
+					System.out.println("Name " + stud.getName() );
+					System.out.println("Matric No " + stud.getMatricNo() );
+			}
+			Student s1 = new Student("U1920006F", "Pablo escobar", "M", "indo");
+			// al is an array list containing Professor objs
+			al.add(s1);
+			// write Professor record/s to file.
+			StudentDatabase.saveStudent(filename, al);
+		}catch (IOException e) {
+			System.out.println("IOException > " + e.getMessage());
+		}
 		
 		
 		//Course Testing
