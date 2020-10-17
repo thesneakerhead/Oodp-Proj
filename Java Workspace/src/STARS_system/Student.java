@@ -1,6 +1,7 @@
 package STARS_system;
+import java.io.Serializable;
 
-public class Student {
+public class Student implements Serializable {
 	private String name;
 	private String matricNo;
 	private String gender;
@@ -57,4 +58,13 @@ public class Student {
 		this.saccount = saccount;
 	}
 	//==================================================
+	
+	//I dont understand what this is
+	public boolean equals(Object o) {
+		if (o instanceof Student) {
+			Student p = (Student)o;
+			return (getName().equals(p.getName()));
+		}
+		return false;
+	}
 }
