@@ -9,10 +9,10 @@ public class Student {
 	private STARSaccount saccount;
 	
 	
-	public Student(String name,String matricNo,String gender,String nationality)
+	public Student(String matricNo,String name,String gender,String nationality)
 	{
-		this.name = name;
 		this.matricNo = matricNo;
+		this.name = name;
 		this.gender = gender;
 		this.nationality=nationality;
 		this.saccount = new STARSaccount(matricNo,name,this);

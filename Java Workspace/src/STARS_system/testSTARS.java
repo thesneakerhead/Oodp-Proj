@@ -14,37 +14,39 @@ public class testSTARS {
 		System.out.println(starSaccount.getAccountPW());
 		System.out.println(starSaccount.getStudent().getGender());
 		
+		
 		//Course Testing
-		System.out.println("Add Course");
-		System.out.println("Course code: ");
-		int courseCode = sc.nextInt();
-		System.out.println("Add school");
-		System.out.println("school: ");
-		String school = sc.nextLine();
-		System.out.println("number of indexes: ");
-		int numIndex = sc.nextInt();
-		System.out.println("Enter indexes: ");
-		int indexAR[] = new int[numIndex];
-		for(int i=0; i<numIndex; i++)
-		{
-			indexAR[i]=sc.nextInt();
-		}
-		System.out.println("Enter vacancy: ");
-		int vacancy = sc.nextInt();
-		
-		Course course = new Course(school,courseCode,numIndex,indexAR,vacancy);
-		System.out.println(course.getCourse());
-		course.printAvalIndex();
-		
-		for(int i=0;i<3;i++)
-		{
-			course.addCourse(101);
-		}
-		for(int i=0;i<2;i++)
-		{
-			course.addCourse(103);
-		}
-		course.printAvalIndex();
-	}
+//		System.out.println("Add Course");
+//		System.out.println("Course code: ");
+//		int courseCode = sc.nextInt();
+//		System.out.println("Add school");
+//		System.out.println("school: ");
+//		String school = sc.nextLine();
+//		System.out.println("number of indexes: ");
+//		int numIndex = sc.nextInt();
+//		System.out.println("Enter indexes: ");
+//		int indexAR[] = new int[numIndex];
+//		for(int i=0; i<numIndex; i++)
+//		{
+//			indexAR[i]=sc.nextInt();
+//		}
+//		System.out.println("Enter vacancy: ");
+//		int vacancy = sc.nextInt();
+//		
+//		Course course = new Course(school,courseCode,numIndex,indexAR,vacancy);
+//		System.out.println(course.getCourse());
+//		course.printAvalIndex();
+//		
+//		for(int i=0;i<3;i++)
+//		{
+//			course.addCourse(101);
+//		}
+//		for(int i=0;i<2;i++)
+//		{
+//			course.addCourse(103);
+//		}
+//		course.printAvalIndex();
+//	}
 
+}
 }
