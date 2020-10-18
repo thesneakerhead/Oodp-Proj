@@ -24,8 +24,8 @@ public class testSTARS {
 			ArrayList al = studDB.readStudent(filename) ;
 			for (int i = 0 ; i < al.size() ; i++) {
 					Student stud = (Student)al.get(i);
-					System.out.println("Name " + stud.getName() );
-					System.out.println("Matric No " + stud.getMatricNo() );
+					System.out.println("Name: " + stud.getName() );
+					System.out.println("Matric No: " + stud.getMatricNo() );
 			}
 			Student s1 = new Student("U1920006F", "Pablo escobar", "M", "indo");
 			// al is an array list containing Professor objs
