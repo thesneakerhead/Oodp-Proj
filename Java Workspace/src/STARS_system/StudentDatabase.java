@@ -62,6 +62,7 @@ public class StudentDatabase {
 
 	    try {
 			for (int i =0; i < data.size() ; i++) {
+				System.out.println("test3:"+(String)data.get(i));
 	      		out.println((String)data.get(i));
 			}
 	    }
@@ -83,6 +84,49 @@ public class StudentDatabase {
 	      scanner.close();
 	    }
 	    return data;
+	  }
+	  
+	  public static List reads(String fileName) throws IOException {
+			List data = new ArrayList() ;
+			String matricNo;
+		    Scanner scanner = new Scanner(new FileInputStream(fileName));
+		    try {
+		      while (scanner.hasNextLine()){
+		    	matricNo = scanner.nextLine().substring(0,8);
+		    	System.out.println(matricNo);
+		        data.add(scanner.nextLine());
+		      }
+		    }
+		    finally{
+		      scanner.close();
+		    }
+		    return data;
+		  }
+	  
+	  /** Write fixed content to the given file. */
+	  public static void deleteStudent(String fileName, List data) throws IOException  {
+	    PrintWriter out = new PrintWriter(new FileWriter(fileName));
+	    String matricNo;
+	    String matricDeletion = "U1920006F";
+
+	    try {
+			for (int i =0; i < data.size() ; i++) {
+				matricNo = ((String) data.get(i)).substring(0,9);
+				//System.out.println("test4:"+matricNo);
+				if (matricNo.equals(matricDeletion))
+				{
+					continue;
+				}
+				else
+				{
+					out.println((String)data.get(i));
+				}
+	      		
+			}
+	    }
+	    finally {
+	      out.close();
+	    }
 	  }
 	 	
 }

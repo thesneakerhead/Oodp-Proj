@@ -27,11 +27,12 @@ public class testSTARS {
 					System.out.println("Name: " + stud.getName() );
 					System.out.println("Matric No: " + stud.getMatricNo() );
 			}
-			Student s1 = new Student("U1920006F", "Pablo escobar", "M", "indo");
+			Student s1 = new Student("U1920007F", "Zoey", "M", "Euro");
 			// al is an array list containing Professor objs
 			al.add(s1);
 			// write Professor record/s to file.
 			StudentDatabase.saveStudent(filename, al);
+			StudentDatabase.deleteStudent(filename, StudentDatabase.read(filename));
 		}catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}

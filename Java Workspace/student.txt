@@ -1,4 +1,7 @@
 U1320006Z|Jacob Law|F|Taiwanese Sausage
 U1420005G|Zeta Chua|M|Chinanese
-U1920006F|Lam Kim Fai|M|Singaporean
-U1920006F|Pablo escobar|M|indo
+U1920007F|Zoey|M|Euro
+U1920007F|Zoey|M|Euro
+U1920007F|Zoey|M|Euro
+U1920007F|Zoey|M|Euro
+U1920007F|Zoey|M|Euro
