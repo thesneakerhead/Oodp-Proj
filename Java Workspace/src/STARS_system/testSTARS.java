@@ -32,7 +32,9 @@ public class testSTARS {
 			al.add(s1);
 			// write Professor record/s to file.
 			StudentDatabase.saveStudent(filename, al);
-			StudentDatabase.deleteStudent(filename, StudentDatabase.read(filename));
+			
+			String matricToBeDeleted = "U1920007F";
+			StudentDatabase.deleteStudent(filename, StudentDatabase.read(filename),matricToBeDeleted);
 		}catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}

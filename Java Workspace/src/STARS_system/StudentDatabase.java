@@ -104,16 +104,16 @@ public class StudentDatabase {
 		  }
 	  
 	  /** Write fixed content to the given file. */
-	  public static void deleteStudent(String fileName, List data) throws IOException  {
+	  public static void deleteStudent(String fileName, List data, String studentMatric) throws IOException  {
 	    PrintWriter out = new PrintWriter(new FileWriter(fileName));
 	    String matricNo;
-	    String matricDeletion = "U1920006F";
+	    
 
 	    try {
 			for (int i =0; i < data.size() ; i++) {
 				matricNo = ((String) data.get(i)).substring(0,9);
 				//System.out.println("test4:"+matricNo);
-				if (matricNo.equals(matricDeletion))
+				if (matricNo.equals(studentMatric))
 				{
 					continue;
 				}
