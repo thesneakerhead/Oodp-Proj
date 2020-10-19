@@ -103,7 +103,7 @@ public class StudentDatabase {
 		    return data;
 		  }
 	  
-	  /** Write fixed content to the given file. */
+	  //Delete student
 	  public static void deleteStudent(String fileName, List data, String studentMatric) throws IOException  {
 	    PrintWriter out = new PrintWriter(new FileWriter(fileName));
 	    String matricNo;
@@ -112,7 +112,7 @@ public class StudentDatabase {
 	    try {
 			for (int i =0; i < data.size() ; i++) {
 				matricNo = ((String) data.get(i)).substring(0,9);
-				//System.out.println("test4:"+matricNo);
+				System.out.println("test4:"+matricNo);
 				if (matricNo.equals(studentMatric))
 				{
 					continue;
@@ -128,5 +128,48 @@ public class StudentDatabase {
 	      out.close();
 	    }
 	  }
+	  
+	  //Edit Student Matric No
+	  public static void editStudentMatric(String fileName, List data, String studentMatric, String ammendedMatricNo) throws IOException  {
+		    PrintWriter out = new PrintWriter(new FileWriter(fileName));
+		    String matricNo;
+		    String name;
+		    String gender;
+		    String nationality;
+		    String[] parts;
+		    
+
+		    try {
+				for (int i =0; i < data.size() ; i++) {
+					parts = ((String) data.get(i)).split("\\"+ SEPARATOR);
+					matricNo = parts[0];
+					name = parts[1];
+					gender = parts[2];
+					nationality = parts[3];
+					String reconstructString;
+					
+					System.out.println("test4:"+matricNo);
+					System.out.println("test5:"+name);
+					System.out.println("test6:"+gender);
+					System.out.println("test7:"+nationality);
+					
+					if (matricNo.equals(studentMatric))
+					{
+						reconstructString = ammendedMatricNo+SEPARATOR+name+SEPARATOR+gender+nationality;
+						out.println(reconstructString);
+					}
+					else
+					{
+						out.println((String)data.get(i));
+					}
+					
+		      		
+				}
+		    }
+		    finally {
+		      out.close();
+		    }
+		  }
+	  
 	 	
 }

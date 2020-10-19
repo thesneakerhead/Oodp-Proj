@@ -27,14 +27,15 @@ public class testSTARS {
 					System.out.println("Name: " + stud.getName() );
 					System.out.println("Matric No: " + stud.getMatricNo() );
 			}
-			Student s1 = new Student("U1920007F", "Zoey", "M", "Euro");
+			Student s1 = new Student("U1920009F", "Jacob", "M", "Euro");
 			// al is an array list containing Professor objs
 			al.add(s1);
 			// write Professor record/s to file.
 			StudentDatabase.saveStudent(filename, al);
-			
+			String ammendedMatric = "U1920005F";
 			String matricToBeDeleted = "U1920007F";
-			StudentDatabase.deleteStudent(filename, StudentDatabase.read(filename),matricToBeDeleted);
+			//StudentDatabase.deleteStudent(filename, StudentDatabase.read(filename),matricToBeDeleted);
+			//StudentDatabase.editStudentMatric(filename, StudentDatabase.read(filename),matricToBeDeleted,ammendedMatric);
 		}catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}
