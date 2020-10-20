@@ -30,8 +30,7 @@ public class StudentDatabase {
 				String name = star.nextToken().trim();
 				String gender = star.nextToken().trim();
 				String nationality = star.nextToken().trim();
-				System.out.println("test1");
-				
+	
 				// create Professor object from file data
 				Student stud = new Student(matricNo, name, gender, nationality);
 				// add to Professors list
@@ -65,7 +64,6 @@ public class StudentDatabase {
 
 	    try {
 			for (int i =0; i < data.size() ; i++) {
-				System.out.println("test3:"+(String)data.get(i));
 	      		out.println((String)data.get(i));
 			}
 	    }
@@ -115,7 +113,6 @@ public class StudentDatabase {
 	    try {
 			for (int i =0; i < data.size() ; i++) {
 				matricNo = ((String) data.get(i)).substring(0,9);
-				System.out.println("test4:"+matricNo);
 				if (matricNo.equals(studentMatric))
 				{
 					continue;
@@ -140,24 +137,15 @@ public class StudentDatabase {
 		    String gender;
 		    String nationality;
 		    String[] parts;
-		    
-
 		    try {
 				for (int i =0; i < data.size() ; i++) {
 					
 					parts = ((String) data.get(i)).split("\\"+ SEPARATOR);
-					System.out.println("test1");
 					matricNo = parts[0];
 					name = parts[1];
 					gender = parts[2];
 					nationality = parts[3];
 					String reconstructString;
-					
-					System.out.println("test4:"+matricNo);
-					System.out.println("test5:"+name);
-					System.out.println("test6:"+gender);
-					System.out.println("test7:"+nationality);
-					
 					if (matricNo.equals(studentMatric))
 					{
 						reconstructString = ammendedMatricNo+SEPARATOR+name+SEPARATOR+gender+SEPARATOR+nationality;
@@ -167,14 +155,110 @@ public class StudentDatabase {
 					{
 						out.println((String)data.get(i));
 					}
-					
-		      		
 				}
 		    }
 		    finally {
 		      out.close();
 		    }
 		  }
+	  
+	  //Edit Student Name
+	  public static void editStudentName(String fileName, List data, String studentMatric, String ammendedName) throws IOException  {
+		    PrintWriter out = new PrintWriter(new FileWriter(fileName));
+		    String matricNo;
+		    String name;
+		    String gender;
+		    String nationality;
+		    String[] parts;
+		    try {
+				for (int i =0; i < data.size() ; i++) {
+					
+					parts = ((String) data.get(i)).split("\\"+ SEPARATOR);
+					matricNo = parts[0];
+					name = parts[1];
+					gender = parts[2];
+					nationality = parts[3];
+					String reconstructString;
+					if (matricNo.equals(studentMatric))
+					{
+						reconstructString = matricNo+SEPARATOR+ammendedName+SEPARATOR+gender+SEPARATOR+nationality;
+						out.println(reconstructString);
+					}
+					else
+					{
+						out.println((String)data.get(i));
+					}
+				}
+		    }
+		    finally {
+		      out.close();
+		    }
+		  }
+	  //Edit Student Gender
+	  public static void editStudentGender(String fileName, List data, String studentMatric, String ammendedGender) throws IOException  {
+		    PrintWriter out = new PrintWriter(new FileWriter(fileName));
+		    String matricNo;
+		    String name;
+		    String gender;
+		    String nationality;
+		    String[] parts;
+		    try {
+				for (int i =0; i < data.size() ; i++) {
+					
+					parts = ((String) data.get(i)).split("\\"+ SEPARATOR);
+					matricNo = parts[0];
+					name = parts[1];
+					gender = parts[2];
+					nationality = parts[3];
+					String reconstructString;
+					if (matricNo.equals(studentMatric))
+					{
+						reconstructString = matricNo+SEPARATOR+name+SEPARATOR+ammendedGender+SEPARATOR+nationality;
+						out.println(reconstructString);
+					}
+					else
+					{
+						out.println((String)data.get(i));
+					}
+				}
+		    }
+		    finally {
+		      out.close();
+		    }
+		  }
+	  
+	  public static void editStudentNationality(String fileName, List data, String studentMatric, String ammendedNationality) throws IOException  {
+		    PrintWriter out = new PrintWriter(new FileWriter(fileName));
+		    String matricNo;
+		    String name;
+		    String gender;
+		    String nationality;
+		    String[] parts;
+		    try {
+				for (int i =0; i < data.size() ; i++) {
+					
+					parts = ((String) data.get(i)).split("\\"+ SEPARATOR);
+					matricNo = parts[0];
+					name = parts[1];
+					gender = parts[2];
+					nationality = parts[3];
+					String reconstructString;
+					if (matricNo.equals(studentMatric))
+					{
+						reconstructString = matricNo+SEPARATOR+name+SEPARATOR+gender+SEPARATOR+ammendedNationality;
+						out.println(reconstructString);
+					}
+					else
+					{
+						out.println((String)data.get(i));
+					}
+				}
+		    }
+		    finally {
+		      out.close();
+		    }
+		  }
+	  
 	  
 	 	
 }

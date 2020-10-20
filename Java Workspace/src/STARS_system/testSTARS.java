@@ -20,23 +20,59 @@ public class testSTARS {
 		StudentDatabase studDB = new StudentDatabase();
     	String filename = "student.txt" ;
 		try {
-			// read file containing Professor records.
-			ArrayList al = studDB.readStudent(filename) ;
-			for (int i = 0 ; i < al.size() ; i++) {
-					Student stud = (Student)al.get(i);
-					System.out.println("Name: " + stud.getName() );
-					System.out.println("Matric No: " + stud.getMatricNo() );
+			 //read file containing Professor records.
+			//ArrayList al = studDB.readStudent(filename) ;
+			//for (int i = 0 ; i < al.size() ; i++) {
+					//Student stud = (Student)al.get(i);
+			
+			int tester = 6;
+			switch (tester)
+			{
+				case 1:
+					//Add Student
+					ArrayList al = studDB.readStudent(filename) ;
+					Student s1 = new Student("U1920006F", "Zeta Chua", "F", "Singaporean");
+					al.add(s1);
+					StudentDatabase.saveStudent(filename, al);
+					break;
+				
+				case 2:
+					//Delete Student
+					String matricToBeDeleted = "U1920008F";
+					StudentDatabase.deleteStudent(filename, StudentDatabase.read(filename),matricToBeDeleted);
+					break;
+					
+				case 3:
+					//Edit Student Matric
+					String currentMatric = "U1920007F";
+					String ammendedMatric = "U2020006E";
+					StudentDatabase.editStudentMatric(filename, StudentDatabase.read(filename),currentMatric,ammendedMatric);
+					break;
+				
+				case 4:
+					//Edit Student Name
+					currentMatric = "U1920007F";
+					String ammendedName = "Kontol Boy";
+					StudentDatabase.editStudentName(filename, StudentDatabase.read(filename),currentMatric,ammendedName);
+					break;
+				
+				case 5:
+					currentMatric = "U1920007F";
+					String ammendedGender = "F";
+					StudentDatabase.editStudentGender(filename, StudentDatabase.read(filename),currentMatric,ammendedGender);
+					break;
+				
+				case 6:
+					currentMatric = "U1920008F";
+					String ammendedNationality = "Chinanese Outcast";	
+					StudentDatabase.editStudentNationality(filename, StudentDatabase.read(filename),currentMatric,ammendedNationality);
+					break;
 			}
-			Student s1 = new Student("U1920008F", "Jacob", "M", "Euro");
-			// al is an array list containing Professor objs
-			al.add(s1);
-			// write Professor record/s to file.
-			StudentDatabase.saveStudent(filename, al);
-			String ammendedMatric = "U1920005F";
-			String matricToBeDeleted = "U1920008F";
-			//StudentDatabase.deleteStudent(filename, StudentDatabase.read(filename),matricToBeDeleted);
-			StudentDatabase.editStudentMatric(filename, StudentDatabase.read(filename),matricToBeDeleted,ammendedMatric);
-		}catch (IOException e) {
+		
+		}
+		
+		catch (IOException e) 
+		{
 			System.out.println("IOException > " + e.getMessage());
 		}
 		
