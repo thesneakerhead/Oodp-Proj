@@ -15,10 +15,12 @@ public class StudentDatabase {
 	public static ArrayList readStudent(String filename) throws IOException {
 		// read String from text file
 		ArrayList stringArray = (ArrayList)read(filename);
+		
 		ArrayList alr = new ArrayList() ;// to store Professors data
 
         for (int i = 0 ; i < stringArray.size() ; i++) {
 				String st = (String)stringArray.get(i);
+				System.out.println(st);
 				// get individual 'fields' of the string separated by SEPARATOR
 				StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
 				//int  contact = Integer.parseInt(star.nextToken().trim()); // third token
@@ -28,6 +30,7 @@ public class StudentDatabase {
 				String name = star.nextToken().trim();
 				String gender = star.nextToken().trim();
 				String nationality = star.nextToken().trim();
+				System.out.println("test1");
 				
 				// create Professor object from file data
 				Student stud = new Student(matricNo, name, gender, nationality);
@@ -141,7 +144,9 @@ public class StudentDatabase {
 
 		    try {
 				for (int i =0; i < data.size() ; i++) {
+					
 					parts = ((String) data.get(i)).split("\\"+ SEPARATOR);
+					System.out.println("test1");
 					matricNo = parts[0];
 					name = parts[1];
 					gender = parts[2];
@@ -155,7 +160,7 @@ public class StudentDatabase {
 					
 					if (matricNo.equals(studentMatric))
 					{
-						reconstructString = ammendedMatricNo+SEPARATOR+name+SEPARATOR+gender+nationality;
+						reconstructString = ammendedMatricNo+SEPARATOR+name+SEPARATOR+gender+SEPARATOR+nationality;
 						out.println(reconstructString);
 					}
 					else
