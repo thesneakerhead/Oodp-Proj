@@ -1,11 +1,18 @@
 package STARS_system;
 
+import java.util.Scanner;
+
 public class Course 
 {
+	Scanner sc = new Scanner(System.in);
 	private int courseCode;
 	private String school;
 	private courseIndex courseIndex[] = new courseIndex[20];
 	private int numIndex;
+	private int startTime[] = new int[10];
+	private int endTime[] = new int[10];
+	private String day[] = new String[10];
+	private int numLec;
 	
 	public Course(String school, int courseCode, int numIndex, int indexAR[], int vacancy)
 	{
@@ -14,9 +21,22 @@ public class Course
 		this.numIndex = numIndex;
 		//char first_letter = course_name.charAt(0);
 		//int index = (int) first_letter*100 + 1;
+		System.out.println("Please input number of lecture slots for this course");
+		numLec = sc.nextInt();
+
+		for(int i=1; i<numLec+1;i++)
+		{
+			System.out.println("Please input day for "+i+" lecture slot");
+			day[i] = sc.nextLine();
+			System.out.println("Please input start time for "+i+" lecture slot");
+			startTime[i] = sc.nextInt();
+			System.out.println("Please input end time for "+i+" lecture slot");
+			endTime[i] = sc.nextInt();
+		}
+		
 		for(int i=0;i<this.numIndex;i++)
 		{	
-			courseIndex[i]= new courseIndex(indexAR[i], vacancy);	
+			courseIndex[i]= new courseIndex(indexAR[i], vacancy, numLec, day, startTime, endTime);	
 		}
 		
 	}
@@ -56,7 +76,7 @@ public class Course
 	
 	public void addNewIndex (int newIndex, int vacancy)
 	{
-		courseIndex[numIndex] = new courseIndex(newIndex,vacancy);
+		courseIndex[numIndex] = new courseIndex(newIndex,vacancy,numLec,day,startTime,endTime);
 		System.out.println("Index "+ newIndex + " has been added");
 		numIndex++;
 		
@@ -89,7 +109,7 @@ public class Course
 		this.numIndex = numIndex;
 		for(int i=0;i<this.numIndex;i++)
 		{	
-			courseIndex[i]= new courseIndex(indexAR[i], vacancy);	
+			courseIndex[i]= new courseIndex(indexAR[i], vacancy, numLec, day, startTime, endTime);	
 		}
 	}
 	
