@@ -11,10 +11,12 @@ import java.util.Scanner;
 public class testSTARS {
 	
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		StudentDB studentDB = new StudentDB();
+		
 		Login login = new Login();
-		Student currentStudent = login.currentStudent;
+		System.out.println(login.loginType);
+		
 		
 		studentDB.serializeStudentDB(studentDB.studentDB);
 		

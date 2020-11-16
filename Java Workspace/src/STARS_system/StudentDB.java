@@ -1,6 +1,7 @@
 package STARS_system;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,7 +13,7 @@ import java.util.Hashtable;
 public class StudentDB {
 	public  static Dictionary studentDB;//stores all matricno password pairs
 	private static String filename = "studentDB.ser";
-	public StudentDB()
+	public StudentDB() throws IOException, ClassNotFoundException
 	
 	{
 		 try
@@ -27,12 +28,22 @@ public class StudentDB {
 	            in.close(); 
 	            file.close(); 
 	              
-	            System.out.println("Object has been deserialized "); 
+	           
 	        }
 		 catch(IOException ex) 
 	        { 
 	            Dictionary dictionary = new Hashtable();
 	            serializeStudentDB(dictionary);
+	            FileInputStream file = new FileInputStream(filename); 
+	            ObjectInputStream in = new ObjectInputStream(file); 
+	              
+	            // Method for deserialization of object 
+	            this.studentDB = (Dictionary)in.readObject(); 
+	              
+	            in.close(); 
+	            file.close(); 
+	              
+	          
 	            
 	        } 
 	          
@@ -58,7 +69,7 @@ public class StudentDB {
             out.close(); 
             file.close(); 
               
-            System.out.println("studentDB has been serialized"); 
+           
   
         } 
           

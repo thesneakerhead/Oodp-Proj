@@ -39,28 +39,50 @@ public class starsaccMngr {
 	        
 		return hashedPW;
 	}
-	public static void write(String fileName, String data) throws IOException  {
-		FileWriter fw = new FileWriter(fileName, true);
+	public static void write(String usernamepwString,boolean isAdmin) throws IOException  {
+		String filename;
+		if (isAdmin == true)
+		{
+			filename = usrnamePwFILE.getAdminFilename();
+		}
+		else {
+			filename = usrnamePwFILE.getStudentFilename();
+		}
+		
+		FileWriter fw = new FileWriter(filename, true);
 	    BufferedWriter bw = new BufferedWriter(fw);
 	    PrintWriter out = new PrintWriter(bw);
 
 	    try {
 	    		
-	      		out.println(data);
+	      		out.println(usernamepwString);
 	    }
 	    finally {
 	      out.close();
 	    }
 	  }
-	public static void deleteAcc(String fileName, List data, String studentMatric) throws IOException  {
-		    PrintWriter out = new PrintWriter(new FileWriter(fileName));
+	public static void deleteAcc(String username,boolean isAdmin) throws IOException  {
+			String filename;
+			if (isAdmin == true)
+			{
+				filename = usrnamePwFILE.getAdminFilename();
+			}
+			else {
+				filename = usrnamePwFILE.getStudentFilename();
+			}
+		
+		
+		
+		
+		
+		    PrintWriter out = new PrintWriter(new FileWriter(filename));
 		    String matricNo;
+		    List data = accVerify.readDB(filename);
 		    
-
 		    try {
 				for (int i =0; i < data.size() ; i++) {
 					matricNo = ((String) data.get(i)).substring(0,9);
-					if (matricNo.equals(studentMatric))
+					if (matricNo.equals(username))
 					{
 						continue;
 					}
@@ -75,20 +97,5 @@ public class starsaccMngr {
 		      out.close();
 		    }
 		  }
-	public static List reads(String fileName) throws IOException {
-		List data = new ArrayList() ;
-		String matricNo;
-	    Scanner scanner = new Scanner(new FileInputStream(fileName));
-	    try {
-	      while (scanner.hasNext()){
-	    	
-	        data.add(scanner.nextLine());
-	        
-	      }
-	    }
-	    finally{
-	      scanner.close();
-	    }
-	    return data;
-	  }
+
 }

@@ -20,6 +20,14 @@ public class STARSaccount implements Serializable {
 	private Student student;
 	private boolean isAdmin;
 	
+	public STARSaccount(String accountID,String accountPW) throws IOException
+	{
+		this.accountID = accountID;
+		this.accountPW = starsaccMngr.passwordHash(accountPW);
+		this.isAdmin = true;
+		this.student = null;
+		saveToDb();
+	}
 	
 	public STARSaccount(String accountID,String accountPW,Student student) throws IOException
 	{
@@ -27,8 +35,8 @@ public class STARSaccount implements Serializable {
 		this.accountPW = starsaccMngr.passwordHash(accountPW);
 		this.student = student;
 		this.isAdmin = false;
-		
 		saveToDb();
+		
 	}
 	// one more constuctor needed for admin account;
 		//public STARSaccount() {
@@ -48,9 +56,7 @@ public class STARSaccount implements Serializable {
 	public Student getStudent() {
 		return student;
 	}
-	public boolean isAdmin() {
-		return isAdmin;
-	}
+	
 	//setters========================================
 	public void setAccountID(String accountID) {
 		this.accountID = accountID;
@@ -58,19 +64,19 @@ public class STARSaccount implements Serializable {
 	public void setAccountPW(String accountPW) {
 		this.accountPW = accountPW;
 	}
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
+	
 	public void setStudent(Student student) {
 		this.student = student;
 	}
 	private void saveToDb() throws IOException
 	{
+		
 		String SEPARATOR = "|";
 		StringBuilder st =  new StringBuilder() ;
 		st.append(accountID.trim());
 		st.append(SEPARATOR);
 		st.append(this.accountPW.trim());
-		starsaccMngr.write("accDB.txt", st.toString());
+			
+		starsaccMngr.write(st.toString(),this.isAdmin);
 	}
 }
