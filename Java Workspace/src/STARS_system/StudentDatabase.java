@@ -34,7 +34,7 @@ public class StudentDatabase {
 				// create Professor object from file data
 				Student stud = new Student(matricNo, name, gender, nationality);
 				// add to Professors list
-				alr.add(stud) ;
+				alr.add(stud);
 			}
 			return alr ;
 	}

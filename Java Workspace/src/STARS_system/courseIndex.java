@@ -86,7 +86,7 @@ public class courseIndex
 		return course_index;
 	}
 	
-	public int getVacancy()
+	public int getVacancy()	
 	{
 		return vacancy;
 	}

@@ -1,4 +1,5 @@
 package STARS_system;
+import java.io.IOException;
 import java.io.Serializable;
 
 public class Student implements Serializable {
@@ -10,13 +11,15 @@ public class Student implements Serializable {
 	private STARSaccount saccount;
 	
 	
-	public Student(String matricNo,String name,String gender,String nationality)
+	public Student(String matricNo,String name,String gender,String nationality) throws IOException
 	{
+		
 		this.matricNo = matricNo;
 		this.name = name;
 		this.gender = gender;
 		this.nationality=nationality;
 		this.saccount = new STARSaccount(matricNo,name,this);
+		StudentDB.addStudent(matricNo, this);
 	}
 	//getters========================================
 	public String getName() {
@@ -59,12 +62,4 @@ public class Student implements Serializable {
 	}
 	//==================================================
 	
-	//I dont understand what this is
-	public boolean equals(Object o) {
-		if (o instanceof Student) {
-			Student p = (Student)o;
-			return (getName().equals(p.getName()));
-		}
-		return false;
-	}
 }
