@@ -33,14 +33,16 @@ public class Timetable {
 	
 	public void printTimetable()
 	{
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 10; i++)
 	    {
-			System.out.println();
-	    	for (int j = 0; j < 10; j++)
-	    	{
-	    		System.out.print(timetable[i][j]);
-	    	}
+			for (int j = 0; j <5;j++)
+	    		{System.out.print(fixedLengthString(timetable[j][i], 15));}
+			System.out.println("");
+	    		
 	    }
+	}
+	public static String fixedLengthString(String string, int length) {
+	    return String.format("%1$"+length+ "s", string);
 	}
 	
 	
