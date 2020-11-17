@@ -11,7 +11,7 @@ import java.util.Hashtable;
 
 
 public class StudentDB {
-	public  static Dictionary studentDB;//stores all matricno password pairs
+	public  static Dictionary studentDB;//stores all matricno Student pairs
 	private static String filename = "studentDB.ser";
 	public StudentDB() throws IOException, ClassNotFoundException
 	
@@ -76,6 +76,7 @@ public class StudentDB {
         catch(IOException ex) 
         { 
             System.out.println("IOException is caught"); 
+            
         } 
 	}
 	public static Student getStudentObj(String MatricNo)
@@ -86,6 +87,10 @@ public class StudentDB {
 	public static void addStudent(String MatricNo,Student student)
 	{
 		studentDB.put(MatricNo,student);
+	}
+	public static void deleteStudent(String MatricNo)
+	{
+		studentDB.remove(MatricNo);
 	}
 	
 }

@@ -3,6 +3,7 @@ package STARS_system;
 import java.awt.Choice;
 import java.awt.Container;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Login {
@@ -20,6 +21,17 @@ public class Login {
 			String matricNo = studentLogin();
 			this.loginType = "Student";
 			this.currentStudent = StudentDB.getStudentObj(matricNo);
+			
+			
+			if (StarsApp.currentDate.after(this.currentStudent.accessStartTime) && StarsApp.currentDate.before(this.currentStudent.accessEndTime))
+			{
+				return;
+			}
+			else {
+				System.out.println("Access Denied, login during your allocated access period");
+				StarsApp.terminate();
+			}
+			
 		}
 		else if(choice.equals("Admin"))
 		{
@@ -49,7 +61,7 @@ public class Login {
 					String again= sc.nextLine();
 					if(again.equals("n"))
 					{
-						System.exit(0);
+						StarsApp.terminate();
 					}
 				}
 		}
@@ -74,7 +86,7 @@ public class Login {
 					String again= sc.nextLine();
 					if(again.equals("n"))
 					{
-						System.exit(0);
+						StarsApp.terminate();
 					}
 				}
 		}

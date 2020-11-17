@@ -1,25 +1,31 @@
 package STARS_system;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Student implements Serializable {
 	private String name;
 	private String matricNo;
 	private String gender;
 	private String nationality;
-	private int accessPeriod;
+	public Calendar accessStartTime;
+	public Calendar accessEndTime;
 	private STARSaccount saccount;
 	
 	
-	public Student(String matricNo,String name,String gender,String nationality) throws IOException
+	public Student(String matricNo,String name,String gender,String nationality,Calendar accessStartTime,Calendar accessEndTime) throws IOException
 	{
 		
 		this.matricNo = matricNo;
 		this.name = name;
 		this.gender = gender;
 		this.nationality=nationality;
+		this.accessStartTime = accessStartTime;
+		this.accessEndTime = accessEndTime;
 		this.saccount = new STARSaccount(matricNo,name,this);
 		StudentDB.addStudent(matricNo, this);
+		System.out.println("Student Created!");
 	}
 	//getters========================================
 	public String getName() {
@@ -28,9 +34,7 @@ public class Student implements Serializable {
 	public String getMatricNo() {
 		return matricNo;
 	}
-	public int getAccessPeriod() {
-		return accessPeriod;
-	}
+	
 	public String getGender() {
 		return gender;
 	}
@@ -41,9 +45,7 @@ public class Student implements Serializable {
 		return saccount;
 	}
 	//setters========================================
-	public void setAccessPeriod(int accessPeriod) {
-		this.accessPeriod = accessPeriod;
-	}
+	
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
