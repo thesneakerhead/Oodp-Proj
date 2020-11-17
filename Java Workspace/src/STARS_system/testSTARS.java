@@ -12,15 +12,20 @@ public class testSTARS {
 	
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		StudentDB studentDB = new StudentDB();
+		//StudentDB studentDB = new StudentDB();
 		
-		Login login = new Login();
-		System.out.println(login.loginType);
-		
-		
-		studentDB.serializeStudentDB(studentDB.studentDB);
+		//Login login = new Login();
+		//System.out.println(login.loginType);
 		
 		
+		//studentDB.serializeStudentDB(studentDB.studentDB);
+		
+		
+		
+		Timetable stud1Timetable = new Timetable();
+		
+		stud1Timetable.addSlot("cz2007", "lab", 8, 10, 3);
+		stud1Timetable.printTimetable();
 		
 //	    Scanner sc = new Scanner(System.in);
 //	
