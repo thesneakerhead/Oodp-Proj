@@ -6,14 +6,14 @@ import java.util.Scanner;
 public class studentMenuMngr {
 	public studentMenuMngr(int choice,Student student) throws IOException
 	{
-		
+		Student currentStudent = student;
 		switch(choice)
 		{
 			case 1 :  
 				
 				break;
 			case 2 :
-				
+					
 				break;
 			case 3 :
 				
