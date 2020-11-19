@@ -73,9 +73,10 @@ public class adminMenuMngr {
 				
 			case 5 :
 				Scanner sc2 = new Scanner(System.in);
-	            System.out.println("Enter Course Index");
-	            String courseindex = sc2.nextLine();
-	            studentListbyIndex(courseindex);
+		        System.out.println("Enter Course Index");
+		        String courseindex = sc2.nextLine();
+		        studentListbyIndex(courseindex);
+				break;
 			case 6 :
 				
 				break;
@@ -204,16 +205,16 @@ public class adminMenuMngr {
 		}
 	}
 	private void studentListbyIndex(String courseIndex)
-    {
-      Dictionary tempDict = registeredCourses.registerDict;
-      ArrayList<String> StudentListbyIndex = new ArrayList<String>();
-      
-      for(int i=0; i<tempDict.size(); i++) {
-      if(tempDict.get(i) == courseIndex) {
-        StudentListbyIndex.add(tempDict.keys().toString());
-      }
-    }
-      System.out.println(StudentListbyIndex);
-      }
+	  {
+	    Dictionary tempDict = registeredCourses.registerDict;
+	    ArrayList<String> StudentListbyIndex = new ArrayList<String>();
+	    
+	    for(int i=0; i<tempDict.size(); i++) {
+	    if(tempDict.get(i) == courseIndex) {
+	      StudentListbyIndex.add(tempDict.keys().toString());
+	    }
+	  }
+	    System.out.println(StudentListbyIndex);
+	    }
 	
 }
