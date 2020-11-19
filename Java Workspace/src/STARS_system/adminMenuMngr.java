@@ -1,6 +1,8 @@
 package STARS_system;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -70,8 +72,10 @@ public class adminMenuMngr {
 				break;
 				
 			case 5 :
-				
-				break;
+		        /*System.out.println("Enter Course Index");
+		        String courseindex = sc.nextLine();
+		        studentListbyIndex(courseindex);
+				break;*/
 			case 6 :
 				
 				break;
@@ -143,5 +147,17 @@ public class adminMenuMngr {
 			}
 		}
 	}
+	/*private void studentListbyIndex(String courseIndex)
+	  {
+	    Dictionary tempDict = registeredcourses.registeredDict;
+	    ArrayList<String> StudentListbyIndex = new ArrayList<String>();
+	    
+	    for(int i=0; i<tempDict.size; i++) {
+	    if(tempDict.getvalue == courseIndex) {
+	      StudentListbyIndex.add(tempDict.keys());
+	    }
+	  }
+	    System.out.println(StudentListbyIndex);
+	    }*/
 	
 }
