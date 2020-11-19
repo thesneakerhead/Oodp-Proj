@@ -1,11 +1,14 @@
 package STARS_system;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class StarsApp {
 	private static StudentDB studentDB;
 	public static Calendar currentDate;
+	private static courseDB courseDB;
+	private static registeredCourses registeredcourses;
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		init();
@@ -26,6 +29,8 @@ public class StarsApp {
 	public static void init() throws ClassNotFoundException, IOException 
 	{
 		studentDB = new StudentDB();
+		registeredcourses = new registeredCourses();
+		courseDB = new courseDB();
 		currentDate = Calendar.getInstance();
 		System.out.println("Welcome to STARS system");
 		
@@ -38,6 +43,8 @@ public class StarsApp {
 	public static void terminate()
 	{
 		studentDB.serializeStudentDB(studentDB.studentDB);
+		registeredcourses.serializeRegisterDict(registeredcourses.registerDict);
+		courseDB.serializeCourseDB(courseDB.courseDB);
 		System.out.println("Exiting..........");
 		System.exit(0);
 	}

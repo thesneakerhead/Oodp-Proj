@@ -11,8 +11,25 @@ public class actionMenu {
 	{
 		if (login.loginType == "Student")
 		{
-			student_menu();
+			int choice = 0;
+			while(true) {
+				
+				try {
+				choice = student_menu();}
+				
+				catch (Exception e)
+				{ StarsApp.terminate();}
+				
+				try {
+					new studentMenuMngr(choice,login.currentStudent);	
+				} catch (Exception e) {
+					StarsApp.terminate();
+				}
+				
+				
 			
+			
+			}
 		}
 		else if(login.loginType == "Admin")
 		{
@@ -44,7 +61,8 @@ public class actionMenu {
 		}
 		
 	}
-	public void student_menu() {
+	public int student_menu() {
+		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
 		System.out.println("|      1. Add Course                                  |");
 		System.out.println("|      2. Drop Course                                 |");
@@ -53,6 +71,9 @@ public class actionMenu {
 		System.out.println("|      5. Change Index Number of Course               |");
 		System.out.println("|      6. Swap Index Number with Another Student      |");
 		System.out.println("=======================================================");
+		System.out.println("Select an option:");
+		int Choice = sc.nextInt();
+		return Choice;
 	}
 	public int admin_menu() {
 		Scanner sc = new Scanner(System.in);

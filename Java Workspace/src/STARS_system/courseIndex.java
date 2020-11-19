@@ -1,113 +1,70 @@
 package STARS_system;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class courseIndex
-{
-	Scanner sc = new Scanner(System.in);
-	private int course_index;
-	private int vacancy;
-	private lesson LecTutLab[] = new lesson[10];
-	private int numLesson;
-	//private String classtime;
-	
-	public courseIndex(int course_index, int vacancy, int numLec, String day[], int lecStartTime[], int lecEndTime[])
+public class courseIndex implements Serializable {
+	public String indexID;
+	public ArrayList<lesson> lessonList;
+	public int indexVacancy;
+	public courseIndex(String indexID)
 	{
-		this.course_index = course_index;
-		this.vacancy = vacancy;
-		
-		for(int i=0; i<numLec;i++)
+		Scanner sc = new Scanner(System.in);
+		this.indexID = indexID;
+		this.lessonList = addLessons();
+		System.out.println("Enter index vacancy:");
+		this.indexVacancy=sc.nextInt();
+	}
+	public static ArrayList<lesson> addLessons()
+	{
+		ArrayList<lesson> lessonList = new ArrayList<lesson>();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("No. of lectures per week:");
+		int numLectures = sc.nextInt();
+		for (int i=0;i<numLectures;i++)
 		{
-			LecTutLab[i] = new lesson("lecture", day[i], lecStartTime[i], lecEndTime[i]);
+			System.out.println("Enter Start time of lecture "+(i+1));
+			int startTime = sc.nextInt();
+			System.out.println("Enter End time of lecture "+(i+1));
+			int endTime = sc.nextInt();
+			System.out.println("Enter Day in the week");
+			int Day = sc.nextInt();
+			lesson lesson = new lesson("lecture", startTime, endTime, Day);
+			lessonList.add(lesson);
 		}
-		System.out.println("Would you like to add more lessons to this index?");
-		System.out.println("1: yes   2: no");
-		int cont = sc.nextInt();
-		String lesType;
-		String lesday;
-		int startTime;
-		int endTime;
-		numLesson = numLec;
-		
-		while (cont==1)
+		sc.nextLine();
+		System.out.println("Add tutorial for this index?('y' to add)");
+		String ans = sc.nextLine();
+		if (ans.equals("y"))
 		{
-			System.out.println("What lesson would you like to add to this index?");
-			System.out.println("(Tutorial, Lab, Seminar)");
-			lesType = sc.nextLine();
-			System.out.println("Please input day for "+lesType);
-			System.out.println("(Mon,Tue,Wed,Thur,Fri)");
-			lesday = sc.nextLine();
-			System.out.println("Please indicate start time for "+lesType);
-			startTime = sc.nextInt();
-			System.out.println("Please indicate end time for "+lesType);
-			endTime = sc.nextInt();
-			LecTutLab[numLesson] = new lesson(lesType,lesday,startTime,endTime);
-			numLesson ++;
-			
-			System.out.println("Would you like to add more lessons to this index?");
-			System.out.println("1: yes   2: no");
-			cont = sc.nextInt();
+			System.out.println("Enter Start time of tutorial");
+			int startTime = sc.nextInt();
+			System.out.println("Enter End time of tutorial");
+			int endTime = sc.nextInt();
+			System.out.println("Enter Day in the week");
+			int Day = sc.nextInt();
+			lesson lesson = new lesson("tutorial", startTime, endTime, Day);
+			lessonList.add(lesson);
 		}
-		
-	}
-	
-	public void addLesson()
-	{
-		String lesType;
-		String lesday;
-		int startTime;
-		int endTime;
-		int cont = 1;
-		
-		while (cont==1)
+		sc.nextLine();
+		System.out.println("Add lab for this index?('y' to add)");
+		String ans2 = sc.nextLine();
+		if (ans2.equals("y"))
 		{
-			System.out.println("What lesson would you like to add to this index?");
-			System.out.println("(Tutorial, Lab, Seminar)");
-			lesType = sc.nextLine();
-			System.out.println("Please input day for "+lesType);
-			System.out.println("(Mon,Tue,Wed,Thur,Fri)");
-			lesday = sc.nextLine();
-			System.out.println("Please indicate start time for "+lesType);
-			startTime = sc.nextInt();
-			System.out.println("Please indicate end time for "+lesType);
-			endTime = sc.nextInt();
-			LecTutLab[numLesson] = new lesson(lesType,lesday,startTime,endTime);
-			numLesson ++;
-			
-			System.out.println("Would you like to add more lessons to this index?");
-			System.out.println("1: yes   2: no");
-			cont = sc.nextInt();
+			System.out.println("Enter Start time of lab");
+			int startTime = sc.nextInt();
+			System.out.println("Enter End time of lab");
+			int endTime = sc.nextInt();
+			System.out.println("Enter Day in the lab");
+			int Day = sc.nextInt();
+			lesson lesson = new lesson("lab", startTime, endTime, Day);
+			lessonList.add(lesson);
 		}
+		return lessonList;
+		
+		
 		
 	}
 	
-	public int getIndex()
-	{
-		return course_index;
-	}
-	
-	public int getVacancy()	
-	{
-		return vacancy;
-	}
-	
-	public void changeIndex (int newIndex)
-	{
-		course_index = newIndex;
-	}
-	
-	public void changeVacancy(int newVacancy)
-	{
-		vacancy = newVacancy;
-	}
-	
-	public void minusVacancy(int i)
-	{
-		vacancy = vacancy-i;
-	}
-	
-	public void addVacancy(int i)
-	{
-		vacancy = vacancy+i;
-	}
 }

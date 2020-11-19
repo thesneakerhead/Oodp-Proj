@@ -1,13 +1,15 @@
 package STARS_system;
 
-public class lesson 
+import java.io.Serializable;
+
+public class lesson implements Serializable 
 {
 	private String lessonType;
 	private int startTime;
 	private int endTime;
-	private String day;
+	private int day;
 	
-	public lesson (String lessonType,String day, int startTime, int endTime)
+	public lesson (String lessonType,int day, int startTime, int endTime)
 	{
 		this.lessonType = lessonType;
 		this.startTime = startTime;
@@ -20,7 +22,7 @@ public class lesson
 		return lessonType;
 	}
 	
-	public String getLesday()
+	public int getLesday()
 	{
 		return day;
 	}

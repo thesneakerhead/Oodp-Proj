@@ -22,10 +22,10 @@ public class testSTARS {
 		
 		
 		
-		Timetable stud1Timetable = new Timetable();
-		
-		stud1Timetable.addSlot("cz2007", "lab", 8, 10, 3);
-		stud1Timetable.printTimetable();
+//		Timetable stud1Timetable = new Timetable();
+//		
+//		stud1Timetable.addSlot("cz2007", "lab", 8, 10, 3);
+//		stud1Timetable.printTimetable();
 		
 //	    Scanner sc = new Scanner(System.in);
 //	
