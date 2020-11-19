@@ -89,8 +89,21 @@ public class adminMenuMngr {
 	
 	private void addStudent() throws IOException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Student's Matriculation Number(UXXXXXXXX):");
-		String matricNo = sc.nextLine();
+		Boolean valid = false;
+		String matricNo=null;
+		int year=0,month=0,day=0,hour=0,min=0,duration=0;
+		while(!valid)
+		{
+			System.out.println("Enter Student's Matriculation Number(UXXXXXXXX):");
+			matricNo = sc.nextLine();
+			if(matricNo.length()!=9)
+			{
+				System.out.println("Invalid username, username must be 9 characters long!");
+				continue;
+			}
+			valid = true;
+		}
+		valid = false;
 		System.out.println("Enter Student's Name:");
 		String name = sc.nextLine();
 		System.out.println("Enter Student's Gender:");
@@ -98,18 +111,61 @@ public class adminMenuMngr {
 		System.out.println("Enter Student's Nationality");
 		String nationality = sc.nextLine();
 		System.out.println("Please enter the following to set access period:");
-		System.out.println("Year(yyyy)");
-		int year = sc.nextInt();
-		System.out.println("Month(mm)");
-		int month = sc.nextInt();
-		System.out.println("Day(dd)");
-		int day = sc.nextInt();
-		System.out.println("Hour(hh)");
-		int hour = sc.nextInt();
-		System.out.println("Minute(mm)");
-		int min = sc.nextInt();
-		System.out.println("Enter access duration(in hours):");
-		int duration = sc.nextInt();
+		
+		do {
+			System.out.println("Year(yyyy)");
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Invalid year!");
+		        sc.next(); 
+		    }
+		    year = sc.nextInt();
+		} while (year<2020||year>3000);
+		
+		do {
+			System.out.println("Month(mm)");
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Invalid month!");
+		        sc.next();
+		    }
+		    month = sc.nextInt();
+		} while (month<0||month>12);
+		
+		do {
+			System.out.println("Day(dd)");
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Invalid day!");
+		        sc.next(); 
+		    }
+		    day = sc.nextInt();
+		} while (day<1||day>31);
+		
+		do {
+			System.out.println("Hour(hh)");
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Invalid hour!");
+		        sc.next(); 
+		    }
+		    hour = sc.nextInt();
+		} while (hour<1||hour>23);
+		
+		do {
+			System.out.println("Minute(mm)");
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Invalid minute!");
+		        sc.next(); 
+		    }
+		    min = sc.nextInt();
+		    
+		} while (min<0||min>59);
+		do {
+			System.out.println("Enter access duration(in hours):");
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Please enter a positive number");
+		        sc.next(); 
+		    }
+		    duration = sc.nextInt();
+		} while (duration<0);
+	
 		Calendar regDate = new GregorianCalendar(year,month-1,day,hour,min,00);
 		regDate.add(Calendar.HOUR, 0);
 		Calendar regDate_end = (Calendar)regDate.clone();

@@ -16,7 +16,7 @@ public class Login {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Login Mode(Student/Admin): ");
 		String choice = sc.nextLine();
-		if (choice.equals("Student") )
+		if (choice.equals("Student")||choice.equals("student") )
 		{
 			String matricNo = studentLogin();
 			this.loginType = "Student";
@@ -33,7 +33,7 @@ public class Login {
 			}
 			
 		}
-		else if(choice.equals("Admin"))
+		else if(choice.equals("Admin")||choice.equals("admin"))
 		{
 			adminLogin();
 			this.loginType = "Admin";
@@ -49,6 +49,11 @@ public class Login {
 			{
 				System.out.println("Username: ");
 				String username = sc.nextLine();
+				if(username.length()!=9)
+				{
+					System.out.println("Invalid username, username must be 9 characters long!");
+					continue;
+				}
 				System.out.println("Password: ");
 				String password = sc.nextLine();
 				
@@ -74,6 +79,11 @@ public class Login {
 			{
 				System.out.println("Username: ");
 				String username = sc.nextLine();
+				if(username.length()!=9)
+				{
+					System.out.println("Invalid username, username must be 9 characters long!");
+					continue;
+				}
 				System.out.println("Password: ");
 				String password = sc.nextLine();
 				
