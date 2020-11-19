@@ -3,7 +3,7 @@ package STARS_system;
 import java.util.ArrayList;
 
 public class Timetable {
-	String[][] timetable = new String[5][10];
+	public String[][] timetable = new String[5][10];
 	
 	public Timetable() {
 	    for (int i = 0; i < 5; i++)
@@ -15,56 +15,66 @@ public class Timetable {
 	    }
 	  }
 	
-	public boolean buildTimetable(ArrayList<courseIndex>studentIndexes,courseIndex newIndex)
-	{
-		for(int i = 0; i < studentIndexes.size(); i++)
-		{
-			ArrayList<lesson>lessonList = studentIndexes.get(i).lessonList;
-			String Course = studentIndexes.get(i).courseCode;
-			for (int j = 0; j < lessonList.size(); j++)
-			{
-				int ST = lessonList.get(j).getLesST();
-				int ET = lessonList.get(j).getLesET();
-				String LT = lessonList.get(j).getLesType();
-				int day = lessonList.get(j).getLesday();
-				addSlot(Course, LT, ST, ET, day);
-			}
-		}
+	  public boolean checkClash(ArrayList<courseIndex>studentIndexes,courseIndex newIndex)
+	  {
 		
-		for (int i = 0; i < newIndex.lessonList.size(); i++)
-		{
-			boolean checkClash = addSlot(newIndex.courseCode,newIndex.lessonList.get(i).getLesType(),newIndex.lessonList.get(i).getLesST(),
-					newIndex.lessonList.get(i).getLesET(),newIndex.lessonList.get(i).getLesday());
-			
-			if (checkClash == false)
-			{
-				return false;
-			}
-		}
-		
-		return true;
-		
-	}
+	    for(int i = 0; i < studentIndexes.size(); i++)
+	    {
+	   
+	      ArrayList<lesson>lessonList = studentIndexes.get(i).lessonList;
+	      String Course = studentIndexes.get(i).courseCode;
+	      for (int j = 0; j < lessonList.size(); j++)
+	      {
+	        int ST = lessonList.get(j).getLesST();
+	        int ET = lessonList.get(j).getLesET();
+	        String LT = lessonList.get(j).getLesType();
+	        int day = lessonList.get(j).getLesday();
+	        addSlot(Course, LT, ST, ET, day);
+	        
+	      }
+	    }
 	
-	public boolean addSlot(String nameOfCourse,String classType,int timeStart,int timeEnd,int day)
-	{
-		 String combineCourseAndClasstype = classType+nameOfCourse;
-		 for (int i = timeStart-8; i <= timeEnd-8; i++)
-		 {
-			 if (timetable[day-1][i].equals("0"))
-			 {
-				 timetable[day-1][i] = combineCourseAndClasstype;
-				 return true;
-			 }
-			 else
-			 {
-				 System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]);
-				 return false;
-			 }
-			 
-		 }
-		 return false;
-	}
+	    
+	    for (int i = 0; i < newIndex.lessonList.size(); i++)
+	    {
+	      boolean checkclash = addSlot(newIndex.courseCode,newIndex.lessonList.get(i).getLesType(),newIndex.lessonList.get(i).getLesST(),
+	          newIndex.lessonList.get(i).getLesET(),newIndex.lessonList.get(i).getLesday());
+	      
+	      if (checkclash == false)
+	      {
+	        return false;
+	      }
+	    }
+	 
+	    
+	    return true;
+	    
+	  }
+	  
+	  public boolean addSlot(String nameOfCourse,String classType,int timeStart,int timeEnd,int day)
+	  {
+		  
+	     String combineCourseAndClasstype = classType+nameOfCourse;
+	     
+	     for (int i = timeStart-8; i <= timeEnd-8; i++)
+	     {
+	    	 
+	       if (timetable[day-1][i].equals("0"))
+	       {
+	    	   
+	    	  
+	         timetable[day-1][i] = combineCourseAndClasstype;
+	         
+	       }
+	       else
+	       {
+	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]);
+	         return false;
+	       }
+	       
+	     }
+	     return true;
+	  }
 	
 	
 	public void printTimetable()

@@ -32,7 +32,7 @@ public class courseIndex implements Serializable {
 			int endTime = sc.nextInt();
 			System.out.println("Enter Day in the week");
 			int Day = sc.nextInt();
-			lesson lesson = new lesson("lecture", startTime, endTime, Day);
+			lesson lesson = new lesson("lecture", Day, startTime, endTime);
 			lessonList.add(lesson);
 		}
 		sc.nextLine();

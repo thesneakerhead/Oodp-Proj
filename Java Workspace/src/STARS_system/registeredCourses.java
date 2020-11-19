@@ -54,7 +54,7 @@ public class registeredCourses implements Serializable{
 	        } 
 	}
 
-	public void registerIndex(String matricNo, String courseCode,String courseIndex)
+	public static void registerIndex(String matricNo, String courseCode,String courseIndex)
 	{
 		ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registerDict.get(matricNo);
 		if (indexList == null)
@@ -63,13 +63,13 @@ public class registeredCourses implements Serializable{
 			Course course = courseDB.getCourseObj(courseCode);
 			courseIndex cindex = course.getIndex(courseIndex);
 			newindexList.add(cindex);
-			this.registerDict.put(matricNo, newindexList);
+			registerDict.put(matricNo, newindexList);
 		}
 		else {
 			Course course = courseDB.getCourseObj(courseCode);
 			courseIndex cindex = course.getIndex(courseIndex);
 			indexList.add(cindex);
-			this.registerDict.put(matricNo,indexList);
+			registerDict.put(matricNo,indexList);
 		}
 		
 	}
@@ -107,5 +107,13 @@ public class registeredCourses implements Serializable{
 	public static ArrayList<courseIndex> getIndexes(String matricNo)
 	{
 		return (ArrayList<courseIndex>)registerDict.get(matricNo);
+	}
+	public void printRegisteredIndexes(String matricNo)
+	{
+		ArrayList<courseIndex>arrayList = (ArrayList<courseIndex>)registerDict.get(matricNo);
+		for (int i = 0;i<arrayList.size();i++)
+		{
+			System.out.println(arrayList.get(i).indexID);
+		}
 	}
 }

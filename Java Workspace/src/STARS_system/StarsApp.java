@@ -15,6 +15,7 @@ public class StarsApp {
 		
 		start();
 		
+		
 		terminate();
 	}
 	

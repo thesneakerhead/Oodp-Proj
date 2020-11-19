@@ -10,7 +10,9 @@ import java.util.Hashtable;
 
 public class courseDB {
 	public  static Dictionary courseDB;//stores all matricno Student pairs
+	
 	private static String filename = "courseDB.ser";
+
 	public courseDB() throws IOException, ClassNotFoundException
 	
 	{
@@ -84,6 +86,7 @@ public class courseDB {
 	}
 	public static void addCourse(String courseCode,Course course)
 	{
+		
 		courseDB.put(courseCode,course);
 	}
 	public static void deleteCourse(String courseCode)
