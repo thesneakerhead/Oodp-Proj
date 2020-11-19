@@ -8,8 +8,10 @@ public class courseIndex implements Serializable {
 	public String indexID;
 	public ArrayList<lesson> lessonList;
 	public int indexVacancy;
-	public courseIndex(String indexID)
+	public String courseCode;
+	public courseIndex(String indexID,String courseCode)
 	{
+		this.courseCode = courseCode;
 		Scanner sc = new Scanner(System.in);
 		this.indexID = indexID;
 		this.lessonList = addLessons();

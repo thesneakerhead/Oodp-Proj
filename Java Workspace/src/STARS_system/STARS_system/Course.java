@@ -22,7 +22,7 @@ public class Course implements Serializable{
 	}
 	public void addIndex(String indexID)
 	{
-		courseIndex[this.numIndex] = new courseIndex(indexID);
+		courseIndex[this.numIndex] = new courseIndex(indexID,this.courseCode);
 		this.numIndex++;
 		updateVacancy();
 	}
