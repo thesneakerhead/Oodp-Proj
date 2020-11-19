@@ -9,6 +9,7 @@ public class courseIndex implements Serializable {
 	public ArrayList<lesson> lessonList;
 	public int indexVacancy;
 	public String courseCode;
+	
 	public courseIndex(String indexID,String courseCode)
 	{
 		this.courseCode = courseCode;
