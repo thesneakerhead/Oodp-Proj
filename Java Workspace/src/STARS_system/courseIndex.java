@@ -49,8 +49,9 @@ public class courseIndex implements Serializable {
 			int Day = sc.nextInt();
 			lesson lesson = new lesson("tutorial", startTime, endTime, Day);
 			lessonList.add(lesson);
+			sc.nextLine();
 		}
-		sc.nextLine();
+		
 		System.out.println("Add lab for this index?('y' to add)");
 		String ans2 = sc.nextLine();
 		if (ans2.equals("y"))

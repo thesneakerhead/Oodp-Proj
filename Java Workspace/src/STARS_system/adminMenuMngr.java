@@ -147,7 +147,7 @@ public class adminMenuMngr {
 		        sc.next(); 
 		    }
 		    hour = sc.nextInt();
-		} while (hour<1||hour>23);
+		} while (hour<0||hour>23);
 		
 		do {
 			System.out.println("Minute(mm)");
