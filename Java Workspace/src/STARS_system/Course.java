@@ -1,5 +1,7 @@
 package STARS_system;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Dictionary;
 
@@ -54,17 +56,18 @@ public class Course implements Serializable{
 		{
 			if (courseIndex[i].indexID.equals(indexID))
 			{
-				for(int j=i;j<this.numIndex;j++)
+				for(int j=i;j<this.numIndex-1;j++)
 				{
 					System.out.println(courseIndex[j].indexID);
 					System.out.println(courseIndex[j+1].indexID);
 					courseIndex[j]=courseIndex[j+1];
 					
-					updateVacancy();
-					courseDB.addCourse(courseCode, this);
-					return true;
+					
 				}
+				updateVacancy();
+				courseDB.addCourse(courseCode, this);
 				this.numIndex--;
+				return true;
 			}
 		}
 		System.out.println("No such Index!");

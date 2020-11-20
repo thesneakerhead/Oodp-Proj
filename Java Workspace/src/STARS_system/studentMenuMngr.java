@@ -12,39 +12,7 @@ public class studentMenuMngr {
 		Student currentStudent = student;
 		switch(choice)
 		{
-			case 1 :  Scanner sc = new Scanner(System.in);
-			System.out.println("Enter Course that you want to register for:");
-			
-			String courseCode = sc.nextLine();
-		
-			Course course = courseDB.getCourseObj(courseCode);
-			
-			course.printIndexes();
-		
-			System.out.println("Enter course index that you want to register for:");
-			
-			String courseIndexString = sc.nextLine();
-			
-			courseIndex courseIndex = course.getIndex(courseIndexString);
-			
-			Timetable timetable = new Timetable();
-			ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(currentStudent.getMatricNo());
-			if (indexlist == null)
-			{
-				registeredCourses.registerIndex(currentStudent.getMatricNo(),courseCode,courseIndexString);
-				System.out.println("Course registered!");
-			}
-			else {
-				boolean checkclash = timetable.checkClash(indexlist, courseIndex);
-				if (checkclash == false)
-				{
-					System.out.println("You cant register for this course!");
-				}
-				else {
-					registeredCourses.registerIndex(currentStudent.getMatricNo(),courseCode,courseIndexString);
-					System.out.println("Course registered!");
-				}
-			}
+			case 1 :registerCourse(currentStudent);
 				
 				break;
 			case 2 :dropCourse(currentStudent);
@@ -64,6 +32,54 @@ public class studentMenuMngr {
 				
 				break;
 			
+		}
+	}
+	public void registerCourse(Student student) throws IOException
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Course that you want to register for:");
+		
+		String courseCode = sc.nextLine();
+	
+		Course course = courseDB.getCourseObj(courseCode);
+		
+		course.printIndexes();
+	
+		System.out.println("Enter course index that you want to register for:");
+		
+		String courseIndexString = sc.nextLine();
+		
+		courseIndex courseIndex = course.getIndex(courseIndexString);
+		
+		Timetable timetable = new Timetable();
+		ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
+		if (indexlist == null)
+		{
+			registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
+			courseIndex.indexVacancy--;
+			courseIndex.numStudents++;
+			courseIndex.StudentMatricNo[courseIndex.numStudents-1]=student.getMatricNo();
+			courseIndex.StudentNames[courseIndex.numStudents-1]=student.getName();
+			course.updateVacancy();
+			
+			System.out.println("Course registered!");
+			
+		}
+		else {
+			boolean checkclash = timetable.checkClash(indexlist, courseIndex);
+			if (checkclash == false)
+			{
+				System.out.println("You cant register for this course!");
+			}
+			else {
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
+				courseIndex.indexVacancy--;
+				courseIndex.numStudents++;
+				courseIndex.StudentMatricNo[courseIndex.numStudents-1]=student.getMatricNo();
+				courseIndex.StudentNames[courseIndex.numStudents-1]=student.getName();
+				course.updateVacancy();
+				System.out.println("Course registered!");
+			}
 		}
 	}
 	

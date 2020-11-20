@@ -9,6 +9,10 @@ public class courseIndex implements Serializable {
 	public ArrayList<lesson> lessonList;
 	public int indexVacancy;
 	public String courseCode;
+	public String[] StudentMatricNo;
+	public String[] StudentNames;
+	
+	public int numStudents = 0;
 	
 	public courseIndex(String indexID,String courseCode)
 	{
@@ -18,6 +22,8 @@ public class courseIndex implements Serializable {
 		this.lessonList = addLessons();
 		System.out.println("Enter index vacancy:");
 		this.indexVacancy=sc.nextInt();
+		this.StudentMatricNo = new String[this.indexVacancy];
+		this.StudentNames = new String[this.indexVacancy];
 	}
 	public static ArrayList<lesson> addLessons()
 	{
