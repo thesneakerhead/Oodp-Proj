@@ -19,6 +19,7 @@ private String studentLogin() throws IOException
 	accVerify verifier = new accVerify(false);
 	while(true)
 		{
+			System.out.println("Student 2 login ");
 			System.out.println("Username: ");
 			String username = sc.nextLine();
 			System.out.println("Password: ");

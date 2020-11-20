@@ -44,7 +44,7 @@ public class studentMenuMngr {
 		int i =0,j=0;
 		courseIndex index1 = null,index2 = null;
 		
-		System.out.println("What is your index number that you would like to swap");
+		System.out.println("What is your current index number");
 		String stud1Index = sc.next();
 		
 		Login2 login2 = new Login2();
@@ -63,7 +63,7 @@ public class studentMenuMngr {
 		}
 		
 		Student student2 = login2.currentStudent;
-		System.out.println("What is student 2's index number to be swapped");
+		System.out.println("What is student 2's index number");
 		String stud2Index = sc.next();
 		
 		ArrayList<courseIndex> indexList2 = (ArrayList<courseIndex>)registeredCourses.getIndexes(student2.getMatricNo());
@@ -81,20 +81,19 @@ public class studentMenuMngr {
 		{
 			if(course1.equals(course2))
 			{
+				Course course = courseDB.getCourseObj(course1);
+				courseIndex cIndex1 = course.getIndex(stud1Index);
+				courseIndex cIndex2 = course.getIndex(stud2Index);
+				cIndex1.removeStudent(student1);
+				cIndex1.addStudent(student2);
+				cIndex2.removeStudent(student2);
+				cIndex2.addStudent(student1);
+				
 				indexList1.remove(i);
 				indexList1.add(index2);
 				indexList2.remove(j);
 				indexList2.add(index1);
-				System.out.println("indexlist1 :");
-				for(i=0;i<indexList1.size();i++)
-				{
-					System.out.println(indexList1.get(i).indexID);
-				}
-				System.out.println("indexlist2 :");
-				for(j=0;j<indexList2.size();j++)
-				{
-					System.out.println(indexList2.get(j).indexID);
-				}
+
 			}
 			else
 				System.out.println("Course code of both indexes are not the same");
@@ -117,7 +116,6 @@ public class studentMenuMngr {
 
 		for(int i=0;i<indexList.size();i++)
 		{
-			System.out.println(i+indexList.size());
 			if(curIndex.equals(indexList.get(i).indexID))
 			{
 				coursecode = indexList.get(i).courseCode;
@@ -131,39 +129,37 @@ public class studentMenuMngr {
 			}
 		}
 		Course indexCourse = courseDB.getCourseObj(coursecode);
-		System.out.println("test");
-		courseIndex indexOfCourse = indexCourse.getIndex(newIndex);
-		if(indexOfCourse == null)
+		courseIndex newCourseIndex = indexCourse.getIndex(newIndex);
+		courseIndex curCourseIndex = indexCourse.getIndex(curIndex);
+		if(newCourseIndex == null)
 		{
 			System.out.println("New index is not part of the course "+coursecode);
 			return;
 		}
 		else
 		{
-			int vacancy = indexOfCourse.indexVacancy;
+			int vacancy = newCourseIndex.indexVacancy;
 			if(vacancy>0)
 			{
 				//student drop cur course function
 				indexList.remove(counter);
 				//student add new course function
-				boolean checkclash = timetable.checkClash(indexList, indexOfCourse);
-				System.out.println("test");
+				boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
 				if (checkclash == false)
 				{
+					indexList.add(curCourseIndex);
 					System.out.println("You cant register for this course!");
 				}
 				else {
 					registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex);
+					newCourseIndex.addStudent(student);
+					curCourseIndex.removeStudent(student);
 					System.out.println("Index Changed to "+newIndex);
 				}	
 			}
 			else
 			System.out.println("New index has no vacancy");
-		}
-			
-			
-
-		
+		}		
 	}
 	/**
 	  * Drop course method
@@ -182,10 +178,12 @@ public class studentMenuMngr {
 	  {
 		  if(indexList.get(i).courseCode.equals(courseToDrop))
 		  {
+			  Course course = courseDB.getCourseObj(courseToDrop);
+		      course.getIndex(indexList.get(i).indexID).removeStudent(student);
+		      course.getIndex(indexList.get(i).indexID).indexVacancy++;
+
 			  indexList.remove(i);
-			  indexList.trimToSize();
-			  indexList.get(i).removeStudent(student);
-			  indexList.get(i).indexVacancy++;
+
 		  }
 	  }
 
@@ -220,7 +218,12 @@ public class studentMenuMngr {
 			
 			String courseIndexString = sc.nextLine();
 			courseIndex courseIndex = course.getIndex(courseIndexString);
-
+			int vacancy = courseIndex.indexVacancy;
+			if(vacancy<1)
+			{
+				System.out.println("Selected index has no vacancy");
+				return;
+			}
 			Timetable timetable = new Timetable();
 			ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
 

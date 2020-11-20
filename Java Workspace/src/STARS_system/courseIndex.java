@@ -92,5 +92,12 @@ public class courseIndex implements Serializable {
 			System.out.println("Student not registered in this course!");
 		}
 	}
-	
+	public void printStudentList()
+	{
+		
+		for(int i = 0;i<studentList.size();i++)
+		{
+			System.out.println(studentList.get(i).getMatricNo()+ " "+studentList.get(i).getName());
+		}
+	}
 }
