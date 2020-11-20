@@ -9,8 +9,9 @@ public class courseIndex implements Serializable {
 	public ArrayList<lesson> lessonList;
 	public int indexVacancy;
 	public ArrayList<Student> studentList;
-	
+	public ArrayList<Student> waitList;
 	public String courseCode;
+	public boolean isWaitList;
 	
 	public courseIndex(String indexID,String courseCode)
 	{
@@ -21,6 +22,8 @@ public class courseIndex implements Serializable {
 		System.out.println("Enter index vacancy:");
 		this.indexVacancy=sc.nextInt();
 		this.studentList = new ArrayList<Student>();
+		this.waitList = new ArrayList<Student>();
+		this.isWaitList = false;
 	}
 	
 	public static ArrayList<lesson> addLessons()
@@ -76,6 +79,27 @@ public class courseIndex implements Serializable {
 	}
 	public void addStudent(Student student){
 		studentList.add(student);
+	}
+	public void addToWaitlist(Student student)
+	{
+		waitList.add(student);
+	}
+	
+	public void removeFromWaitlist(Student student)
+	{
+		int oSize = studentList.size();
+		for(int i = 0;i<studentList.size();i++)
+		{
+			Student stdent = studentList.get(i);
+			if (stdent.getMatricNo().equals(student.getMatricNo()))
+			{
+				waitList.remove(i);
+			}
+		}
+		if(studentList.size()==oSize)
+		{
+			System.out.println("Student not in waitlist");
+		}
 	}
 	public void removeStudent(Student student){
 		int oSize = studentList.size();

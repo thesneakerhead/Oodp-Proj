@@ -54,22 +54,45 @@ public class registeredCourses implements Serializable{
 	        } 
 	}
 
-	public static void registerIndex(String matricNo, String courseCode,String courseIndex)
+	public static void registerIndex(String matricNo, String courseCode,String courseindex,boolean isWaitlist)
 	{
 		ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registerDict.get(matricNo);
 		if (indexList == null)
 		{
 			ArrayList<courseIndex> newindexList = new ArrayList<courseIndex>();
 			Course course = courseDB.getCourseObj(courseCode);
-			courseIndex cindex = course.getIndex(courseIndex);
+			courseIndex cindex = course.getIndex(courseindex);
 			newindexList.add(cindex);
+			if (isWaitlist == true)
+			{
 			registerDict.put(matricNo, newindexList);
+			courseIndex cdex = newindexList.get(0);
+			cdex.isWaitList = true;
+			
+			}
+			else {
+				registerDict.put(matricNo, newindexList);
+			}
+			
 		}
 		else {
 			Course course = courseDB.getCourseObj(courseCode);
-			courseIndex cindex = course.getIndex(courseIndex);
+			courseIndex cindex = course.getIndex(courseindex);
 			indexList.add(cindex);
-			registerDict.put(matricNo,indexList);
+			if (isWaitlist==true)
+			{
+				registerDict.put(matricNo,indexList);
+				for (int i =0;i<indexList.size();i++)
+				{
+					if(indexList.get(i).indexID==courseindex)
+					{
+						indexList.get(i).isWaitList = true;
+					}
+				}
+			}
+			else {
+				registerDict.put(matricNo,indexList);
+			}
 		}
 		
 	}
