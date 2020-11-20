@@ -12,7 +12,6 @@ public class testSTARS {
 	
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		Course course = new Course("kontol", "gwlo", Department.EEE);
 		//StudentDB studentDB = new StudentDB();
 		
 		//Login login = new Login();
@@ -130,8 +129,7 @@ public class testSTARS {
 ////		}
 ////		course.printAvalIndex();
 ////	}
-
-		
+	
 	
 ;}
 }

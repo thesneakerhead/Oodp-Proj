@@ -12,7 +12,7 @@ public class studentMenuMngr {
 		Student currentStudent = student;
 		switch(choice)
 		{
-			case 1 :registerCourse(currentStudent);
+			case 1 :addCourse(currentStudent);
 				
 				break;
 			case 2 :dropCourse(currentStudent);
@@ -25,63 +25,17 @@ public class studentMenuMngr {
 				
 				break;
 				
-			case 5 :
+			case 5 :changeIndex(currentStudent);
 				
 				break;
-			case 6 :
+			case 6 :swapIndex(currentStudent);
 				
 				break;
-			
+			//default:StarsApp.terminate();
+				//	break;
 		}
 	}
-	public void registerCourse(Student student) throws IOException
-	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Course that you want to register for:");
-		
-		String courseCode = sc.nextLine();
 	
-		Course course = courseDB.getCourseObj(courseCode);
-		
-		course.printIndexes();
-	
-		System.out.println("Enter course index that you want to register for:");
-		
-		String courseIndexString = sc.nextLine();
-		
-		courseIndex courseIndex = course.getIndex(courseIndexString);
-		
-		Timetable timetable = new Timetable();
-		ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
-		if (indexlist == null)
-		{
-			registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
-			courseIndex.indexVacancy--;
-			courseIndex.numStudents++;
-			courseIndex.StudentMatricNo[courseIndex.numStudents-1]=student.getMatricNo();
-			courseIndex.StudentNames[courseIndex.numStudents-1]=student.getName();
-			course.updateVacancy();
-			
-			System.out.println("Course registered!");
-			
-		}
-		else {
-			boolean checkclash = timetable.checkClash(indexlist, courseIndex);
-			if (checkclash == false)
-			{
-				System.out.println("You cant register for this course!");
-			}
-			else {
-				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
-				courseIndex.indexVacancy--;
-				courseIndex.numStudents++;
-				courseIndex.StudentMatricNo[courseIndex.numStudents-1]=student.getMatricNo();
-				courseIndex.StudentNames[courseIndex.numStudents-1]=student.getName();
-				course.updateVacancy();
-				System.out.println("Course registered!");
-			}
-		}
-	}
 	
 	public void swapIndex(Student student1) throws IOException
 	{
@@ -152,7 +106,8 @@ public class studentMenuMngr {
 	
 	public void changeIndex (Student student) throws IOException
 	{
-		System.out.println("What is the index number that you would like to change");
+		Timetable timetable = new Timetable();
+		System.out.println("What is your current index number");
 		String curIndex = sc.next();
 		System.out.println("What is the new index number that you would like to change to");
 		String newIndex = sc.next();
@@ -176,19 +131,36 @@ public class studentMenuMngr {
 		}
 		Boolean found = false;
 		Course indexCourse = courseDB.getCourseObj(coursecode);
-		for (int j=0;j<20;j++)
+		System.out.println("test");
+		courseIndex indexOfCourse = indexCourse.getIndex(newIndex);
+		if(indexOfCourse!=null)
 		{
-			courseIndex indexOfCourse = indexCourse.courseIndex[j];
-			if(newIndex.equals(indexOfCourse.indexID))
-			{
-				found = true;
-				if(indexOfCourse.indexVacancy>0)
+		System.out.println("test");
+			found = true;
+			int vacancy = indexOfCourse.indexVacancy;//unable to get
+			if(vacancy>0)
+			{System.out.println("test");
+				//student add new course function
+				boolean checkclash = timetable.checkClash(indexList, indexOfCourse);
+				System.out.println("test");
+				if (checkclash == false)
 				{
-					//student add new course function
-					//student drop cur course function
+					System.out.println("You cant register for this course!");
 				}
+				else {
+					registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex);
+					System.out.println("Course registered!");
+				}
+				//student drop cur course function
+				indexList.remove(counter);
+				for(int i=0;i<indexList.size();i++) {
+					   System.out.println(indexList.get(i).indexID);
+					  }
 			}
-		}
+			}
+		
+		if (!found)
+			System.out.println("Index to be changed to is not part of the course "+coursecode);
 		
 	}
 	/**
@@ -221,6 +193,42 @@ public class studentMenuMngr {
 	  for(int i=0;i<indexList.size();i++) {
 	   System.out.println(indexList.get(i).courseCode);
 	  }
-	  
+	 }
+	 
+	 private void addCourse(Student student) {
+		 Scanner sc = new Scanner(System.in);
+			System.out.println("Enter Course that you want to register for:");
+			
+			String courseCode = sc.nextLine();
+		
+			Course course = courseDB.getCourseObj(courseCode);
+			
+			course.printIndexes();
+		
+			System.out.println("Enter course index that you want to register for:");
+			
+			String courseIndexString = sc.nextLine();
+			
+			courseIndex courseIndex = course.getIndex(courseIndexString);
+			
+			Timetable timetable = new Timetable();
+			ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
+			if (indexlist == null)
+			{
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
+				System.out.println("Course registered!");
+			}
+			else {
+				boolean checkclash = timetable.checkClash(indexlist, courseIndex);
+				if (checkclash == false)
+				{
+					System.out.println("You cant register for this course!");
+				}
+				else {
+					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
+					System.out.println("Course registered!");
+				}
+			}
+	 
 	 }
 }
