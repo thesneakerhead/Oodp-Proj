@@ -70,6 +70,8 @@ public class actionMenu {
 		System.out.println("|      4. Check Vacancies Available                   |");
 		System.out.println("|      5. Change Index Number of Course               |");
 		System.out.println("|      6. Swap Index Number with Another Student      |");
+		System.out.println("|                                                     |");
+		System.out.println("|      Enter any other key to exit!                   |");
 		System.out.println("=======================================================");
 		System.out.println("Select an option:");
 		int Choice = sc.nextInt();

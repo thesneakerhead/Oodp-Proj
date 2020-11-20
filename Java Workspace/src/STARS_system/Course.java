@@ -42,9 +42,7 @@ public class Course implements Serializable{
 			{
 				return courseIndex[i];
 			}
-			else {
-				return null;
-			}
+			
 		}
 		return null;
 	}

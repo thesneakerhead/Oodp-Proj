@@ -113,10 +113,11 @@ public class studentMenuMngr {
 		String newIndex = sc.next();
 		String coursecode = null;
 		int counter = 0;
-		
 		ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(student.getMatricNo());
+
 		for(int i=0;i<indexList.size();i++)
 		{
+			System.out.println(i+indexList.size());
 			if(curIndex.equals(indexList.get(i).indexID))
 			{
 				coursecode = indexList.get(i).courseCode;
@@ -129,17 +130,21 @@ public class studentMenuMngr {
 				return;
 			}
 		}
-		Boolean found = false;
 		Course indexCourse = courseDB.getCourseObj(coursecode);
 		System.out.println("test");
 		courseIndex indexOfCourse = indexCourse.getIndex(newIndex);
-		if(indexOfCourse!=null)
+		if(indexOfCourse == null)
 		{
-		System.out.println("test");
-			found = true;
-			int vacancy = indexOfCourse.indexVacancy;//unable to get
+			System.out.println("New index is not part of the course "+coursecode);
+			return;
+		}
+		else
+		{
+			int vacancy = indexOfCourse.indexVacancy;
 			if(vacancy>0)
-			{System.out.println("test");
+			{
+				//student drop cur course function
+				indexList.remove(counter);
 				//student add new course function
 				boolean checkclash = timetable.checkClash(indexList, indexOfCourse);
 				System.out.println("test");
@@ -149,18 +154,15 @@ public class studentMenuMngr {
 				}
 				else {
 					registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex);
-					System.out.println("Course registered!");
-				}
-				//student drop cur course function
-				indexList.remove(counter);
-				for(int i=0;i<indexList.size();i++) {
-					   System.out.println(indexList.get(i).indexID);
-					  }
+					System.out.println("Index Changed to "+newIndex);
+				}	
 			}
-			}
-		
-		if (!found)
-			System.out.println("Index to be changed to is not part of the course "+coursecode);
+			else
+			System.out.println("New index has no vacancy");
+		}
+			
+			
+
 		
 	}
 	/**
@@ -171,15 +173,20 @@ public class studentMenuMngr {
 	  printCourse(student);
 	  String matricNo=student.getMatricNo();
 	  Scanner sc = new Scanner(System.in);
+	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
+	  if(indexList==null||indexList.size()==0)
+		  return;
 	  System.out.println("Enter course code you would like to drop:");
 	  String courseToDrop = sc.nextLine();
-	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
-	  for(int i=0;i<indexList.size();i++) {
-	   if(indexList.get(i).courseCode.equals(courseToDrop))
-	   {
-	    indexList.remove(i);
-	   }
+	  for(int i=0;i<indexList.size();i++) 
+	  {
+		  if(indexList.get(i).courseCode .equals(courseToDrop))
+		  {
+			  indexList.remove(i);
+			  indexList.trimToSize();
+		  }
 	  }
+
 	  
 	 }
 	 /**
@@ -188,37 +195,41 @@ public class studentMenuMngr {
 	  */
 	 private void printCourse(Student student) {
 	  String matricNo=student.getMatricNo();
-	  
 	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
-	  for(int i=0;i<indexList.size();i++) {
-	   System.out.println(indexList.get(i).courseCode);
+	  if(indexList==null||indexList.size()==0)
+	  {
+		  System.out.println("No courses registered!");
+		  return;
+	  }
+	 
+	  for(int i=0;i<indexList.size();i++) 
+	  {
+		  System.out.println("Course: "+indexList.get(i).courseCode+" Index: "+indexList.get(i).indexID);
 	  }
 	 }
 	 
 	 private void addCourse(Student student) {
 		 Scanner sc = new Scanner(System.in);
 			System.out.println("Enter Course that you want to register for:");
-			
-			String courseCode = sc.nextLine();
-		
-			Course course = courseDB.getCourseObj(courseCode);
-			
-			course.printIndexes();
-		
+			String courseCode = sc.nextLine();		
+			Course course = courseDB.getCourseObj(courseCode);			
+			course.printIndexes();		
 			System.out.println("Enter course index that you want to register for:");
 			
 			String courseIndexString = sc.nextLine();
-			
 			courseIndex courseIndex = course.getIndex(courseIndexString);
-			
+
 			Timetable timetable = new Timetable();
 			ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
-			if (indexlist == null)
+
+			if (indexlist==null)
 			{
+				System.out.println("test3");
 				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
 				System.out.println("Course registered!");
 			}
-			else {
+			else if (indexlist.size()!=0)
+			{
 				boolean checkclash = timetable.checkClash(indexlist, courseIndex);
 				if (checkclash == false)
 				{
@@ -229,6 +240,11 @@ public class studentMenuMngr {
 					System.out.println("Course registered!");
 				}
 			}
-	 
+			else
+			{
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
+				System.out.println("Course registered!");
+			}
+	
 	 }
 }
