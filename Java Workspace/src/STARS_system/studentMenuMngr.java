@@ -180,10 +180,12 @@ public class studentMenuMngr {
 	  String courseToDrop = sc.nextLine();
 	  for(int i=0;i<indexList.size();i++) 
 	  {
-		  if(indexList.get(i).courseCode .equals(courseToDrop))
+		  if(indexList.get(i).courseCode.equals(courseToDrop))
 		  {
 			  indexList.remove(i);
 			  indexList.trimToSize();
+			  indexList.get(i).removeStudent(student);
+			  indexList.get(i).indexVacancy++;
 		  }
 	  }
 
@@ -224,9 +226,11 @@ public class studentMenuMngr {
 
 			if (indexlist==null)
 			{
-				System.out.println("test3");
+				
 				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
 				System.out.println("Course registered!");
+				courseIndex.indexVacancy--;
+				courseIndex.addStudent(student);
 			}
 			else if (indexlist.size()!=0)
 			{
@@ -238,12 +242,16 @@ public class studentMenuMngr {
 				else {
 					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
 					System.out.println("Course registered!");
+					courseIndex.indexVacancy--;
+					courseIndex.addStudent(student);
 				}
 			}
 			else
 			{
 				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString);
 				System.out.println("Course registered!");
+				courseIndex.indexVacancy--;
+				courseIndex.addStudent(student);
 			}
 	
 	 }

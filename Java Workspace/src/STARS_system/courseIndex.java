@@ -8,6 +8,8 @@ public class courseIndex implements Serializable {
 	public String indexID;
 	public ArrayList<lesson> lessonList;
 	public int indexVacancy;
+	public ArrayList<Student> studentList;
+	
 	public String courseCode;
 	
 	public courseIndex(String indexID,String courseCode)
@@ -18,7 +20,9 @@ public class courseIndex implements Serializable {
 		this.lessonList = addLessons();
 		System.out.println("Enter index vacancy:");
 		this.indexVacancy=sc.nextInt();
+		this.studentList = new ArrayList<Student>();
 	}
+	
 	public static ArrayList<lesson> addLessons()
 	{
 		ArrayList<lesson> lessonList = new ArrayList<lesson>();
@@ -69,6 +73,24 @@ public class courseIndex implements Serializable {
 		
 		
 		
+	}
+	public void addStudent(Student student){
+		studentList.add(student);
+	}
+	public void removeStudent(Student student){
+		int oSize = studentList.size();
+		for(int i = 0;i<studentList.size();i++)
+		{
+			Student stdent = studentList.get(i);
+			if (stdent.getMatricNo().equals(student.getMatricNo()))
+			{
+				studentList.remove(i);
+			}
+		}
+		if(studentList.size()==oSize)
+		{
+			System.out.println("Student not registered in this course!");
+		}
 	}
 	
 }
