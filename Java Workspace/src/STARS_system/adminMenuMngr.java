@@ -14,6 +14,7 @@ public class adminMenuMngr {
 		{
 			case 1 :
 				
+				editStudentAccessPeriod();
 				
 				break;
 			case 2 :
@@ -265,6 +266,7 @@ public class adminMenuMngr {
 	}
 	private void editStudentAccessPeriod()
 	{
+		int year=0,month=0,day=0,hour=0,min=0,duration=0;
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Enter Student's matricNo:");
 		String matricNo = sc.nextLine();
@@ -274,7 +276,69 @@ public class adminMenuMngr {
 			System.out.println("Student is not in database!");
 		}
 		else {
+			System.out.println("Please enter the following to set access period:");
 			
+			do {
+				System.out.println("Year(yyyy)");
+			    while (!sc.hasNextInt()) {
+			        System.out.println("Invalid year!");
+			        sc.next(); 
+			    }
+			    year = sc.nextInt();
+			} while (year<2020||year>3000);
+			
+			do {
+				System.out.println("Month(mm)");
+			    while (!sc.hasNextInt()) {
+			        System.out.println("Invalid month!");
+			        sc.next();
+			    }
+			    month = sc.nextInt();
+			} while (month<0||month>12);
+			
+			do {
+				System.out.println("Day(dd)");
+			    while (!sc.hasNextInt()) {
+			        System.out.println("Invalid day!");
+			        sc.next(); 
+			    }
+			    day = sc.nextInt();
+			} while (day<1||day>31);
+			
+			do {
+				System.out.println("Hour(hh)");
+			    while (!sc.hasNextInt()) {
+			        System.out.println("Invalid hour!");
+			        sc.next(); 
+			    }
+			    hour = sc.nextInt();
+			} while (hour<0||hour>23);
+			
+			do {
+				System.out.println("Minute(mm)");
+			    while (!sc.hasNextInt()) {
+			        System.out.println("Invalid minute!");
+			        sc.next(); 
+			    }
+			    min = sc.nextInt();
+			    
+			} while (min<0||min>59);
+			do {
+				System.out.println("Enter access duration(in hours):");
+			    while (!sc.hasNextInt()) {
+			        System.out.println("Please enter a positive number");
+			        sc.next(); 
+			    }
+			    duration = sc.nextInt();
+			} while (duration<0);
+		
+			Calendar regDate = new GregorianCalendar(year,month-1,day,hour,min,00);
+			regDate.add(Calendar.HOUR, 0);
+			Calendar regDate_end = (Calendar)regDate.clone();
+	        regDate_end.add(Calendar.HOUR, duration);
+	        student.setAccessStartTime(regDate);
+	        student.setAccessEndTime(regDate_end);
+	        
 		}
 	}
 	

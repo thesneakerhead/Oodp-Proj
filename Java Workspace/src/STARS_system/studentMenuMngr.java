@@ -312,14 +312,19 @@ public class studentMenuMngr {
 		 Scanner sc = new Scanner(System.in);
 		 System.out.println("Enter course(code) that you want to register for:");
 		 String courseCode = sc.nextLine();		
- 		 Course course = courseDB.getCourseObj(courseCode);	
+ 		 Course course = courseDB.getCourseObj(courseCode);
+ 		 course.printIndexes();	
+ 		 if(course.numIndex == 0)
+ 		 {
+ 			 return;
+ 		 }
  		 while(course == null)
  		 { 			 
  			 System.out.println("Please enter a valid course code:");
  			 courseCode = sc.nextLine();	
  			 course = courseDB.getCourseObj(courseCode);	
  		 }
-		 course.printIndexes();		
+			
 		 System.out.println("Enter course index that you want to register for:");
 		 String courseIndexString = sc.nextLine();
 		 courseIndex courseIndex = course.getIndex(courseIndexString);
