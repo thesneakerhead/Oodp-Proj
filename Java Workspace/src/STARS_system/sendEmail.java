@@ -13,7 +13,7 @@ public class sendEmail implements sendNotifications {
 	public void loginNotification(Student student)
 	{
 		
-				
+			System.out.println("System Processing......");	
 			String sEmail = student.getEmail();
 			final String username = "starsemailsender@gmail.com"; // to be added
 			final String password = "Jacoblaw12"; // to be added
@@ -54,7 +54,7 @@ public class sendEmail implements sendNotifications {
 	public void courseIndexRegNotification(Student student,String courseCode,String courseIndex)
 	{
 	
-		
+			System.out.println("System Processing......");	
 			String sEmail = student.getEmail();
 			final String username = "starsemailsender@gmail.com"; // to be added
 			final String password = "Jacoblaw12"; // to be added
@@ -93,7 +93,7 @@ public class sendEmail implements sendNotifications {
 	public void waitingListNotification(Student student,String courseCode,String courseIndex)
 	{
 	
-		
+			System.out.println("System Processing......");	
 			String sEmail = student.getEmail();
 			final String username = "starsemailsender@gmail.com"; // to be added
 			final String password = "Jacoblaw12"; // to be added
@@ -131,7 +131,7 @@ public class sendEmail implements sendNotifications {
 	public void exitWaitingListNotification(Student student,String courseCode,String courseIndex)
 	{
 	
-		
+			System.out.println("System Processing......");	
 			String sEmail = student.getEmail();
 			final String username = "starsemailsender@gmail.com"; // to be added
 			final String password = "Jacoblaw12"; // to be added

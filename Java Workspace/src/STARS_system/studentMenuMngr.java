@@ -30,12 +30,75 @@ public class studentMenuMngr {
 				break;
 			case 6 :swapIndex(currentStudent);
 				
+			
+				break;
+			case 7 :changeDetails(currentStudent);
+				
 				break;
 			//default:StarsApp.terminate();
 				//	break;
 		}
 	}
 	
+	public void changeDetails(Student student) throws IOException
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("=======================================================");
+		System.out.println("|      1. Change Password                             |");
+		System.out.println("|      2. Change Email                                |");
+		System.out.println("=======================================================");
+		System.out.println("Enter Choice:");
+		int selection = sc.nextInt();
+		sc.nextLine();
+		switch (selection) {
+			case 1:
+				while(true)
+					{
+						System.out.println("Enter new password");
+						String pw = sc.nextLine();
+						System.out.println("Re-enter new password");
+						String repw = sc.nextLine();
+						if (pw.equals(repw))
+						{
+							student.getSaccount().setAccountPW(starsaccMngr.passwordHash(pw));
+							StudentDB.addStudent(student.getMatricNo(), student);
+							starsaccMngr.editPassword(student.getMatricNo(), starsaccMngr.passwordHash(pw), false);
+							break;
+						}
+						else {
+							System.out.println("Passwords not matching!");
+							System.out.println("Enter (Y) to continue");
+							String cont = sc.nextLine();
+							if(cont.equals("Y")||cont.equals("y"))
+							{
+								continue;
+							}
+							else {
+								break;
+							}
+							
+						}
+					}
+				
+				break;
+				
+			case 2:
+				String email;
+				 do {
+				        System.out.println("Please enter Email that you would like to switch to:");
+				        email = sc.nextLine();
+				        if (!(email.endsWith(".com")&&email.contains("@")))
+				        {
+				        	System.out.println("Invalid email! Please re-enter");
+				        }
+				        }while(!(email.endsWith(".com")&&email.contains("@")));
+				 student.setEmail(email);
+				 StudentDB.addStudent(student.getMatricNo(), student);
+					
+				break;
+		}
+		
+	}
 	
 	public void swapIndex(Student student1) throws IOException
 	{
@@ -343,12 +406,15 @@ public class studentMenuMngr {
 			if(vacancy<1)
 			{
 				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+				StarsApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
 				courseIndex.addToWaitlist(student);
 				System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
 			}
 			else {
 				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+				StarsApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
 				System.out.println("Course registered!");
+				
 				courseIndex.indexVacancy--;
 				courseIndex.addStudent(student);
 			}
@@ -366,12 +432,14 @@ public class studentMenuMngr {
 				if(vacancy<1)
 				{
 					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+					StarsApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
 					courseIndex.addToWaitlist(student);
 					System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
 				}
 				else {
 						registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
 						System.out.println("Course registered!");
+						StarsApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
 						courseIndex.indexVacancy--;
 						courseIndex.addStudent(student);
 					}
@@ -382,6 +450,7 @@ public class studentMenuMngr {
 			if(vacancy<1)
 			{
 				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+				StarsApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
 				courseIndex.addToWaitlist(student);
 				System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
 			}
@@ -389,6 +458,7 @@ public class studentMenuMngr {
 			else
 			{
 				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+				StarsApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
 				System.out.println("Course registered!");
 				courseIndex.indexVacancy--;
 				courseIndex.addStudent(student);

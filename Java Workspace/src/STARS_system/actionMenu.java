@@ -11,6 +11,7 @@ public class actionMenu {
 	{
 		if (login.loginType == "Student")
 		{
+			StarsApp.emailSender.loginNotification(login.currentStudent);
 			login.currentStudent.getSaccount().printNotifications();
 			int choice = 0;
 			while(true) {
@@ -71,6 +72,7 @@ public class actionMenu {
 		System.out.println("|      4. Check Vacancies Available                   |");
 		System.out.println("|      5. Change Index Number of Course               |");
 		System.out.println("|      6. Swap Index Number with Another Student      |");
+		System.out.println("|      7. Change Account Details                      |");
 		System.out.println("|                                                     |");
 		System.out.println("|      Enter any other key to exit!                   |");
 		System.out.println("=======================================================");
@@ -81,13 +83,13 @@ public class actionMenu {
 	public int admin_menu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
-		System.out.println("|      1. Edit student access period                  |");
-		System.out.println("|      2. Add a student                               |");
+		System.out.println("|      1. Edit Student Access Period                  |");
+		System.out.println("|      2. Add a Student                               |");
 		System.out.println("|      3. Add/Update a course                         |");
-		System.out.println("|      4. Check available slot for an index number    |");
-		System.out.println("|      5. Print student list by index number          |");
-		System.out.println("|      6. Print student list by course                |");
-		System.out.println("|      7. Delete a student                            |");
+		System.out.println("|      4. Check Available Vacancy for an index number |");
+		System.out.println("|      5. Print Student List by index number          |");
+		System.out.println("|      6. Print Student List by course                |");
+		System.out.println("|      7. Delete a Student                            |");
 		System.out.println("|                                                     |");
 		System.out.println("|      Enter any other key to exit!                   |");
 		System.out.println("=======================================================");

@@ -156,5 +156,21 @@ public class registeredCourses implements Serializable{
         	
         }
 	}
+	public static void deleteIndex(String indexID)
+	{
+		Set<String> keys = ((Hashtable) registerDict).keySet();
+        for(String key: keys){
+        	ArrayList<courseIndex> tempList = (ArrayList<courseIndex>)registerDict.get(key);
+        	for (int i=0;i<tempList.size();i++)
+        	{
+        		if(tempList.get(i).indexID.equals(indexID))
+        		{
+        			tempList.remove(i);
+        			registerDict.put(key, tempList);
+        		}
+        	}
+        	
+        }
+	}
 	
 }

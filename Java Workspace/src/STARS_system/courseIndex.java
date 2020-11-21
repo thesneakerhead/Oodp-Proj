@@ -240,6 +240,7 @@ public class courseIndex implements Serializable {
 		}
 		Student tempStudent = StudentDB.getStudentObj(student.getMatricNo());
 		tempStudent.getSaccount().addNotification("You have sucessfully registered for the course: "+this.courseCode+" indexID:"+this.indexID);
+		StarsApp.emailSender.exitWaitingListNotification(tempStudent, this.courseCode, this.indexID);
 		waitList.remove(0);
 		studentList.add(student);
 		

@@ -102,6 +102,7 @@ public class adminMenuMngr {
 		    	
 		    case 2:
 		    	Boolean same = true;
+		    	int count=0;
 		    	String indexId=null;
 		    	System.out.println("Enter Course Code");
 		    	String coursecode = sc.nextLine();
@@ -111,20 +112,30 @@ public class adminMenuMngr {
 		    		System.out.println("There is no course of the course code "+coursecode);
 		    		return;
 		    	}
-		    	while (same)
+		    	while (same==true)
 		    	{
 			    	System.out.println("Enter Index Id");
 			    	indexId = sc.nextLine();
+			    	if(course.numIndex==0)
+			    		same=false;
 			    	for(int i=0;i<course.numIndex;i++)
 			    	{
+			    		
 			    		if(!indexId.equals(course.courseIndex[i].indexID))
 			    		{
-			    			same= false;
-			    			break;
+			    			count++;
 			    		}
 			    		else
+			    		{
 			    			System.out.println("There is an existing course index "+indexId);
+			    			break;
+			    		}
+			    		
 			    	}
+			    	
+			    	
+			    	if (count==course.numIndex)
+			    		same=false;
 		    	}
 		    	addIndex(coursecode, indexId);
 		    	
@@ -144,6 +155,7 @@ public class adminMenuMngr {
 		    		indexid = sc.nextLine();
 			    	cIndex=course.getIndex(indexid);			    	
 		    	}
+		    	registeredCourses.deleteIndex(indexid);
 		    	removeIndex(courscode, indexid);
 		    	
 		    	break;
@@ -246,7 +258,7 @@ public class adminMenuMngr {
 		    }
 		    duration = sc.nextInt();
 		} while (duration<1);
-	
+		sc.nextLine();
 		Calendar regDate = new GregorianCalendar(year,month-1,day,hour,min,00);
 		regDate.add(Calendar.HOUR, 0);
 		Calendar regDate_end = (Calendar)regDate.clone();

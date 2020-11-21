@@ -11,7 +11,7 @@ import java.util.Hashtable;
 import java.util.Set;
 
 public class courseDB {
-	public  static Dictionary courseDB;//stores all matricno Student pairs
+	public  static Dictionary courseDB;//stores all course code and course pairs
 	
 	private static String filename = "courseDB.ser";
 

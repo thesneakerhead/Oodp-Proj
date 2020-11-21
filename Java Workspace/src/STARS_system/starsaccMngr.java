@@ -97,5 +97,44 @@ public class starsaccMngr {
 		      out.close();
 		    }
 		  }
+	public static void editPassword(String studentMatric, String newPW, boolean isAdmin) throws IOException  {
+		String filename;
+		if (isAdmin == true)
+		{
+			filename = usrnamePwFILE.getAdminFilename();
+		}
+		else {
+			filename = usrnamePwFILE.getStudentFilename();
+		}
+		List data = accVerify.readDB(filename);
+		String SEPARATOR = "|";
+		PrintWriter out = new PrintWriter(new FileWriter(filename));
+	    String matricNo;
+	    String password;
+	    
+	    String[] parts;
+	    try {
+			for (int i =0; i < data.size() ; i++) {
+				
+				parts = ((String) data.get(i)).split("\\"+ SEPARATOR);
+				matricNo = parts[0];
+				password = parts[1];
+				
+				String reconstructString;
+				if (matricNo.equals(studentMatric))
+				{
+					reconstructString = matricNo+SEPARATOR+newPW;
+					out.println(reconstructString);
+				}
+				else
+				{
+					out.println((String)data.get(i));
+				}
+			}
+	    }
+	    finally {
+	      out.close();
+	    }
+	  }
 
 }
