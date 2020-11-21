@@ -19,6 +19,8 @@ public class STARSaccount implements Serializable {
 	private String accountPW;
 	private Student student;
 	private boolean isAdmin;
+	public String inbox[];
+	public int numOfMessages = 0;
 	
 	public STARSaccount(String accountID,String accountPW) throws IOException
 	{
@@ -26,6 +28,7 @@ public class STARSaccount implements Serializable {
 		this.accountPW = starsaccMngr.passwordHash(accountPW);
 		this.isAdmin = true;
 		this.student = null;
+		this.inbox = new String[20];
 		saveToDb();
 	}
 	
@@ -35,6 +38,7 @@ public class STARSaccount implements Serializable {
 		this.accountPW = starsaccMngr.passwordHash(accountPW);
 		this.student = student;
 		this.isAdmin = false;
+		this.inbox = new String[20];
 		saveToDb();
 		
 	}
@@ -78,5 +82,20 @@ public class STARSaccount implements Serializable {
 		st.append(this.accountPW.trim());
 			
 		starsaccMngr.write(st.toString(),this.isAdmin);
+	}
+	public void addNotification(String notification)
+	{
+		this.inbox[numOfMessages] = notification;
+		numOfMessages++;
+	}
+	public void printNotifications()
+	{
+		if (numOfMessages!=0)
+		{
+			for (int i=0;i<numOfMessages;i++)
+			{
+				System.out.println(this.inbox[i]);
+			}
+		}
 	}
 }

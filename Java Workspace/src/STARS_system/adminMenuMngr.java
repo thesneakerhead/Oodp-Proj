@@ -48,6 +48,7 @@ public class adminMenuMngr {
 		System.out.println("|      1. Add a Course                                |");
 		System.out.println("|      2. Add index for a Course                      |");
 		System.out.println("|      3. Remove index for a Course                   |");
+		System.out.println("|      4. Remove Course by Course Code                |");
 		System.out.println("=======================================================");
 		System.out.println("Enter Choice:");
 		int selection = sc.nextInt();
@@ -87,6 +88,16 @@ public class adminMenuMngr {
 		    	removeIndex(courscode, indexid);
 		    	
 		    	break;
+		    case 4:
+		    	System.out.println("Enter Course Code that you want to delete");
+		    	String cCode = sc.nextLine();
+		    	System.out.println("Press (y) to confirm deletion of course "+cCode);
+		    	String sel = sc.nextLine();
+		    	if (sel.equals("y")||sel.equals("Y"))
+		    	{
+		    		courseDB.deleteCourse(cCode);
+		    		registeredCourses.deleteIndexFromCourse(cCode);
+		    	}
 		}
 	}
 	

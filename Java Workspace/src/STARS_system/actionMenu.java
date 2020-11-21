@@ -11,6 +11,7 @@ public class actionMenu {
 	{
 		if (login.loginType == "Student")
 		{
+			login.currentStudent.getSaccount().printNotifications();
 			int choice = 0;
 			while(true) {
 				

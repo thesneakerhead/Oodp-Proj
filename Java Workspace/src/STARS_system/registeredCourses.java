@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Set;
 
 public class registeredCourses implements Serializable{
 	public static Dictionary registerDict;
@@ -138,5 +139,21 @@ public class registeredCourses implements Serializable{
 		{
 			System.out.println(arrayList.get(i).indexID);
 		}
+	}
+	public static void deleteIndexFromCourse(String courseCode)
+	{
+		Set<String> keys = ((Hashtable) registerDict).keySet();
+        for(String key: keys){
+        	ArrayList<courseIndex> tempList = (ArrayList<courseIndex>)registerDict.get(key);
+        	for (int i=0;i<tempList.size();i++)
+        	{
+        		if(tempList.get(i).courseCode.equals(courseCode))
+        		{
+        			tempList.remove(i);
+        			registerDict.put(key, tempList);
+        		}
+        	}
+        	
+        }
 	}
 }

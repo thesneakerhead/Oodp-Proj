@@ -104,124 +104,127 @@ public class studentMenuMngr {
 	}
 	
 	public void changeIndex (Student student) throws IOException
-	  {
-		Boolean curWaitlist = false;
-	    Timetable timetable = new Timetable();
-	    System.out.println("What is your current index number");
-	    String curIndex = sc.next();
-	    System.out.println("What is the new index number that you would like to change to");
-	    String newIndex = sc.next();
-	    String coursecode = null;
-	    int counter = 0;
-	    ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(student.getMatricNo());
+    {
+    Boolean curWaitlist = false;
+      Timetable timetable = new Timetable();
+      System.out.println("What is your current index number");
+      String curIndex = sc.next();
+      System.out.println("What is the new index number that you would like to change to");
+      String newIndex = sc.next();
+      String coursecode = null;
+      int counter = 0;
+      ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(student.getMatricNo());
 
-	    for(int i=0;i<indexList.size();i++)
-	    {
-	      if(curIndex.equals(indexList.get(i).indexID))
-	      {
-	        coursecode = indexList.get(i).courseCode;
-	        counter = i;
-	        if(indexList.get(i).isWaitList==true)
-	        	curWaitlist=true;
-	        break;
-	      }
-	      else
-	      {
-	        System.out.println("You are not registered for index: "+curIndex);
-	        return;
-	      }
-	    }
-	    Course indexCourse = courseDB.getCourseObj(coursecode);
-	    courseIndex newCourseIndex = indexCourse.getIndex(newIndex);
-	    courseIndex curCourseIndex = indexCourse.getIndex(curIndex);
-	    if(newCourseIndex == null)
-	    {
-	      System.out.println("New index is not part of the course "+coursecode);
-	      return;
-	    }
-	    else
-	    {
-	    	String[] DAY = new String[] {"","M","T","W","TH","F"};
-	        System.out.println("Current index: "+curIndex);
-	        System.out.println("Lesson:\tDay:\tST(hr):\tET(hr):");
-	        for(int l=0;l<curCourseIndex.lessonList.size();l++)
-	        {
-	          lesson les =curCourseIndex.lessonList.get(l);
-	          System.out.println(les.getLesType()+"\t "+DAY[les.getLesday()]+"\t "+les.getLesST()+"\t "+les.getLesET());
-	        }
-	        System.out.println("------------------------------------------");
-	        System.out.println("New index: "+newIndex);
-	        System.out.println("Lesson:\tDay:\tST(hr):\tET(hr):");
-	        for(int nl=0;nl<newCourseIndex.lessonList.size();nl++)
-	        {
-	          lesson nles = newCourseIndex.lessonList.get(nl);
-	          System.out.println(nles.getLesType()+"\t "+DAY[nles.getLesday()]+"\t "+nles.getLesST()+"\t "+nles.getLesET());
-	        }
-	        int vacancy = newCourseIndex.indexVacancy;
-	    	if(curWaitlist==false) 
-	    	{
-		      if(vacancy>0)
-		      {
-		        
-		        System.out.println("(Y) to confirm change, any other key to cancel");
-		        String confirm = sc.next();
-		        if(confirm.equals("y")||confirm.equals("Y"))
-		        {
-		          //student drop cur course function
-		          indexList.remove(counter);
-		          //student add new course function
-		          boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
-		          if (checkclash == false)
-		          {
-		            indexList.add(curCourseIndex);
-		            System.out.println("You cant register for this course!");
-		          }
-		          else {
-		            registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
-		            
-		            newCourseIndex.addStudent(student);
-		            curCourseIndex.removeStudent(student);
-		            System.out.println("Index Changed to "+newIndex);
-		          }  
-		        }
-		      }
-		      else
-		      System.out.println("New index has no vacancy");
-		    }    
-	    	else 
-	    	{
-	    		if(vacancy>0)
-	    		{
-	    			System.out.println("(Y) to confirm change, any other key to cancel");
-			        String confirm = sc.next();
-			        if(confirm.equals("y")||confirm.equals("Y"))
-			        {
-			        	curCourseIndex.removeFromWaitlist(student);
-			        	boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
-				          if (checkclash == false)
-				          {
-				            indexList.add(curCourseIndex);
-				            System.out.println("You cant register for this course!");
-				          }
-				          else {
-				            registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
-				            
-				            newCourseIndex.addStudent(student);
-				            curCourseIndex.removeStudent(student);
-				            System.out.println("Index Changed to "+newIndex);
-				          }  
-			        }
-	    		}
-	    		else
-	    		{
-			    	indexList.remove(curCourseIndex);
-			    	registeredCourses.registerIndex(student.getMatricNo(),curCourseIndex.courseCode,newIndex,true);
-					newCourseIndex.addToWaitlist(student);
-	    		}
-		    }
-	    }
-	    
-	}
+      for(int i=0;i<indexList.size();i++)
+      {
+        if(curIndex.equals(indexList.get(i).indexID))
+        {
+          coursecode = indexList.get(i).courseCode;
+          counter = i;
+          if(indexList.get(i).isWaitList==true)
+            curWaitlist=true;
+          break;
+        }
+        else
+        {
+          System.out.println("You are not registered for index: "+curIndex);
+          return;
+        }
+      }
+      Course indexCourse = courseDB.getCourseObj(coursecode);
+      courseIndex newCourseIndex = indexCourse.getIndex(newIndex);
+      courseIndex curCourseIndex = indexCourse.getIndex(curIndex);
+      if(newCourseIndex == null)
+      {
+        System.out.println("New index is not part of the course "+coursecode);
+        return;
+      }
+      else
+      {
+        String[] DAY = new String[] {"","M","T","W","TH","F"};
+          System.out.println("Current index: "+curIndex);
+          System.out.println("Lesson:\tDay:\tST(hr):\tET(hr):");
+
+          for(int l=0;l<curCourseIndex.lessonList.size();l++)
+          {
+            
+            lesson les =curCourseIndex.lessonList.get(l);
+            
+            System.out.println(les.getLesType()+"\t "+DAY[les.getLesday()]+"\t "+les.getLesST()+"\t "+les.getLesET());
+          }
+          System.out.println("------------------------------------------");
+          System.out.println("New index: "+newIndex);
+          System.out.println("Lesson:\tDay:\tST(hr):\tET(hr):");
+          for(int nl=0;nl<newCourseIndex.lessonList.size();nl++)
+          {
+            lesson nles = newCourseIndex.lessonList.get(nl);
+            System.out.println(nles.getLesType()+"\t "+DAY[nles.getLesday()]+"\t "+nles.getLesST()+"\t "+nles.getLesET());
+          }
+          int vacancy = newCourseIndex.indexVacancy;
+          
+        if(curWaitlist==false) //if not in waitlist of course to change index
+        {
+          if(vacancy>0) //if new index avaliable
+          {
+            
+            System.out.println("(Y) to confirm change, any other key to cancel");
+            String confirm = sc.next();
+            if(confirm.equals("y")||confirm.equals("Y"))
+            {
+              //student drop cur course function
+              indexList.remove(counter);
+              //student add new course function
+              boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
+              if (checkclash == false)
+              {
+                indexList.add(curCourseIndex);
+                System.out.println("You cant register for this course!");
+              }
+              else {
+                registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
+                
+                newCourseIndex.addStudent(student);
+                curCourseIndex.removeStudent(student);
+                System.out.println("Index Changed to "+newIndex);
+              }  
+            }
+          }
+          else//new index not avaliable but student already registered
+          System.out.println("New index has no vacancy");
+        }    
+        else //student in waitlist of current index
+        {
+          if(vacancy>0)//new index avaliable, remove from current waitlist and register new course
+          {
+            System.out.println("(Y) to confirm change, any other key to cancel");
+              String confirm = sc.next();
+              if(confirm.equals("y")||confirm.equals("Y"))
+              {
+                curCourseIndex.removeFromWaitlist(student);
+                boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
+                  if (checkclash == false)
+                  {
+                    indexList.add(curCourseIndex);
+                    System.out.println("You cant register for this course!");
+                  }else {
+                      registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
+                      
+                      newCourseIndex.addStudent(student);
+                      curCourseIndex.removeStudent(student);
+                      System.out.println("Index Changed to "+newIndex);
+                    }  
+                }
+            }
+            else// new index not avaliable, add to new index waitlist
+            {
+              indexList.remove(curCourseIndex);
+              registeredCourses.registerIndex(student.getMatricNo(),curCourseIndex.courseCode,newIndex,true);
+            newCourseIndex.addToWaitlist(student);
+            }
+          }
+        }
+        
+    }
 	/**
 	  * Drop course method
 	  * @param student Student
@@ -232,7 +235,10 @@ public class studentMenuMngr {
 	  Scanner sc = new Scanner(System.in);
 	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
 	  if(indexList==null||indexList.size()==0)
+		  {
+		  
 		  return;
+		  }
 	  System.out.println("Enter course code you would like to drop:");
 	  String courseToDrop = sc.nextLine();
 	  for(int i=0;i<indexList.size();i++) 
@@ -241,8 +247,17 @@ public class studentMenuMngr {
 		  {
 			  Course course = courseDB.getCourseObj(courseToDrop);
 		      course.getIndex(indexList.get(i).indexID).removeStudent(student);
-		      course.getIndex(indexList.get(i).indexID).indexVacancy++;
-
+		      
+		      if(!course.getIndex(indexList.get(i).indexID).waitList.isEmpty())
+		      {
+		    	  course.getIndex(indexList.get(i).indexID).dequeueStudent();
+		      }
+		      else {
+		    	  {
+		    		  course.getIndex(indexList.get(i).indexID).indexVacancy++;
+		    	  }
+		      }
+		      
 			  indexList.remove(i);
 			  break;
 
@@ -265,7 +280,12 @@ public class studentMenuMngr {
 	 
 	  for(int i=0;i<indexList.size();i++) 
 	  {
-		  System.out.println("Course: "+indexList.get(i).courseCode+" Index: "+indexList.get(i).indexID);
+		  if(indexList.get(i).isWaitList==false)
+		  {System.out.println("Course: "+indexList.get(i).courseCode+" Index: "+indexList.get(i).indexID);}
+		  else
+		  {
+			  System.out.println("Course: "+indexList.get(i).courseCode+" Index: "+indexList.get(i).indexID + "(WAITLIST)");
+		  }
 	  }
 	 }
 	 

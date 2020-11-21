@@ -24,6 +24,7 @@ public class Student implements Serializable {
 		this.accessStartTime = accessStartTime;
 		this.accessEndTime = accessEndTime;
 		this.saccount = new STARSaccount(matricNo,name,this);
+		
 		StudentDB.addStudent(matricNo, this);
 		System.out.println("Student Created!");
 	}
@@ -62,6 +63,7 @@ public class Student implements Serializable {
 	public void setSaccount(STARSaccount saccount) {
 		this.saccount = saccount;
 	}
+	
 	//==================================================
 	
 }
