@@ -21,13 +21,7 @@ public class studentMenuMngr {
 			case 3 :printCourse(currentStudent);
 				
 				break;
-			case 4 :Course course = courseDB.getCourseObj("cz2001");
-					courseIndex cindex = course.getIndex("s1"); 
-					courseIndex cindex2 = course.getIndex("s3"); 
-					cindex.printWaitList();
-					System.out.println("s3");
-					cindex2.printWaitList();
-					
+			case 4 :checkVacancy();
 				
 				break;
 				
@@ -374,4 +368,18 @@ public class studentMenuMngr {
 			}
 	
 	 }
+	 public void checkVacancy()
+	   {
+	     System.out.println("Enter course code to check vacancy");
+	     String check = sc.next();
+	     Course course = courseDB.getCourseObj(check);
+	     System.out.println("Index:\tVacancy:\tWaitlist:");
+	     for(int i=0;i<course.numIndex;i++)
+	     {
+	       String ID = course.courseIndex[i].indexID;
+	       courseIndex cIndex = course.getIndex(ID);
+	       System.out.println(cIndex.indexID+"\t"+cIndex.indexVacancy+"\t\t"+cIndex.waitList.size());
+	       
+	     }
+	   }
 }
