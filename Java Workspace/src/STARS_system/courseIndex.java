@@ -28,18 +28,45 @@ public class courseIndex implements Serializable {
 	
 	public static ArrayList<lesson> addLessons()
 	  {
+		int startTime=0,endTime=0,Day=0;
 	    ArrayList<lesson> lessonList = new ArrayList<lesson>();
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println("No. of lectures per week:");
 	    int numLectures = sc.nextInt();
 	    for (int i=0;i<numLectures;i++)
-	    {
-	      System.out.println("Enter Start time of lecture "+(i+1));
-	      int startTime = sc.nextInt();
-	      System.out.println("Enter End time of lecture "+(i+1));
-	      int endTime = sc.nextInt();
-	      System.out.println("Enter Day in the week");
-	      int Day = sc.nextInt();
+	    {	    	
+	      	do 
+	      	{
+	      		System.out.println("Enter start time(hr) of lecture "+(i+1));
+	      		System.out.println("Start time must be within 8am-5pm(8-17)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("Start time must be within 8am-5pm(8-17)");
+			        sc.next(); 
+			    }
+			    startTime = sc.nextInt();
+			}while(startTime<8||startTime>17);
+	      	
+	      	do 
+	      	{
+	      		System.out.println("Enter end time(hr) of lecture "+(i+1));
+	      		System.out.println("End time must be after start time and within 9am-6pm(9-18)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("End time must be after start time and within 9am-6pm(9-18)");
+			        sc.next(); 
+			    }
+			    endTime = sc.nextInt();
+			}while(endTime<9||endTime>18||endTime<startTime);
+	      	
+	      	do 
+	      	{
+	      		System.out.println("Enter Day in the week MON-FRI(1-5)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("Day must be MON-FRI(1-5)");
+			        sc.next(); 
+			    }
+			    Day = sc.nextInt();
+			}while(Day<1||Day>5);
+
 	      lesson lesson = new lesson("LEC", Day, startTime, endTime);
 	      lessonList.add(lesson);
 	    }
@@ -49,11 +76,11 @@ public class courseIndex implements Serializable {
 	    if (ans.equals("y"))
 	    {
 	      System.out.println("Enter Start time of tutorial");
-	      int startTime = sc.nextInt();
+	      startTime = sc.nextInt();
 	      System.out.println("Enter End time of tutorial");
-	      int endTime = sc.nextInt();
+	      endTime = sc.nextInt();
 	      System.out.println("Enter Day in the week");
-	      int Day = sc.nextInt();
+	      Day = sc.nextInt();
 	      lesson lesson = new lesson("TUT", Day, startTime, endTime);
 	      lessonList.add(lesson);
 	      sc.nextLine();
@@ -64,11 +91,11 @@ public class courseIndex implements Serializable {
 	    if (ans2.equals("y"))
 	    {
 	      System.out.println("Enter Start time of lab");
-	      int startTime = sc.nextInt();
+	      startTime = sc.nextInt();
 	      System.out.println("Enter End time of lab");
-	      int endTime = sc.nextInt();
+	      endTime = sc.nextInt();
 	      System.out.println("Enter Day in the lab");
-	      int Day = sc.nextInt();
+	      Day = sc.nextInt();
 	      lesson lesson = new lesson("LAB",Day, startTime, endTime);
 	      lessonList.add(lesson);
 	    }
