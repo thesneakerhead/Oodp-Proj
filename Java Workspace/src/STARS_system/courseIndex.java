@@ -87,12 +87,16 @@ public class courseIndex implements Serializable {
 	
 	public void removeFromWaitlist(Student student)
 	{
-		int oSize = studentList.size();
-		for(int i = 0;i<studentList.size();i++)
+		int oSize = waitList.size();
+		System.out.println(oSize);
+		for(int i = 0;i<waitList.size();i++)
 		{
-			Student stdent = studentList.get(i);
+			Student stdent = waitList.get(i);
+			System.out.println(student.getMatricNo());
+			System.out.println(stdent.getMatricNo());
 			if (stdent.getMatricNo().equals(student.getMatricNo()))
 			{
+				System.out.println("test");
 				waitList.remove(i);
 			}
 		}

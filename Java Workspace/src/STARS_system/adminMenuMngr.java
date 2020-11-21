@@ -193,6 +193,7 @@ public class adminMenuMngr {
 		String matricNo = sc.nextLine();
 		starsaccMngr.deleteAcc(matricNo, false);
 		StudentDB.deleteStudent(matricNo);
+		registeredCourses.removeStudentIndexes(matricNo);
 	}
 	private void addCourse(String courseName,String courseCode,Department department)
 	{

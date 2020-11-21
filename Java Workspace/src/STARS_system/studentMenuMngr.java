@@ -21,7 +21,10 @@ public class studentMenuMngr {
 			case 3 :printCourse(currentStudent);
 				
 				break;
-			case 4 :
+			case 4 :Course course = courseDB.getCourseObj("cz2001");
+					courseIndex cindex = course.getIndex("s1"); 
+					cindex.printWaitList();
+					cindex.removeFromWaitlist(currentStudent);
 				
 				break;
 				
@@ -164,7 +167,7 @@ public class studentMenuMngr {
           
         if(curWaitlist==false) //if not in waitlist of course to change index
         {
-          if(vacancy>0) //if new index avaliable
+          if(vacancy>0) //if new index available
           {
             
             System.out.println("(Y) to confirm change, any other key to cancel");
@@ -189,19 +192,20 @@ public class studentMenuMngr {
               }  
             }
           }
-          else//new index not avaliable but student already registered
+          else//new index not available and student registered in another index
           System.out.println("New index has no vacancy");
         }    
         else //student in waitlist of current index
         {
-          if(vacancy>0)//new index avaliable, remove from current waitlist and register new course
+          if(vacancy>0)//new index available, remove from current waitlist and register new course
           {
             System.out.println("(Y) to confirm change, any other key to cancel");
               String confirm = sc.next();
               if(confirm.equals("y")||confirm.equals("Y"))
               {
-                curCourseIndex.removeFromWaitlist(student);
-                boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
+            	  curCourseIndex.printWaitList();
+            	  curCourseIndex.removeFromWaitlist(student);
+            	  boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
                   if (checkclash == false)
                   {
                     indexList.add(curCourseIndex);

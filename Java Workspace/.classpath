@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Jacob/Desktop/javamail/javamail/javax.mail.jar">
+	<classpathentry kind="lib" path="C:/Users/tay_k/OneDrive/Desktop/School/Object Oriented Design/javax.mail.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
