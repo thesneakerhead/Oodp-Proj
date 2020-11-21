@@ -63,6 +63,12 @@ public class Student implements Serializable {
 	public void setSaccount(STARSaccount saccount) {
 		this.saccount = saccount;
 	}
+	public void setAccessStartTime(Calendar accessStartTime) {
+		this.accessStartTime = accessStartTime;
+	}
+	public void setAccessEndTime(Calendar accessEndTime) {
+		this.accessEndTime = accessEndTime;
+	}
 	
 	//==================================================
 	
