@@ -23,8 +23,11 @@ public class studentMenuMngr {
 				break;
 			case 4 :Course course = courseDB.getCourseObj("cz2001");
 					courseIndex cindex = course.getIndex("s1"); 
+					courseIndex cindex2 = course.getIndex("s3"); 
 					cindex.printWaitList();
-					cindex.removeFromWaitlist(currentStudent);
+					System.out.println("s3");
+					cindex2.printWaitList();
+					
 				
 				break;
 				
@@ -184,8 +187,8 @@ public class studentMenuMngr {
                 System.out.println("You cant register for this course!");
               }
               else {
-                registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
-                
+            	  
+                registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);   
                 newCourseIndex.addStudent(student);
                 curCourseIndex.removeStudent(student);
                 System.out.println("Index Changed to "+newIndex);
@@ -199,31 +202,38 @@ public class studentMenuMngr {
         {
           if(vacancy>0)//new index available, remove from current waitlist and register new course
           {
-            System.out.println("(Y) to confirm change, any other key to cancel");
+        	  System.out.println("(Y) to confirm change, any other key to cancel");
               String confirm = sc.next();
               if(confirm.equals("y")||confirm.equals("Y"))
-              {
-            	  curCourseIndex.printWaitList();
-            	  curCourseIndex.removeFromWaitlist(student);
+              {  
+            	  indexList.remove(counter);
             	  boolean checkclash = timetable.checkClash(indexList, newCourseIndex);
                   if (checkclash == false)
                   {
                     indexList.add(curCourseIndex);
                     System.out.println("You cant register for this course!");
-                  }else {
+                  }
+                  else 
+                  {
                       registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
                       
                       newCourseIndex.addStudent(student);
-                      curCourseIndex.removeStudent(student);
+                      curCourseIndex.removeFromWaitlist(student);
+                      
                       System.out.println("Index Changed to "+newIndex);
-                    }  
+                   }  
                 }
             }
             else// new index not avaliable, add to new index waitlist
             {
-              indexList.remove(curCourseIndex);
-              registeredCourses.registerIndex(student.getMatricNo(),curCourseIndex.courseCode,newIndex,true);
-            newCourseIndex.addToWaitlist(student);
+            	System.out.println("(Y) to confirm change, any other key to cancel");
+                String confirm = sc.next();
+                if(confirm.equals("y")||confirm.equals("Y"))
+                {  
+                	indexList.remove(curCourseIndex);
+                	registeredCourses.registerIndex(student.getMatricNo(),curCourseIndex.courseCode,newIndex,true);
+                	newCourseIndex.addToWaitlist(student);
+                }
             }
           }
         }
@@ -239,10 +249,8 @@ public class studentMenuMngr {
 	  Scanner sc = new Scanner(System.in);
 	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
 	  if(indexList==null||indexList.size()==0)
-		  {
-		  
 		  return;
-		  }
+	  
 	  System.out.println("Enter course code you would like to drop:");
 	  String courseToDrop = sc.nextLine();
 	  for(int i=0;i<indexList.size();i++) 
@@ -250,19 +258,21 @@ public class studentMenuMngr {
 		  if(indexList.get(i).courseCode.equals(courseToDrop))
 		  {
 			  Course course = courseDB.getCourseObj(courseToDrop);
-		      course.getIndex(indexList.get(i).indexID).removeStudent(student);
+			  courseIndex cindex = course.getIndex(indexList.get(i).indexID);
+			  if(cindex.isWaitList==true)
+				  cindex.removeFromWaitlist(student);
+			  else
+			  {
+				  cindex.removeStudent(student);      
+				  if(!cindex.waitList.isEmpty())
+					  cindex.dequeueStudent();
 		      
-		      if(!course.getIndex(indexList.get(i).indexID).waitList.isEmpty())
-		      {
-		    	  course.getIndex(indexList.get(i).indexID).dequeueStudent();
-		      }
-		      else {
-		    	  {
-		    		  course.getIndex(indexList.get(i).indexID).indexVacancy++;
-		    	  }
-		      }
+				  else 
+					  course.getIndex(indexList.get(i).indexID).indexVacancy++;
+			  }
 		      
 			  indexList.remove(i);
+			  System.out.println("Course dropped!");
 			  break;
 
 		  }
@@ -284,6 +294,7 @@ public class studentMenuMngr {
 	 
 	  for(int i=0;i<indexList.size();i++) 
 	  {
+		  System.out.println(indexList.get(i).indexID+indexList.get(i).isWaitList);
 		  if(indexList.get(i).isWaitList==false)
 		  {System.out.println("Course: "+indexList.get(i).courseCode+" Index: "+indexList.get(i).indexID);}
 		  else
