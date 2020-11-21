@@ -9,12 +9,12 @@ public class StarsApp {
 	public static Calendar currentDate;
 	private static courseDB courseDB;
 	private static registeredCourses registeredcourses;
+	private static sendEmail emailSender;
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		init();
 		
 		start();
-		
 		
 		
 		terminate();
@@ -30,6 +30,7 @@ public class StarsApp {
 	
 	public static void init() throws ClassNotFoundException, IOException 
 	{
+		emailSender = new sendEmail();
 		studentDB = new StudentDB();
 		registeredcourses = new registeredCourses();
 		courseDB = new courseDB();

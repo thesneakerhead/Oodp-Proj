@@ -106,6 +106,7 @@ public class adminMenuMngr {
 		Scanner sc = new Scanner(System.in);
 		Boolean valid = false;
 		String matricNo=null;
+		String email = null;
 		int year=0,month=0,day=0,hour=0,min=0,duration=0;
 		while(!valid)
 		{
@@ -185,8 +186,15 @@ public class adminMenuMngr {
 		regDate.add(Calendar.HOUR, 0);
 		Calendar regDate_end = (Calendar)regDate.clone();
         regDate_end.add(Calendar.HOUR, duration);
-		
-		new Student(matricNo, name, gender, nationality,regDate,regDate_end);
+        do {
+        System.out.println("Enter Student's email:");
+        email = sc.nextLine();
+        if (!(email.endsWith(".com")&&email.contains("@")))
+        {
+        	System.out.println("Invalid email! Please re-enter");
+        }
+        }while(!(email.endsWith(".com")&&email.contains("@")));
+		new Student(matricNo, name, gender, nationality,regDate,regDate_end,email);
 	}
 	private void deleteStudent() throws IOException {
 		Scanner sc = new Scanner(System.in);

@@ -12,9 +12,9 @@ public class Student implements Serializable {
 	public Calendar accessStartTime;
 	public Calendar accessEndTime;
 	private STARSaccount saccount;
+	private String email;
 	
-	
-	public Student(String matricNo,String name,String gender,String nationality,Calendar accessStartTime,Calendar accessEndTime) throws IOException
+	public Student(String matricNo,String name,String gender,String nationality,Calendar accessStartTime,Calendar accessEndTime,String email) throws IOException
 	{
 		
 		this.matricNo = matricNo;
@@ -24,7 +24,7 @@ public class Student implements Serializable {
 		this.accessStartTime = accessStartTime;
 		this.accessEndTime = accessEndTime;
 		this.saccount = new STARSaccount(matricNo,name,this);
-		
+		this.email = email;
 		StudentDB.addStudent(matricNo, this);
 		System.out.println("Student Created!");
 	}
@@ -68,6 +68,10 @@ public class Student implements Serializable {
 	}
 	public void setAccessEndTime(Calendar accessEndTime) {
 		this.accessEndTime = accessEndTime;
+	}
+	public String getEmail()
+	{
+		return this.email;
 	}
 	
 	//==================================================
