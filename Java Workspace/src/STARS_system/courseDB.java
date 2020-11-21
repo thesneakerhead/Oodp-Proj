@@ -5,8 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Set;
 
 public class courseDB {
 	public  static Dictionary courseDB;//stores all matricno Student pairs
@@ -92,5 +94,14 @@ public class courseDB {
 	public static void deleteCourse(String courseCode)
 	{
 		courseDB.remove(courseCode);
+	}
+	public static void printCourses()
+	{
+		Set<String> keys = ((Hashtable) courseDB).keySet();
+        for(String key: keys){
+        	Course tempCourse = (Course)courseDB.get(key);
+        	
+        	
+        }
 	}
 }
