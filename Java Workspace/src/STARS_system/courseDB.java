@@ -97,11 +97,47 @@ public class courseDB {
 	}
 	public static void printCourses()
 	{
+		Dictionary departmentCourses = new Hashtable();
+		
+		System.out.println("Courses Available for Registration:");
+		System.out.println("Course Name               |Course Code    |Department    |");
+		
 		Set<String> keys = ((Hashtable) courseDB).keySet();
         for(String key: keys){
         	Course tempCourse = (Course)courseDB.get(key);
-        	
+        	if (departmentCourses.get(tempCourse.getDepartment())==null)
+        	{
+        		ArrayList<Course> courseArray= new ArrayList<Course>();
+        		courseArray.add(tempCourse);
+        		departmentCourses.put(tempCourse.getDepartment(), courseArray);
+        	}
+        	else {
+        		ArrayList<Course> courseArray = (ArrayList<Course>)departmentCourses.get(tempCourse.getDepartment());
+        		courseArray.add(tempCourse);
+        		departmentCourses.put(tempCourse.getDepartment(), courseArray);
+			}
         	
         }
+        
+        Set<Department> keyys = ((Hashtable) departmentCourses).keySet();
+        for(Department keyy:keyys) {
+        	ArrayList<Course> cArray = (ArrayList<Course>)departmentCourses.get(keyy);
+        	for(int i=0;i<cArray.size();i++)
+        	{
+        		System.out.print(fixedLengthString(cArray.get(i).getCourseName(), 27));
+        		System.out.print(fixedLengthString(cArray.get(i).courseCode, 16));
+        		System.out.print(fixedLengthString(cArray.get(i).getDepartment().name(), 15));
+        		System.out.println();
+        	}
+        	
+        }
+        System.out.println("");
+        
+        
+        
+        
+	}
+	public static String fixedLengthString(String string, int length) {
+	    return String.format("%1$-"+length+ "s", string);
 	}
 }

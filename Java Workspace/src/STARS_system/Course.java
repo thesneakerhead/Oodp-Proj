@@ -80,6 +80,14 @@ public class Course implements Serializable{
 		}
 		
 	}
+	public Department getDepartment()
+	{
+		return this.department;
+	}
+	public String getCourseName()
+	{
+		return this.courseName;
+	}
 	
 	
 	

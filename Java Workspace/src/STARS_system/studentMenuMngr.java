@@ -284,6 +284,7 @@ public class studentMenuMngr {
 	  * @param student
 	  */
 	 private void printCourse(Student student) {
+	  courseDB.printCourses();
 	  String matricNo=student.getMatricNo();
 	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
 	  if(indexList==null||indexList.size()==0)
