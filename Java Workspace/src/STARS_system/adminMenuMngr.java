@@ -54,44 +54,109 @@ public class adminMenuMngr {
 		System.out.println("Enter Choice:");
 		int selection = sc.nextInt();
 		sc.nextLine();
+		Boolean valid=false;
+		String courseCode=null;
 		switch(selection)
 		{
 		    case 1:
 		    	System.out.println("Enter the followind details:");
 		    	System.out.println("Course Name");
 		    	String courseName = sc.nextLine();
-		    	System.out.println("Course Code");
-		    	String courseCode = sc.nextLine();
-		    	System.out.println("Department:");
-		    	String dptmnt = sc.nextLine();
-		    	Department department = Department.valueOf(dptmnt);
-		    	addCourse(courseName, courseCode, department);
+		    	while(!valid)
+		    	{
+			    	System.out.println("Course Code");
+			    	courseCode = sc.nextLine();
+			    	Course course = courseDB.getCourseObj(courseCode);
+			    	if(course!=null)
+			    	{
+			    		System.out.println("There is an existing course of the same course code");
+			    		continue;
+			    	}
+			    	else
+			    		valid=true;
+		    	}
+		    	String dptmnt=null;
+		    	valid=false;
+		    	String[] dept = new String[] {"CBE","EEE","CEE","SCSE","MSE","MAE","ADM","SSS","WKSCI","SBS","SPMS","LKCsoM","NIE","RSIS",
+		    			"ASE","HSS","NBS"};
 		    	
+		    	while(!valid)
+		    	{
+			    	System.out.println("Department:");
+			    	dptmnt = sc.nextLine();
+			    	for(int i =0;i<17;i++)
+			    	{
+			    		if(dptmnt.equals(dept[i]))
+			    		{
+			    			valid=true;
+			    			break;
+			    		}
+			    	}
+			    	System.out.println("Invalid department!");
+
+		    	}
+		    	Department department = Department.valueOf(dptmnt);
+		    	
+		    	addCourse(courseName, courseCode, department);
 		    	break;
 		    	
 		    case 2:
+		    	Boolean same = true;
+		    	String indexId=null;
 		    	System.out.println("Enter Course Code");
 		    	String coursecode = sc.nextLine();
-		    	System.out.println("Enter Index Id");
-		    	String indexId = sc.nextLine();
+		    	Course course = courseDB.getCourseObj(coursecode);
+		    	if(course==null)
+		    	{
+		    		System.out.println("There is no course of the course code "+coursecode);
+		    		return;
+		    	}
+		    	while (same)
+		    	{
+			    	System.out.println("Enter Index Id");
+			    	indexId = sc.nextLine();
+			    	for(int i=0;i<course.numIndex;i++)
+			    	{
+			    		if(!indexId.equals(course.courseIndex[i].indexID))
+			    		{
+			    			same= false;
+			    			break;
+			    		}
+			    		else
+			    			System.out.println("There is an existing course index "+indexId);
+			    	}
+		    	}
 		    	addIndex(coursecode, indexId);
 		    	
 		    	break;
 		    	
 		    case 3:
+		    	String indexid=null;
 		    	System.out.println("Enter Course Code");
 		    	String courscode = sc.nextLine();
-		    	Course course = courseDB.getCourseObj(courscode);
+		    	course = courseDB.getCourseObj(courscode);
+		    	courseIndex cIndex=null;
 		    	System.out.println("Current available indexes:");
 		    	course.printIndexes();
-		    	System.out.println("Enter the Index Id that you want to delete");
-		    	String indexid = sc.nextLine();
+		    	while(cIndex==null) 
+		    	{
+		    		System.out.println("Enter the Index Id from current available indexes that you want to delete");
+		    		indexid = sc.nextLine();
+			    	cIndex=course.getIndex(indexid);			    	
+		    	}
 		    	removeIndex(courscode, indexid);
 		    	
 		    	break;
 		    case 4:
-		    	System.out.println("Enter Course Code that you want to delete");
-		    	String cCode = sc.nextLine();
+		    	courseDB.printCourses();
+		    	String cCode=null;
+		    	course =null;
+		    	while(course==null)
+		    	{
+			    	System.out.println("Enter Course Code from existing courses to delete");
+			    	cCode = sc.nextLine();
+			    	course = courseDB.getCourseObj(cCode);
+		    	}
 		    	System.out.println("Press (y) to confirm deletion of course "+cCode);
 		    	String sel = sc.nextLine();
 		    	if (sel.equals("y")||sel.equals("Y"))
@@ -179,7 +244,7 @@ public class adminMenuMngr {
 		        sc.next(); 
 		    }
 		    duration = sc.nextInt();
-		} while (duration<0);
+		} while (duration<1);
 	
 		Calendar regDate = new GregorianCalendar(year,month-1,day,hour,min,00);
 		regDate.add(Calendar.HOUR, 0);

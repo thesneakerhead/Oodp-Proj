@@ -20,7 +20,6 @@ public class Timetable {
 		
 	    for(int i = 0; i < studentIndexes.size(); i++)
 	    {
-	   
 	      ArrayList<lesson>lessonList = studentIndexes.get(i).lessonList;
 	      String Course = studentIndexes.get(i).courseCode;
 	      for (int j = 0; j < lessonList.size(); j++)
@@ -33,8 +32,7 @@ public class Timetable {
 	        
 	      }
 	    }
-	
-	    
+
 	    for (int i = 0; i < newIndex.lessonList.size(); i++)
 	    {
 	      boolean checkclash = addSlot(newIndex.courseCode,newIndex.lessonList.get(i).getLesType(),newIndex.lessonList.get(i).getLesST(),
@@ -45,33 +43,65 @@ public class Timetable {
 	        return false;
 	      }
 	    }
-	 
-	    
 	    return true;
-	    
+	  }
+	  
+	  public boolean checkLessonClash(ArrayList<lesson>lessonList, lesson newLesson)
+	  {
+
+			  for (int j = 0; j < lessonList.size(); j++)
+			  {
+		        int ST = lessonList.get(j).getLesST();
+		        int ET = lessonList.get(j).getLesET();
+		        String LT = lessonList.get(j).getLesType();
+		        int day = lessonList.get(j).getLesday();
+		        //addSlot(course, LT, ST, ET, day);
+			  }
+
+	      boolean checkclash = addLes(newLesson.getLesType(),newLesson.getLesST(),
+	          newLesson.getLesET(),newLesson.getLesday());
+	      
+	      return checkclash;	    
+	  }
+	  
+	  public boolean addLes(String classType,int timeStart,int timeEnd,int day)
+	  {
+		  
+	     String combineCourseAndClasstype = classType;
+	     
+	     for (int i = timeStart-8; i < timeEnd-8; i++)
+	     {
+	    	 
+	       if (timetable[day-1][i].equals("0"))
+	       {
+  	         timetable[day-1][i] = combineCourseAndClasstype;         
+	       }
+	       else
+	       {
+	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]+i);
+	         return false;
+	       }
+	     }
+	     return true;
 	  }
 	  
 	  public boolean addSlot(String nameOfCourse,String classType,int timeStart,int timeEnd,int day)
 	  {
 		  
-	     String combineCourseAndClasstype = classType+nameOfCourse;
+	     String combineCourseAndClasstype = classType+" "+nameOfCourse;
 	     
-	     for (int i = timeStart-8; i <= timeEnd-8; i++)
+	     for (int i = timeStart-8; i < timeEnd-8; i++)
 	     {
 	    	 
 	       if (timetable[day-1][i].equals("0"))
 	       {
-	    	   
-	    	  
-	         timetable[day-1][i] = combineCourseAndClasstype;
-	         
+  	         timetable[day-1][i] = combineCourseAndClasstype;         
 	       }
 	       else
 	       {
-	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]);
+	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]+i);
 	         return false;
 	       }
-	       
 	     }
 	     return true;
 	  }

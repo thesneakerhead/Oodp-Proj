@@ -28,6 +28,8 @@ public class courseIndex implements Serializable {
 	
 	public static ArrayList<lesson> addLessons()
 	  {
+		Boolean clash=false;
+		Timetable timetable = new Timetable();
 		int startTime=0,endTime=0,Day=0;
 	    ArrayList<lesson> lessonList = new ArrayList<lesson>();
 	    Scanner sc = new Scanner(System.in);
@@ -37,26 +39,24 @@ public class courseIndex implements Serializable {
 	    {	    	
 	      	do 
 	      	{
-	      		System.out.println("Enter start time(hr) of lecture "+(i+1));
-	      		System.out.println("Start time must be within 8am-5pm(8-17)");
+	      		System.out.print("Enter start time(hr) of lecture "+(i+1));
+	      		System.out.println(". Start time must be within 8am-5pm(8-17)");
 			    while (!sc.hasNextInt()) {
 			    	System.out.println("Start time must be within 8am-5pm(8-17)");
 			        sc.next(); 
 			    }
 			    startTime = sc.nextInt();
-			}while(startTime<8||startTime>17);
-	      	
+			}while(startTime<8||startTime>17);	      	
 	      	do 
 	      	{
-	      		System.out.println("Enter end time(hr) of lecture "+(i+1));
-	      		System.out.println("End time must be after start time and within 9am-6pm(9-18)");
+	      		System.out.print("Enter end time(hr) of lecture "+(i+1));
+	      		System.out.println(". End time must be after start time and within 9am-6pm(9-18)");
 			    while (!sc.hasNextInt()) {
 			    	System.out.println("End time must be after start time and within 9am-6pm(9-18)");
 			        sc.next(); 
 			    }
 			    endTime = sc.nextInt();
-			}while(endTime<9||endTime>18||endTime<startTime);
-	      	
+			}while(endTime<9||endTime>18||endTime<startTime);	      	
 	      	do 
 	      	{
 	      		System.out.println("Enter Day in the week MON-FRI(1-5)");
@@ -66,44 +66,112 @@ public class courseIndex implements Serializable {
 			    }
 			    Day = sc.nextInt();
 			}while(Day<1||Day>5);
-
+	      	
 	      lesson lesson = new lesson("LEC", Day, startTime, endTime);
-	      lessonList.add(lesson);
+	      clash = timetable.checkLessonClash(lessonList, lesson);
+	      if(clash)
+	    	  lessonList.add(lesson);
+	      else
+	      {
+	    	  System.out.println("Lesson clashes with existing lessons, please re-input");
+	    	  i--;
+	      }
 	    }
 	    sc.nextLine();
 	    System.out.println("Add tutorial for this index?('y' to add)");
 	    String ans = sc.nextLine();
-	    if (ans.equals("y"))
+	    while (ans.equals("y"))
 	    {
-	      System.out.println("Enter Start time of tutorial");
-	      startTime = sc.nextInt();
-	      System.out.println("Enter End time of tutorial");
-	      endTime = sc.nextInt();
-	      System.out.println("Enter Day in the week");
-	      Day = sc.nextInt();
-	      lesson lesson = new lesson("TUT", Day, startTime, endTime);
-	      lessonList.add(lesson);
-	      sc.nextLine();
+	    	do 
+	      	{
+	      		System.out.print("Enter start time(hr) of tutorial");
+	      		System.out.println(". Start time must be within 8am-5pm(8-17)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("Start time must be within 8am-5pm(8-17)");
+			        sc.next(); 
+			    }
+			    startTime = sc.nextInt();
+			}while(startTime<8||startTime>17);	      	
+	      	do 
+	      	{
+	      		System.out.print("Enter end time(hr) of tutorial");
+	      		System.out.println(". End time must be after start time and within 9am-6pm(9-18)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("End time must be after start time and within 9am-6pm(9-18)");
+			        sc.next(); 
+			    }
+			    endTime = sc.nextInt();
+			}while(endTime<9||endTime>18||endTime<startTime);	      	
+	      	do 
+	      	{
+	      		System.out.println("Enter Day in the week MON-FRI(1-5)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("Day must be MON-FRI(1-5)");
+			        sc.next(); 
+			    }
+			    Day = sc.nextInt();
+			}while(Day<1||Day>5);
+	      	
+	      	lesson lesson = new lesson("TUT",Day, startTime, endTime);
+	      	clash = timetable.checkLessonClash(lessonList, lesson);
+		      if(clash)
+		      {
+		    	  lessonList.add(lesson);
+		    	  ans="OK";
+		    	  sc.nextLine();
+		      }
+		      else
+		    	  System.out.println("Lesson clashes with existing lessons, please re-input");
+		    
 	    }
 	    
 	    System.out.println("Add lab for this index?('y' to add)");
 	    String ans2 = sc.nextLine();
-	    if (ans2.equals("y"))
+	    while (ans2.equals("y"))
 	    {
-	      System.out.println("Enter Start time of lab");
-	      startTime = sc.nextInt();
-	      System.out.println("Enter End time of lab");
-	      endTime = sc.nextInt();
-	      System.out.println("Enter Day in the lab");
-	      Day = sc.nextInt();
+	    	do 
+	      	{
+	      		System.out.print("Enter start time(hr) of lab");
+	      		System.out.println(". Start time must be within 8am-5pm(8-17)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("Start time must be within 8am-5pm(8-17)");
+			        sc.next(); 
+			    }
+			    startTime = sc.nextInt();
+			}while(startTime<8||startTime>17);	      	
+	      	do 
+	      	{
+	      		System.out.print("Enter end time(hr) of lab");
+	      		System.out.println(". End time must be after start time and within 9am-6pm(9-18)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("End time must be after start time and within 9am-6pm(9-18)");
+			        sc.next(); 
+			    }
+			    endTime = sc.nextInt();
+			}while(endTime<9||endTime>18||endTime<startTime);
+	      	do 
+	      	{
+	      		System.out.println("Enter Day in the week MON-FRI(1-5)");
+			    while (!sc.hasNextInt()) {
+			    	System.out.println("Day must be MON-FRI(1-5)");
+			        sc.next(); 
+			    }
+			    Day = sc.nextInt();
+			}while(Day<1||Day>5);
 	      lesson lesson = new lesson("LAB",Day, startTime, endTime);
-	      lessonList.add(lesson);
+	      clash = timetable.checkLessonClash(lessonList, lesson);
+	      if(clash)
+	      {
+	    	  lessonList.add(lesson);
+	    	  ans2="OK";
+	      }
+	      else
+	    	  System.out.println("Lesson clashes with existing lessons, please re-input");
+	      
 	    }
-	    return lessonList;
-	    
-	    
-	    
-	  }
+	    return lessonList;    
+	}
+	
 	public void addStudent(Student student){
 		studentList.add(student);
 	}
