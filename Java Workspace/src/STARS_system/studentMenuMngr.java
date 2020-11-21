@@ -247,11 +247,18 @@ public class studentMenuMngr {
 	  
 	  System.out.println("Enter course code you would like to drop:");
 	  String courseToDrop = sc.nextLine();
+	  Course course = courseDB.getCourseObj(courseToDrop);
+	  while(course == null)
+	  { 			 
+			 System.out.println("Please enter a valid course code:");
+			 courseToDrop = sc.nextLine();	
+			 course = courseDB.getCourseObj(courseToDrop);	
+	  }
 	  for(int i=0;i<indexList.size();i++) 
 	  {
 		  if(indexList.get(i).courseCode.equals(courseToDrop))
 		  {
-			  Course course = courseDB.getCourseObj(courseToDrop);
+			  
 			  courseIndex cindex = course.getIndex(indexList.get(i).indexID);
 			  if(cindex.isWaitList==true)
 				  cindex.removeFromWaitlist(student);
@@ -278,7 +285,7 @@ public class studentMenuMngr {
 	  * @param student
 	  */
 	 private void printCourse(Student student) {
-	  courseDB.printCourses();
+	  
 	  String matricNo=student.getMatricNo();
 	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
 	  if(indexList==null||indexList.size()==0)
@@ -289,7 +296,6 @@ public class studentMenuMngr {
 	 
 	  for(int i=0;i<indexList.size();i++) 
 	  {
-		  System.out.println(indexList.get(i).indexID+indexList.get(i).isWaitList);
 		  if(indexList.get(i).isWaitList==false)
 		  {System.out.println("Course: "+indexList.get(i).courseCode+" Index: "+indexList.get(i).indexID);}
 		  else
@@ -299,81 +305,98 @@ public class studentMenuMngr {
 	  }
 	 }
 	 
-	 private void addCourse(Student student) {
+	 private void addCourse(Student student) 
+	 {
+		 
+		 courseDB.printCourses();
 		 Scanner sc = new Scanner(System.in);
-			System.out.println("Enter Course that you want to register for:");
-			String courseCode = sc.nextLine();		
-			Course course = courseDB.getCourseObj(courseCode);			
-			course.printIndexes();		
-			System.out.println("Enter course index that you want to register for:");
+		 System.out.println("Enter course(code) that you want to register for:");
+		 String courseCode = sc.nextLine();		
+ 		 Course course = courseDB.getCourseObj(courseCode);	
+ 		 while(course == null)
+ 		 { 			 
+ 			 System.out.println("Please enter a valid course code:");
+ 			 courseCode = sc.nextLine();	
+ 			 course = courseDB.getCourseObj(courseCode);	
+ 		 }
+		 course.printIndexes();		
+		 System.out.println("Enter course index that you want to register for:");
+		 String courseIndexString = sc.nextLine();
+		 courseIndex courseIndex = course.getIndex(courseIndexString);
+		 while(courseIndex == null)
+ 		 { 			 
+ 			 System.out.println("Please enter a valid course index:");
+ 			 courseIndexString = sc.nextLine();
+ 			 courseIndex = course.getIndex(courseIndexString);	
+ 		 }
+		 int vacancy = courseIndex.indexVacancy;
 			
-			String courseIndexString = sc.nextLine();
-			courseIndex courseIndex = course.getIndex(courseIndexString);
-			int vacancy = courseIndex.indexVacancy;
-			
-			Timetable timetable = new Timetable();
-			ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
-
-			if (indexlist==null)
+		 Timetable timetable = new Timetable();
+		 ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
+		if (indexlist==null)
+		{
+			if(vacancy<1)
 			{
-				if(vacancy<1)
-				{
-					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
-					courseIndex.addToWaitlist(student);
-					System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
-				}
-				else {
-					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
-					System.out.println("Course registered!");
-					courseIndex.indexVacancy--;
-					courseIndex.addStudent(student);
-				}
-				
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+				courseIndex.addToWaitlist(student);
+				System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
 			}
-			else if (indexlist.size()!=0)
-			{
-				boolean checkclash = timetable.checkClash(indexlist, courseIndex);
-				if (checkclash == false)
-				{
-					System.out.println("You cant register for this course!");
-				}
-				else {
-					if(vacancy<1)
-					{
-						registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
-						courseIndex.addToWaitlist(student);
-						System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
-					}
-					else {
-							registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
-							System.out.println("Course registered!");
-							courseIndex.indexVacancy--;
-							courseIndex.addStudent(student);
-						}
-				}
-			}
-			else
-			{
-				if(vacancy<1)
-				{
-					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
-					courseIndex.addToWaitlist(student);
-					System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
-				}
-				
-				else{registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+			else {
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
 				System.out.println("Course registered!");
 				courseIndex.indexVacancy--;
-				courseIndex.addStudent(student);}
+				courseIndex.addStudent(student);
 			}
-	
-	 }
+			
+		}
+		else if (indexlist.size()!=0)
+		{
+			boolean checkclash = timetable.checkClash(indexlist, courseIndex);
+			if (checkclash == false)
+			{
+				System.out.println("You cant register for this course!");
+			}
+			else 
+			{
+				if(vacancy<1)
+				{
+					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+					courseIndex.addToWaitlist(student);
+					System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
+				}
+				else {
+						registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+						System.out.println("Course registered!");
+						courseIndex.indexVacancy--;
+						courseIndex.addStudent(student);
+					}
+			}
+		}
+		else
+		{
+			if(vacancy<1)
+			{
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+				courseIndex.addToWaitlist(student);
+				System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
+			}
+			
+			else
+			{
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+				System.out.println("Course registered!");
+				courseIndex.indexVacancy--;
+				courseIndex.addStudent(student);
+			}
+		}
+
+ }
 	 public void checkVacancy()
 	   {
 	     System.out.println("Enter course code to check vacancy");
 	     String check = sc.next();
 	     Course course = courseDB.getCourseObj(check);
-	     System.out.println("Index:\tVacancy:\tWaitlist:");
+	     System.out.println("Index\t|Vacancy:\t|Waitlist:\t|");
 	     for(int i=0;i<course.numIndex;i++)
 	     {
 	       String ID = course.courseIndex[i].indexID;
