@@ -73,12 +73,11 @@ public class starsaccMngr {
 				System.out.println("Hi2");
 				filename = usrnamePwFILE.getStudentFilename();
 			}
-			List data2 = accVerify.readDB(filename);
+			List data = accVerify.readDB(filename);
 			System.out.println("Hi3");
-		    PrintWriter out = new PrintWriter(new FileWriter(filename,true));
+		    PrintWriter out = new PrintWriter(new FileWriter(filename));
 		    String matricNo;
 		    System.out.println("Hi4");
-		    List data = accVerify.readDB(filename);
 		    System.out.println("Hi5");
 		    
 		    try {
