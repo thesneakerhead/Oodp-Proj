@@ -78,7 +78,7 @@ public class Timetable {
 	       }
 	       else
 	       {
-	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]+i);
+	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]);
 	         return false;
 	       }
 	     }
@@ -99,7 +99,7 @@ public class Timetable {
 	       }
 	       else
 	       {
-	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]+i);
+	         System.out.println("Timeslot chosen clashes with " + timetable[day-1][i]);
 	         return false;
 	       }
 	     }

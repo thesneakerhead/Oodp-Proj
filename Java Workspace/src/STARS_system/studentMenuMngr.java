@@ -40,7 +40,7 @@ public class studentMenuMngr {
 		}
 	}
 	
-	public void changeDetails(Student student) throws IOException
+	private void changeDetails(Student student) throws IOException
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -100,7 +100,7 @@ public class studentMenuMngr {
 		
 	}
 	
-	public void swapIndex(Student student1) throws IOException
+	private void swapIndex(Student student1) throws IOException
 	{
 		Boolean firstRegistered=false,secRegistered=false;
 		String course1 = null,course2=null;
@@ -166,7 +166,7 @@ public class studentMenuMngr {
 		
 	}
 	
-	public void changeIndex (Student student) throws IOException
+	private void changeIndex (Student student) throws IOException
     {
     Boolean curWaitlist = false;
       Timetable timetable = new Timetable();
@@ -323,7 +323,8 @@ public class studentMenuMngr {
 		  {
 			  
 			  courseIndex cindex = course.getIndex(indexList.get(i).indexID);
-			  if(cindex.isWaitList==true)
+			  courseIndex cidx = indexList.get(i);
+			  if(cidx.isWaitList==true)
 				  cindex.removeFromWaitlist(student);
 			  else
 			  {
@@ -334,7 +335,7 @@ public class studentMenuMngr {
 				  else 
 					  course.getIndex(indexList.get(i).indexID).indexVacancy++;
 			  }
-		      
+		     
 			  indexList.remove(i);
 			  System.out.println("Course dropped!");
 			  break;
@@ -466,7 +467,7 @@ public class studentMenuMngr {
 		}
 
  }
-	 public void checkVacancy()
+	 private void checkVacancy()
 	   {
 	     System.out.println("Enter course code to check vacancy");
 	     String check = sc.next();

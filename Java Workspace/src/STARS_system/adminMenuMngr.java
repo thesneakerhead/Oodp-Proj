@@ -59,7 +59,7 @@ public class adminMenuMngr {
 		switch(selection)
 		{
 		    case 1:
-		    	System.out.println("Enter the followind details:");
+		    	System.out.println("Enter the following details:");
 		    	System.out.println("Course Name");
 		    	String courseName = sc.nextLine();
 		    	while(!valid)
@@ -70,17 +70,19 @@ public class adminMenuMngr {
 			    	if(course!=null)
 			    	{
 			    		System.out.println("There is an existing course of the same course code");
-			    		continue;
+			    		return;
 			    	}
 			    	else
 			    		valid=true;
 		    	}
+		    	
+		    	
 		    	String dptmnt=null;
-		    	valid=false;
+		    	boolean val=false;
 		    	String[] dept = new String[] {"CBE","EEE","CEE","SCSE","MSE","MAE","ADM","SSS","WKSCI","SBS","SPMS","LKCsoM","NIE","RSIS",
 		    			"ASE","HSS","NBS"};
 		    	
-		    	while(!valid)
+		    	while(!val)
 		    	{
 			    	System.out.println("Department:");
 			    	dptmnt = sc.nextLine();
@@ -88,16 +90,19 @@ public class adminMenuMngr {
 			    	{
 			    		if(dptmnt.equals(dept[i]))
 			    		{
-			    			valid=true;
+			    			val=true;
 			    			break;
 			    		}
 			    	}
-			    	System.out.println("Invalid department!");
+			    	if(val!=true)
+			    	{System.out.println("Invalid department!");}
 
 		    	}
 		    	Department department = Department.valueOf(dptmnt);
 		    	
 		    	addCourse(courseName, courseCode, department);
+		    	System.out.println("");
+		    	courseDB.printCourses();
 		    	break;
 		    	
 		    case 2:
@@ -153,7 +158,18 @@ public class adminMenuMngr {
 		    	{
 		    		System.out.println("Enter the Index Id from current available indexes that you want to delete");
 		    		indexid = sc.nextLine();
-			    	cIndex=course.getIndex(indexid);			    	
+			    	cIndex=course.getIndex(indexid);
+			    	if(cIndex == null)
+			    	{
+			    		System.out.println("Index Does Not Exist!");
+			    		System.out.println("Press (y) to continue");
+			    		String cont = sc.nextLine();
+			    		if(cont!="y"&&cont!="Y")
+			    		{
+			    			return;
+			    		}
+	
+			    	}
 		    	}
 		    	registeredCourses.deleteIndex(indexid);
 		    	removeIndex(courscode, indexid);
@@ -168,6 +184,18 @@ public class adminMenuMngr {
 			    	System.out.println("Enter Course Code from existing courses to delete");
 			    	cCode = sc.nextLine();
 			    	course = courseDB.getCourseObj(cCode);
+			    	if(course == null)
+			    	{
+			    		System.out.println("Course Does Not Exist!");
+			    		System.out.println("Press (y) to continue");
+			    		String cont = sc.nextLine();
+			    		if(cont!="y"&&cont!="Y")
+			    		{
+			    			return;
+			    		}
+	
+			    	}
+			    	
 		    	}
 		    	System.out.println("Press (y) to confirm deletion of course "+cCode);
 		    	String sel = sc.nextLine();
@@ -196,6 +224,16 @@ public class adminMenuMngr {
 			}
 			valid = true;
 		}
+		
+		Student tempStudent = StudentDB.getStudentObj(matricNo);
+		
+		if (tempStudent != null)
+		{
+			System.out.println("Student with this Matric Number already exists in database!");
+			return;
+		}
+		
+		
 		valid = false;
 		System.out.println("Enter Student's Name:");
 		String name = sc.nextLine();
@@ -279,7 +317,9 @@ public class adminMenuMngr {
 		String matricNo = sc.nextLine();
 		starsaccMngr.deleteAcc(matricNo, false);
 		StudentDB.deleteStudent(matricNo);
+		courseDB.deleteStudentFromIndex(matricNo);
 		registeredCourses.removeStudentIndexes(matricNo);
+		System.out.println("Student Deleted!");
 	}
 	private void addCourse(String courseName,String courseCode,Department department)
 	{

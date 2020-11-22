@@ -62,28 +62,34 @@ public class starsaccMngr {
 	    }
 	  }
 	public static void deleteAcc(String username,boolean isAdmin) throws IOException  {
+		System.out.println("Hi");
 			String filename;
 			if (isAdmin == true)
 			{
 				filename = usrnamePwFILE.getAdminFilename();
 			}
 			else {
+				System.out.println("Hi2");
 				filename = usrnamePwFILE.getStudentFilename();
 			}
 		
 		
 		
 		
-		
+			System.out.println("Hi3");
 		    PrintWriter out = new PrintWriter(new FileWriter(filename));
 		    String matricNo;
+		    System.out.println("Hi4");
 		    List data = accVerify.readDB(filename);
+		    System.out.println("Hi5");
 		    
 		    try {
 				for (int i =0; i < data.size() ; i++) {
 					matricNo = ((String) data.get(i)).substring(0,9);
+					System.out.println(matricNo);
 					if (matricNo.equals(username))
 					{
+						System.out.println(matricNo);
 						continue;
 					}
 					else

@@ -71,7 +71,10 @@ public class Course implements Serializable{
 	public void printIndexes()
 	{	
 		if (this.numIndex!=0)
-		{for(int i=0;i<this.numIndex;i++)
+		{
+			System.out.println("Course Has Indexes:");
+			
+			for(int i=0;i<this.numIndex;i++)
 		{
 			System.out.println(courseIndex[i].indexID);
 		}}

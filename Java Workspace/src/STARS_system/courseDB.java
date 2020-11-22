@@ -137,6 +137,38 @@ public class courseDB {
         
         
 	}
+	public static void deleteStudentFromIndex(String matricNo)
+	{
+		Set<String> keys = ((Hashtable) courseDB).keySet();
+		for(String key: keys){
+			Course tempCourse = (Course)courseDB.get(key);
+			courseIndex tempList[] = tempCourse.courseIndex;
+			for (int i=0;i<tempCourse.numIndex;i++)
+			{
+				courseIndex tempIndex = tempList[i];
+				for(int j=0;j<tempIndex.studentList.size();j++)
+				{
+					if(tempIndex.studentList.get(j).getMatricNo().equals(matricNo))
+					{
+						tempIndex.studentList.remove(j);
+						tempIndex.indexVacancy++;
+	
+					}
+				}
+				for(int k=0;k<tempIndex.waitList.size();k++)
+				{
+					if(tempIndex.waitList.get(k).getMatricNo().equals(matricNo))
+					{
+						tempIndex.waitList.remove(k);
+					}
+				}
+				
+			}
+			tempCourse.updateVacancy();
+			
+		}
+		
+	}
 	public static String fixedLengthString(String string, int length) {
 	    return String.format("%1$-"+length+ "s", string);
 	}

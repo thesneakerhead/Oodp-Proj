@@ -43,19 +43,20 @@ public class accVerify {
 			return false;}
 		}
 		public static List readDB(String fileName) throws IOException {
-			List data = new ArrayList() ;
-			String matricNo;
+			List data = new ArrayList();
+			System.out.println(fileName);
 		    Scanner scanner = new Scanner(new FileInputStream(fileName));
 		    try {
 		      while (scanner.hasNext()){
-		    	
+		    	System.out.println("yo");
 		        data.add(scanner.nextLine());
-		        
+		        System.out.println(data);
 		      }
 		    }
 		    finally{
 		      scanner.close();
 		    }
+		    System.out.println(data);
 		    return data;
 		  }
 		
