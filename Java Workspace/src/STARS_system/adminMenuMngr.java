@@ -164,7 +164,7 @@ public class adminMenuMngr {
 			    		System.out.println("Index Does Not Exist!");
 			    		System.out.println("Press (y) to continue");
 			    		String cont = sc.nextLine();
-			    		if(cont!="y"&&cont!="Y")
+			    		if(!cont.equals("y")&&!cont.equals("Y"))
 			    		{
 			    			return;
 			    		}
@@ -189,7 +189,7 @@ public class adminMenuMngr {
 			    		System.out.println("Course Does Not Exist!");
 			    		System.out.println("Press (y) to continue");
 			    		String cont = sc.nextLine();
-			    		if(cont!="y"&&cont!="Y")
+			    		if(!cont.equals("y")&&!cont.equals("Y"))
 			    		{
 			    			return;
 			    		}
@@ -304,11 +304,11 @@ public class adminMenuMngr {
         do {
         System.out.println("Enter Student's email:");
         email = sc.nextLine();
-        if (!(email.endsWith(".com")&&email.contains("@")))
+        if (!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")))
         {
         	System.out.println("Invalid email! Please re-enter");
         }
-        }while(!(email.endsWith(".com")&&email.contains("@")));
+        }while(!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")));
 		new Student(matricNo, name, gender, nationality,regDate,regDate_end,email);
 	}
 	private void deleteStudent() throws IOException {
