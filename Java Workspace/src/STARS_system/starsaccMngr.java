@@ -68,16 +68,14 @@ public class starsaccMngr {
 			{
 				filename = usrnamePwFILE.getAdminFilename();
 			}
-			else {
+			else 
+			{
 				System.out.println("Hi2");
 				filename = usrnamePwFILE.getStudentFilename();
 			}
-		
-		
-		
-		
+			List data2 = accVerify.readDB(filename);
 			System.out.println("Hi3");
-		    PrintWriter out = new PrintWriter(new FileWriter(filename));
+		    PrintWriter out = new PrintWriter(new FileWriter(filename,true));
 		    String matricNo;
 		    System.out.println("Hi4");
 		    List data = accVerify.readDB(filename);
@@ -103,6 +101,7 @@ public class starsaccMngr {
 		      out.close();
 		    }
 		  }
+	
 	public static void editPassword(String studentMatric, String newPW, boolean isAdmin) throws IOException  {
 		String filename;
 		if (isAdmin == true)
