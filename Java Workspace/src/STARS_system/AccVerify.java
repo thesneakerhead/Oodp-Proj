@@ -14,6 +14,9 @@ public class AccVerify {
  * Account Verify class
  *
  */
+		/**
+		 * Stores all username and password pairs
+		 */
 		private static Dictionary verify; //stores all username/password pairs
 		public AccVerify(boolean isAdmin) throws IOException
 		/**
