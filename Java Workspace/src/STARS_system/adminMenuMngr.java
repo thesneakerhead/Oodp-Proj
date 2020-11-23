@@ -66,7 +66,12 @@ public class adminMenuMngr {
 		    	{
 			    	System.out.println("Course Code");
 			    	courseCode = sc.nextLine();
+			    	if (!courseCode.matches("[A-Za-z0-9]+")&&(courseCode.length() <7))
+			    	{
+			    		System.out.println("Invalid Course Code! Course Code has to be alphanumeric and have a maximum of 6 characters!");
+			    	}
 			    	Course course = courseDB.getCourseObj(courseCode);
+			    	
 			    	if(course!=null)
 			    	{
 			    		System.out.println("There is an existing course of the same course code");
