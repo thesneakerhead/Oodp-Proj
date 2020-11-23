@@ -7,12 +7,12 @@ import java.util.Scanner;
 
 
 public class actionMenu {
-	public actionMenu(Login login) throws IOException
+	public actionMenu(String loginType, Student currentStudent) throws IOException
 	{
-		if (login.loginType == "Student")
+		if (loginType == "Student")
 		{
-			StarsApp.emailSender.loginNotification(login.currentStudent);
-			login.currentStudent.getSaccount().printNotifications();
+			StarsApp.emailSender.loginNotification(currentStudent);
+			currentStudent.getSaccount().printNotifications();
 			int choice = 0;
 			while(true) {
 				
@@ -23,7 +23,7 @@ public class actionMenu {
 				{ StarsApp.terminate();}
 				
 				try {
-					new studentMenuMngr(choice,login.currentStudent);	
+					new studentMenuMngr(choice,currentStudent);	
 				} catch (Exception e) {
 					StarsApp.terminate();
 				}
@@ -33,7 +33,7 @@ public class actionMenu {
 			
 			}
 		}
-		else if(login.loginType == "Admin")
+		else if(loginType == "Admin")
 		{
 			int choice = 0;
 			while(true) {

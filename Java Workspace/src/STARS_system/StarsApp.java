@@ -3,6 +3,7 @@ package STARS_system;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class StarsApp {
 	private static StudentDB studentDB;
@@ -40,8 +41,22 @@ public class StarsApp {
 	}
 	public static void start() throws IOException
 	{
-		Login login = new Login();
-		new actionMenu(login);
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Login Mode(Student/Admin): ");
+		String choice = sc.nextLine();
+		if (choice.equals("Admin")||choice.equals("admin") )
+		{
+			adminLogin admin = new adminLogin();
+			new actionMenu("Admin",null);
+		}
+		else if(choice.equals("Student")||choice.equals("student"))
+		{
+			loginTimeCheck login = new loginTimeCheck();
+			System.out.println(login.getStudent().getMatricNo());
+			new actionMenu("Student",login.getStudent());
+		}
+		
 	}
 	public static void terminate()
 	{

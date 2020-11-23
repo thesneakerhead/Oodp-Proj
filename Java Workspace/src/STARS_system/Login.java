@@ -6,14 +6,16 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Login {
+public abstract class Login {
 	
-	public Student currentStudent;
-	public String loginType;
+	//public Student currentStudent;
+	//public String loginType;
+	private String username;
+	private String password;
 	public Login() throws IOException
 	{	
 		
-		Scanner sc = new Scanner(System.in);
+		/*Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Login Mode(Student/Admin): ");
 		String choice = sc.nextLine();
 		if (choice.equals("Student")||choice.equals("student") )
@@ -38,10 +40,33 @@ public class Login {
 			adminLogin();
 			this.loginType = "Admin";
 		}
+		*/
 		
 		
 	}
-	private String studentLogin() throws IOException
+	public abstract Boolean systemLogin(String username, String password)throws IOException;
+	public void askInput()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Username: ");
+		this.username = sc.nextLine();
+		while(username.length()!=9)
+		{
+			System.out.println("Invalid username, username must be 9 characters long!");
+			this.username = sc.nextLine();
+		}
+		System.out.println("Password: ");
+		this.password = sc.nextLine();
+	}
+	public String getUsername()
+	{
+		return this.username;
+	}
+	public String getPassword()
+	{
+		return this.password;
+	}
+	/*private String studentLogin() throws IOException
 	{
 		Scanner sc = new Scanner(System.in);
 		accVerify verifier = new accVerify(false);
@@ -100,5 +125,5 @@ public class Login {
 					}
 				}
 		}
-	}
+	}*/
 }
