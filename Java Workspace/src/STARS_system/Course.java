@@ -1,5 +1,6 @@
 package STARS_system;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Dictionary;
 
@@ -13,12 +14,13 @@ public class Course implements Serializable{
 	public  int numIndex=0;
 	public  int courseVacancy=0;
 	
-	public Course(String courseName,String courseCode,Department department)
+	public Course(String courseName,String courseCode,Department department) throws ClassNotFoundException, IOException
 	{
+		courseDB CourseDB = new courseDB();
 		this.courseName = courseName;
 		this.courseCode = courseCode;
 		this.department = department;
-		courseDB.addCourse(courseCode, this);
+		CourseDB.addToDB(courseCode, this);
 	}
 	public void addIndex(String indexID)
 	{
@@ -46,8 +48,9 @@ public class Course implements Serializable{
 		}
 		return null;
 	}
-	public boolean removeIndex(String indexID)
+	public boolean removeIndex(String indexID) throws ClassNotFoundException, IOException
 	{
+		courseDB CourseDB = new courseDB();
 		for(int i=0;i<this.numIndex;i++)
 		{
 			if (courseIndex[i].indexID.equals(indexID))
@@ -61,7 +64,7 @@ public class Course implements Serializable{
 				}
 				this.numIndex--;
 				updateVacancy();
-				courseDB.addCourse(courseCode, this);
+				CourseDB.addToDB(courseCode, this);
 				return true;
 			}
 		}

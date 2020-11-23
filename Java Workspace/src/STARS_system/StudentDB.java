@@ -10,7 +10,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 
-public class StudentDB {
+public class StudentDB extends Database {
 	public  static Dictionary studentDB;//stores all matricno Student pairs
 	private static String filename = "studentDB.ser";
 	public StudentDB() throws IOException, ClassNotFoundException
@@ -33,7 +33,7 @@ public class StudentDB {
 		 catch(IOException ex) 
 	        { 
 	            Dictionary dictionary = new Hashtable();
-	            serializeStudentDB(dictionary);
+	            serializeDB(dictionary,filename);
 	            FileInputStream file = new FileInputStream(filename); 
 	            ObjectInputStream in = new ObjectInputStream(file); 
 	              
@@ -52,11 +52,9 @@ public class StudentDB {
 	            System.out.println("ClassNotFoundException is caught"); 
 	        } 
 	}
-	public static void serializeStudentDB(Dictionary studentDB)
+	/*public static void serializeStudentDB(Dictionary studentDB)
 	{
-		 
-        
-        // Serialization  
+		// Serialization  
         try
         {    
             //Saving of object in a file 
@@ -67,30 +65,32 @@ public class StudentDB {
             out.writeObject(studentDB); 
               
             out.close(); 
-            file.close(); 
-              
-           
-  
+            file.close();         
         } 
           
         catch(IOException ex) 
         { 
-            System.out.println("IOException is caught"); 
-            
+            System.out.println("IOException is caught");    
         } 
-	}
+	}*/
 	public static Student getStudentObj(String MatricNo)
 	{
 		Student aStudent = (Student)studentDB.get(MatricNo);
 		return aStudent;
 	}
-	public static void addStudent(String MatricNo,Student student)
+	public void addToDB(String MatricNo,Object student)
 	{
-		studentDB.put(MatricNo,student);
+		if(student instanceof Student)
+		{
+			Student stud = (Student)student;
+			studentDB.put(MatricNo,stud);
+		}
+		else 
+			System.out.println("Object is not a student");
 	}
-	public static void deleteStudent(String MatricNo)
+	public void deleteFromDB(String MatricNo)
 	{
 		studentDB.remove(MatricNo);
 	}
-	
+	public void printDB() {}
 }

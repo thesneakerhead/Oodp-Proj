@@ -10,7 +10,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Set;
 
-public class courseDB {
+public class courseDB extends Database {
 	public  static Dictionary courseDB;//stores all course code and course pairs
 	
 	private static String filename = "courseDB.ser";
@@ -35,7 +35,7 @@ public class courseDB {
 		 catch(IOException ex) 
 	        { 
 	            Dictionary dictionary = new Hashtable();
-	            serializeCourseDB(dictionary);
+	            serializeDB(dictionary,filename);
 	            FileInputStream file = new FileInputStream(filename); 
 	            ObjectInputStream in = new ObjectInputStream(file); 
 	              
@@ -54,7 +54,7 @@ public class courseDB {
 	            System.out.println("ClassNotFoundException is caught"); 
 	        } 
 	}
-	public static void serializeCourseDB(Dictionary courseDB)
+	/*public static void serializeCourseDB(Dictionary courseDB)
 	{
 		 
         
@@ -80,22 +80,31 @@ public class courseDB {
             System.out.println("IOException is caught"); 
             
         } 
-	}
+	}*/
 	public static Course getCourseObj(String courseCode)
 	{
 		Course aStudent = (Course)courseDB.get(courseCode);
 		return aStudent;
 	}
-	public static void addCourse(String courseCode,Course course)
-	{
-		
+	/*public static void addCourse(String courseCode,Course course)
+	{		
 		courseDB.put(courseCode,course);
+	}*/
+	public void addToDB(String MatricNo,Object course)
+	{
+		if(course instanceof Course)
+		{
+			Course cour = (Course)course;
+			courseDB.put(MatricNo,course);
+		}
+		else 
+			System.out.println("Object is not a course");
 	}
-	public static void deleteCourse(String courseCode)
+	public void deleteFromDB(String courseCode)
 	{
 		courseDB.remove(courseCode);
 	}
-	public static void printCourses()
+	public void printDB()
 	{
 		Dictionary departmentCourses = new Hashtable();
 		
