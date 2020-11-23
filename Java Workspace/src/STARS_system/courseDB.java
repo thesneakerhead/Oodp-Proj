@@ -99,7 +99,7 @@ public class courseDB {
 	{
 		Dictionary departmentCourses = new Hashtable();
 		
-		System.out.println("Courses Available for Registration:");
+		System.out.println("List of Courses:");
 		System.out.println("Course Name               |Course Code    |Department    |");
 		
 		Set<String> keys = ((Hashtable) courseDB).keySet();

@@ -147,24 +147,42 @@ public class adminMenuMngr {
 		    	break;
 		    	
 		    case 3:
+		    	Course c = null;
 		    	String indexid=null;
-		    	System.out.println("Enter Course Code");
-		    	String courscode = sc.nextLine();
-		    	course = courseDB.getCourseObj(courscode);
+		    	String courscode = "";
+		    	
+		    	while (c == null)
+		    	{System.out.println("Enter Course Code");
+		    	courscode = sc.nextLine();
+		    	c = courseDB.getCourseObj(courscode);
+		    	if(c == null)
+		    	{
+		    		System.out.println("Course Does Not Exist!");
+		    		System.out.println("Press (y) to continue");
+		    		String cont = sc.nextLine();
+		    		if(!cont.equals("y")&&!cont.equals("Y"))
+		    		{
+		    			return;
+		    		}
+
+		    	}
+		    	
+		    	
+		    	}
 		    	courseIndex cIndex=null;
 		    	System.out.println("Current available indexes:");
-		    	course.printIndexes();
+		    	c.printIndexes();
 		    	while(cIndex==null) 
 		    	{
 		    		System.out.println("Enter the Index Id from current available indexes that you want to delete");
 		    		indexid = sc.nextLine();
-			    	cIndex=course.getIndex(indexid);
+			    	cIndex=c.getIndex(indexid);
 			    	if(cIndex == null)
 			    	{
 			    		System.out.println("Index Does Not Exist!");
 			    		System.out.println("Press (y) to continue");
 			    		String cont = sc.nextLine();
-			    		if(cont!="y"&&cont!="Y")
+			    		if(!cont.equals("y")&&!cont.equals("Y"))
 			    		{
 			    			return;
 			    		}
@@ -189,7 +207,7 @@ public class adminMenuMngr {
 			    		System.out.println("Course Does Not Exist!");
 			    		System.out.println("Press (y) to continue");
 			    		String cont = sc.nextLine();
-			    		if(cont!="y"&&cont!="Y")
+			    		if(!cont.equals("y")&&!cont.equals("Y"))
 			    		{
 			    			return;
 			    		}
@@ -304,11 +322,11 @@ public class adminMenuMngr {
         do {
         System.out.println("Enter Student's email:");
         email = sc.nextLine();
-        if (!(email.endsWith(".com")&&email.contains("@")))
+        if (!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")))
         {
         	System.out.println("Invalid email! Please re-enter");
         }
-        }while(!(email.endsWith(".com")&&email.contains("@")));
+        }while(!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")));
 		new Student(matricNo, name, gender, nationality,regDate,regDate_end,email);
 	}
 	private void deleteStudent() throws IOException {

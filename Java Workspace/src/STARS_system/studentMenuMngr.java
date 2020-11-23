@@ -88,11 +88,11 @@ public class studentMenuMngr {
 				 do {
 				        System.out.println("Please enter Email that you would like to switch to:");
 				        email = sc.nextLine();
-				        if (!(email.endsWith(".com")&&email.contains("@")))
+				        if (!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")))
 				        {
 				        	System.out.println("Invalid email! Please re-enter");
 				        }
-				        }while(!(email.endsWith(".com")&&email.contains("@")));
+				        }while(!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")));
 				 student.setEmail(email);
 				 StudentDB.addStudent(student.getMatricNo(), student);
 					
@@ -496,9 +496,31 @@ public class studentMenuMngr {
  }
 	 private void checkVacancy()
 	   {
-	     System.out.println("Enter course code to check vacancy");
-	     String check = sc.next();
-	     Course course = courseDB.getCourseObj(check);
+		 
+		 String check;
+		 Course course=null;
+		 
+		 while(true) {
+			 courseDB.printCourses();
+		     System.out.println("Enter course code to check vacancy");
+		     check = sc.nextLine();
+		     course = courseDB.getCourseObj(check);
+		     if (course == null)
+		     {
+		    	 System.out.println("Course code non-existent! press (y) to re-enter Course code");
+		    	 String choice = sc.nextLine();
+		    	 if (!choice.equals("y")||!choice.equals("y"))
+		    	 {
+		    		 return;
+		    	 }
+		    	 
+		     }
+		     else {
+		    	 break;
+		     }
+
+		 
+		 	}
 	     System.out.println("Index\t|Vacancy:\t|Waitlist:\t|");
 	     for(int i=0;i<course.numIndex;i++)
 	     {
