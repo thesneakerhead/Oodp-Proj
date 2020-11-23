@@ -3,11 +3,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-public class loginTimeCheck extends studentLogin
+public class LoginTimeCheck extends StudentLogin
 {
 	private String matricNo;
 	private Student currentStudent;
-	public loginTimeCheck() throws IOException
+	public LoginTimeCheck() throws IOException
 	{
 		super();
 		this.matricNo=super.getUsername();
@@ -18,13 +18,13 @@ public class loginTimeCheck extends studentLogin
 	{
 		String matricNo = this.matricNo;
 		this.currentStudent = StudentDB.getStudentObj(matricNo);
-		if (StarsApp.currentDate.after(this.currentStudent.accessStartTime) && StarsApp.currentDate.before(this.currentStudent.accessEndTime))
+		if (STARSapp.currentDate.after(this.currentStudent.accessStartTime) && STARSapp.currentDate.before(this.currentStudent.accessEndTime))
 		{
 			return;
 		}
 		else {
 			System.out.println("Access Denied, login during your allocated access period");
-			StarsApp.terminate();
+			STARSapp.terminate();
 		}
 	}
 	public Student getStudent()

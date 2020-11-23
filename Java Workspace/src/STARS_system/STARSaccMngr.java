@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class starsaccMngr {
+public class STARSaccMngr {
 	public static String passwordHash(String passwordToHash)
 	{
 		String hashedPW = null;
@@ -43,10 +43,10 @@ public class starsaccMngr {
 		String filename;
 		if (isAdmin == true)
 		{
-			filename = usrnamePwFILE.getAdminFilename();
+			filename = UsrnamePwFILE.getAdminFilename();
 		}
 		else {
-			filename = usrnamePwFILE.getStudentFilename();
+			filename = UsrnamePwFILE.getStudentFilename();
 		}
 		
 		FileWriter fw = new FileWriter(filename, true);
@@ -66,14 +66,14 @@ public class starsaccMngr {
 			String filename;
 			if (isAdmin == true)
 			{
-				filename = usrnamePwFILE.getAdminFilename();
+				filename = UsrnamePwFILE.getAdminFilename();
 			}
 			else 
 			{
 			
-				filename = usrnamePwFILE.getStudentFilename();
+				filename = UsrnamePwFILE.getStudentFilename();
 			}
-			List data = accVerify.readDB(filename);
+			List data = AccVerify.readDB(filename);
 			
 		    PrintWriter out = new PrintWriter(new FileWriter(filename));
 		    String matricNo;
@@ -104,12 +104,12 @@ public class starsaccMngr {
 		String filename;
 		if (isAdmin == true)
 		{
-			filename = usrnamePwFILE.getAdminFilename();
+			filename = UsrnamePwFILE.getAdminFilename();
 		}
 		else {
-			filename = usrnamePwFILE.getStudentFilename();
+			filename = UsrnamePwFILE.getStudentFilename();
 		}
-		List data = accVerify.readDB(filename);
+		List data = AccVerify.readDB(filename);
 		String SEPARATOR = "|";
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 	    String matricNo;

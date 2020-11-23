@@ -9,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class sendEmail implements sendNotifications {
+public class SendEmail implements SendNotifications {
 	public void loginNotification(Student student)
 	{
 		

@@ -7,7 +7,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Jacob/Desktop/activation.jar/activation.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Jacob/Desktop/javamail/javamail/javax.mail.jar"/>
+	<classpathentry kind="lib" path="Java Workspace/external APIs/activation/activation.jar"/>
+	<classpathentry kind="lib" path="Java Workspace/external APIs/javamail/javax.mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

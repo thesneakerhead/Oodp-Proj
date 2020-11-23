@@ -4,16 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class courseIndex implements Serializable {
+public class CourseIndex implements Serializable {
 	public String indexID;
-	public ArrayList<lesson> lessonList;
+	public ArrayList<Lesson> lessonList;
 	public int indexVacancy;
 	public ArrayList<Student> studentList;
 	public ArrayList<Student> waitList;
 	public String courseCode;
 	public boolean isWaitList;
 	
-	public courseIndex(String indexID,String courseCode)
+	public CourseIndex(String indexID,String courseCode)
 	{
 		this.courseCode = courseCode;
 		Scanner sc = new Scanner(System.in);
@@ -26,12 +26,12 @@ public class courseIndex implements Serializable {
 		this.isWaitList = false;
 	}
 	
-	public static ArrayList<lesson> addLessons()
+	public static ArrayList<Lesson> addLessons()
 	  {
 		Boolean clash=false;
 		Timetable timetable = new Timetable();
 		int startTime=0,endTime=0,Day=0;
-	    ArrayList<lesson> lessonList = new ArrayList<lesson>();
+	    ArrayList<Lesson> lessonList = new ArrayList<Lesson>();
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println("No. of lectures per week:");
 	    int numLectures = sc.nextInt();
@@ -67,7 +67,7 @@ public class courseIndex implements Serializable {
 			    Day = sc.nextInt();
 			}while(Day<1||Day>5);
 	      	
-	      lesson lesson = new lesson("LEC", Day, startTime, endTime);
+	      Lesson lesson = new Lesson("LEC", Day, startTime, endTime);
 	      clash = timetable.checkLessonClash(lessonList, lesson);
 	      if(clash)
 	    	  lessonList.add(lesson);
@@ -112,7 +112,7 @@ public class courseIndex implements Serializable {
 			    Day = sc.nextInt();
 			}while(Day<1||Day>5);
 	      	
-	      	lesson lesson = new lesson("TUT",Day, startTime, endTime);
+	      	Lesson lesson = new Lesson("TUT",Day, startTime, endTime);
 	      	clash = timetable.checkLessonClash(lessonList, lesson);
 		      if(clash)
 		      {
@@ -158,7 +158,7 @@ public class courseIndex implements Serializable {
 			    }
 			    Day = sc.nextInt();
 			}while(Day<1||Day>5);
-	      lesson lesson = new lesson("LAB",Day, startTime, endTime);
+	      Lesson lesson = new Lesson("LAB",Day, startTime, endTime);
 	      clash = timetable.checkLessonClash(lessonList, lesson);
 	      if(clash)
 	      {
@@ -230,7 +230,7 @@ public class courseIndex implements Serializable {
 	public void dequeueStudent()
 	{
 		Student student = waitList.get(0);
-		ArrayList<courseIndex> indexList = registeredCourses.getIndexes(student.getMatricNo());
+		ArrayList<CourseIndex> indexList = RegisteredCourses.getIndexes(student.getMatricNo());
 		for (int i =0;i<indexList.size();i++)
 		{
 			if(indexList.get(i).indexID.equals(this.indexID))
@@ -240,7 +240,7 @@ public class courseIndex implements Serializable {
 		}
 		Student tempStudent = StudentDB.getStudentObj(student.getMatricNo());
 		tempStudent.getSaccount().addNotification("You have sucessfully registered for the course: "+this.courseCode+" indexID:"+this.indexID);
-		StarsApp.emailSender.exitWaitingListNotification(tempStudent, this.courseCode, this.indexID);
+		STARSapp.emailSender.exitWaitingListNotification(tempStudent, this.courseCode, this.indexID);
 		waitList.remove(0);
 		studentList.add(student);
 		

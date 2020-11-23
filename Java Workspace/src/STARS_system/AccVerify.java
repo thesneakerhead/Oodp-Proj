@@ -8,18 +8,18 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 
-public class accVerify {
+public class AccVerify {
 	
 		private static Dictionary verify; //stores all username/password pairs
-		public accVerify(boolean isAdmin) throws IOException
+		public AccVerify(boolean isAdmin) throws IOException
 		{
 			String accDB;
 			if (isAdmin == true)
 			{
-				accDB = usrnamePwFILE.getAdminFilename();
+				accDB = UsrnamePwFILE.getAdminFilename();
 			}
 			else {
-				accDB = usrnamePwFILE.getStudentFilename();
+				accDB = UsrnamePwFILE.getStudentFilename();
 			}
 			Dictionary verify = new Hashtable();
 			
@@ -34,7 +34,7 @@ public class accVerify {
 		public static boolean verification(String username,String password)
 		{
 			String dbPassword = (String)verify.get(username);
-			String temppw = starsaccMngr.passwordHash(password);
+			String temppw = STARSaccMngr.passwordHash(password);
 			if(temppw.equals(dbPassword))
 			{
 				return true;

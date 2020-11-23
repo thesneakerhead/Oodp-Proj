@@ -11,11 +11,11 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Set;
 
-public class registeredCourses extends Database implements Serializable {
+public class RegisteredCourses extends Database implements Serializable {
 	public static Dictionary registerDict;
 
 	private static String filename = "registeredCourses.ser";
-	public registeredCourses() throws IOException, ClassNotFoundException
+	public RegisteredCourses() throws IOException, ClassNotFoundException
 	
 	{
 		 try
@@ -57,17 +57,17 @@ public class registeredCourses extends Database implements Serializable {
 
 	public static void registerIndex(String matricNo, String courseCode,String courseindex,boolean isWaitlist)
 	{
-		ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registerDict.get(matricNo);
+		ArrayList<CourseIndex> indexList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
 		if (indexList == null)
 		{
-			ArrayList<courseIndex> newindexList = new ArrayList<courseIndex>();
-			Course course = courseDB.getCourseObj(courseCode);
-			courseIndex cindex = course.getIndex(courseindex);
+			ArrayList<CourseIndex> newindexList = new ArrayList<CourseIndex>();
+			Course course = CourseDB.getCourseObj(courseCode);
+			CourseIndex cindex = course.getIndex(courseindex);
 			newindexList.add(cindex);
 			if (isWaitlist == true)
 			{
 			registerDict.put(matricNo, newindexList);
-			courseIndex cdex = newindexList.get(0);
+			CourseIndex cdex = newindexList.get(0);
 			cdex.isWaitList = true;
 			
 			}
@@ -77,8 +77,8 @@ public class registeredCourses extends Database implements Serializable {
 			
 		}
 		else {
-			Course course = courseDB.getCourseObj(courseCode);
-			courseIndex cindex = course.getIndex(courseindex);
+			Course course = CourseDB.getCourseObj(courseCode);
+			CourseIndex cindex = course.getIndex(courseindex);
 			indexList.add(cindex);
 			if (isWaitlist==true)
 			{
@@ -129,14 +129,14 @@ public class registeredCourses extends Database implements Serializable {
 	{
 		registerDict.remove(matricNo);
 	}
-	public static ArrayList<courseIndex> getIndexes(String matricNo)
+	public static ArrayList<CourseIndex> getIndexes(String matricNo)
 	{
-		return (ArrayList<courseIndex>)registerDict.get(matricNo);
+		return (ArrayList<CourseIndex>)registerDict.get(matricNo);
 	}
 	public void printDB() {}
 	public void printDB(String matricNo)
 	{
-		ArrayList<courseIndex>arrayList = (ArrayList<courseIndex>)registerDict.get(matricNo);
+		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
 		for (int i = 0;i<arrayList.size();i++)
 		{
 			System.out.println(arrayList.get(i).indexID);
@@ -146,7 +146,7 @@ public class registeredCourses extends Database implements Serializable {
 	{
 		Set<String> keys = ((Hashtable) registerDict).keySet();
         for(String key: keys){
-        	ArrayList<courseIndex> tempList = (ArrayList<courseIndex>)registerDict.get(key);
+        	ArrayList<CourseIndex> tempList = (ArrayList<CourseIndex>)registerDict.get(key);
         	for (int i=0;i<tempList.size();i++)
         	{
         		if(tempList.get(i).courseCode.equals(courseCode))
@@ -162,7 +162,7 @@ public class registeredCourses extends Database implements Serializable {
 	{
 		Set<String> keys = ((Hashtable) registerDict).keySet();
         for(String key: keys){
-        	ArrayList<courseIndex> tempList = (ArrayList<courseIndex>)registerDict.get(key);
+        	ArrayList<CourseIndex> tempList = (ArrayList<CourseIndex>)registerDict.get(key);
         	for (int i=0;i<tempList.size();i++)
         	{
         		if(tempList.get(i).indexID.equals(indexID))

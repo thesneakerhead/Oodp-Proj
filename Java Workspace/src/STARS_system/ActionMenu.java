@@ -6,12 +6,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class actionMenu {
-	public actionMenu(String loginType, Student currentStudent) throws IOException
+public class ActionMenu {
+	public ActionMenu(String loginType, Student currentStudent) throws IOException
 	{
 		if (loginType == "Student")
 		{
-			StarsApp.emailSender.loginNotification(currentStudent);
+			STARSapp.emailSender.loginNotification(currentStudent);
 			currentStudent.getSaccount().printNotifications();
 			int choice = 0;
 			while(true) {
@@ -20,12 +20,12 @@ public class actionMenu {
 				choice = student_menu();}
 				
 				catch (Exception e)
-				{ StarsApp.terminate();}
+				{ STARSapp.terminate();}
 				
 				try {
-					new studentMenuMngr(choice,currentStudent);	
+					new StudentMenuMngr(choice,currentStudent);	
 				} catch (Exception e) {
-					StarsApp.terminate();
+					STARSapp.terminate();
 				}
 				
 				
@@ -42,12 +42,12 @@ public class actionMenu {
 				choice = admin_menu();}
 				
 				catch (Exception e)
-				{ StarsApp.terminate();}
+				{ STARSapp.terminate();}
 				
 				try {
-					new adminMenuMngr(choice);	
+					new AdminMenuMngr(choice);	
 				} catch (Exception e) {
-					StarsApp.terminate();
+					STARSapp.terminate();
 				}
 				
 				

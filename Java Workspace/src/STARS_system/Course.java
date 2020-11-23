@@ -10,13 +10,13 @@ public class Course implements Serializable{
 	public  String courseCode;
 	private  String courseName;
 	private Department department;
-	public  courseIndex courseIndex[]=new courseIndex[20];
+	public  CourseIndex courseIndex[]=new CourseIndex[20];
 	public  int numIndex=0;
 	public  int courseVacancy=0;
 	
 	public Course(String courseName,String courseCode,Department department) throws ClassNotFoundException, IOException
 	{
-		courseDB CourseDB = new courseDB();
+		CourseDB CourseDB = new CourseDB();
 		this.courseName = courseName;
 		this.courseCode = courseCode;
 		this.department = department;
@@ -24,7 +24,7 @@ public class Course implements Serializable{
 	}
 	public void addIndex(String indexID)
 	{
-		courseIndex[this.numIndex] = new courseIndex(indexID,this.courseCode);
+		courseIndex[this.numIndex] = new CourseIndex(indexID,this.courseCode);
 		this.numIndex++;
 		updateVacancy();
 	}
@@ -36,7 +36,7 @@ public class Course implements Serializable{
 			courseVacancy = courseVacancy + courseIndex[i].indexVacancy;
 		}
 	}
-	public courseIndex getIndex(String indexID)
+	public CourseIndex getIndex(String indexID)
 	{
 		for(int i=0;i<this.numIndex;i++)
 		{
@@ -50,7 +50,7 @@ public class Course implements Serializable{
 	}
 	public boolean removeIndex(String indexID) throws ClassNotFoundException, IOException
 	{
-		courseDB CourseDB = new courseDB();
+		CourseDB CourseDB = new CourseDB();
 		for(int i=0;i<this.numIndex;i++)
 		{
 			if (courseIndex[i].indexID.equals(indexID))

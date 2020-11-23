@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class StarsApp {
+public class STARSapp {
 	public static StudentDB studentDB;
 	public static Calendar currentDate;
-	public static courseDB courseDB;
-	public static registeredCourses registeredcourses;
-	public static sendEmail emailSender;
+	public static CourseDB courseDB;
+	public static RegisteredCourses registeredcourses;
+	public static SendEmail emailSender;
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		init();
@@ -31,10 +31,10 @@ public class StarsApp {
 	
 	public static void init() throws ClassNotFoundException, IOException 
 	{
-		emailSender = new sendEmail();
+		emailSender = new SendEmail();
 		studentDB = new StudentDB();
-		registeredcourses = new registeredCourses();
-		courseDB = new courseDB();
+		registeredcourses = new RegisteredCourses();
+		courseDB = new CourseDB();
 		currentDate = Calendar.getInstance();
 		System.out.println("Welcome to STARS system");
 		
@@ -47,14 +47,14 @@ public class StarsApp {
 		String choice = sc.nextLine();
 		if (choice.equals("Admin")||choice.equals("admin") )
 		{
-			adminLogin admin = new adminLogin();
-			new actionMenu("Admin",null);
+			AdminLogin admin = new AdminLogin();
+			new ActionMenu("Admin",null);
 		}
 		else if(choice.equals("Student")||choice.equals("student"))
 		{
-			loginTimeCheck login = new loginTimeCheck();
+			LoginTimeCheck login = new LoginTimeCheck();
 			System.out.println(login.getStudent().getMatricNo());
-			new actionMenu("Student",login.getStudent());
+			new ActionMenu("Student",login.getStudent());
 		}
 		
 	}

@@ -25,7 +25,7 @@ public class STARSaccount implements Serializable {
 	public STARSaccount(String accountID,String accountPW) throws IOException
 	{
 		this.accountID = accountID;
-		this.accountPW = starsaccMngr.passwordHash(accountPW);
+		this.accountPW = STARSaccMngr.passwordHash(accountPW);
 		this.isAdmin = true;
 		this.student = null;
 		this.inbox = new String[20];
@@ -35,7 +35,7 @@ public class STARSaccount implements Serializable {
 	public STARSaccount(String accountID,String accountPW,Student student) throws IOException
 	{
 		this.accountID = accountID;
-		this.accountPW = starsaccMngr.passwordHash(accountPW);
+		this.accountPW = STARSaccMngr.passwordHash(accountPW);
 		this.student = student;
 		this.isAdmin = false;
 		this.inbox = new String[20];
@@ -81,7 +81,7 @@ public class STARSaccount implements Serializable {
 		st.append(SEPARATOR);
 		st.append(this.accountPW.trim());
 			
-		starsaccMngr.write(st.toString(),this.isAdmin);
+		STARSaccMngr.write(st.toString(),this.isAdmin);
 	}
 	public void addNotification(String notification)
 	{

@@ -10,12 +10,12 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Set;
 
-public class courseDB extends Database {
+public class CourseDB extends Database {
 	public  static Dictionary courseDB;//stores all course code and course pairs
 	
 	private static String filename = "courseDB.ser";
 
-	public courseDB() throws IOException, ClassNotFoundException
+	public CourseDB() throws IOException, ClassNotFoundException
 	
 	{
 		 try
@@ -151,10 +151,10 @@ public class courseDB extends Database {
 		Set<String> keys = ((Hashtable) courseDB).keySet();
 		for(String key: keys){
 			Course tempCourse = (Course)courseDB.get(key);
-			courseIndex tempList[] = tempCourse.courseIndex;
+			CourseIndex tempList[] = tempCourse.courseIndex;
 			for (int i=0;i<tempCourse.numIndex;i++)
 			{
-				courseIndex tempIndex = tempList[i];
+				CourseIndex tempIndex = tempList[i];
 				for(int j=0;j<tempIndex.studentList.size();j++)
 				{
 					if(tempIndex.studentList.get(j).getMatricNo().equals(matricNo))

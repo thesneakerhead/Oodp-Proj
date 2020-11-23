@@ -15,12 +15,12 @@ public class Timetable {
 	    }
 	  }
 	
-	  public boolean checkClash(ArrayList<courseIndex>studentIndexes,courseIndex newIndex)
+	  public boolean checkClash(ArrayList<CourseIndex>studentIndexes,CourseIndex newIndex)
 	  {
 		
 	    for(int i = 0; i < studentIndexes.size(); i++)
 	    {
-	      ArrayList<lesson>lessonList = studentIndexes.get(i).lessonList;
+	      ArrayList<Lesson>lessonList = studentIndexes.get(i).lessonList;
 	      String Course = studentIndexes.get(i).courseCode;
 	      for (int j = 0; j < lessonList.size(); j++)
 	      {
@@ -46,7 +46,7 @@ public class Timetable {
 	    return true;
 	  }
 	  
-	  public boolean checkLessonClash(ArrayList<lesson>lessonList, lesson newLesson)
+	  public boolean checkLessonClash(ArrayList<Lesson>lessonList, Lesson newLesson)
 	  {
 
 			  for (int j = 0; j < lessonList.size(); j++)

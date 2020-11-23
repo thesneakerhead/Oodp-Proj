@@ -3,13 +3,12 @@ package STARS_system;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class studentLogin extends Login {
-
+public class AdminLogin extends Login 
+{
 	private String username;
 	private String password;
-	private Student currentStudent;
-	
-	public studentLogin()throws IOException
+
+	public AdminLogin() throws IOException
 	{
 		Boolean valid = false;
 		while(valid == false)
@@ -19,18 +18,14 @@ public class studentLogin extends Login {
 			this.password = super.getPassword();
 			valid = systemLogin(this.username,this.password);
 		}
-		
-		
-		
 	}
+
 	public Boolean systemLogin(String username, String password) throws IOException
 	{
 		Scanner sc = new Scanner(System.in);
-		accVerify verifier = new accVerify(false);
-				
-		if (verifier.verification(username, password)==true) 			
+		AccVerify verifier = new AccVerify(true);
+		if (verifier.verification(username, password)==true)
 			return true;
-			
 		else 
 		{
 			System.out.println("Wrong Username/Password!");
@@ -38,17 +33,10 @@ public class studentLogin extends Login {
 			String again= sc.nextLine();
 			if(again.equals("n"))
 			{
-				StarsApp.terminate();
+				STARSapp.terminate();
 			}
 			return false;
 		}
 	}
-
-	public Student getStudent()
-	{
-		String matricNo = this.username;
-		this.currentStudent = StudentDB.getStudentObj(matricNo);
-		return this.currentStudent;
-	}
-
+	
 }
