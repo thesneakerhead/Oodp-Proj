@@ -11,11 +11,26 @@ import java.util.Hashtable;
 import java.util.Set;
 
 public class CourseDB extends Database {
+/**
+ * Course database class
+ *
+ */
+	/**
+	 * Stores all course code and course pairs
+	 */
 	public  static Dictionary courseDB;//stores all course code and course pairs
 	
+	/**
+	 * File name
+	 */
 	private static String filename = "courseDB.ser";
 
 	public CourseDB() throws IOException, ClassNotFoundException
+	/**
+	 * Course database constructor that read the database and deserialize the objects in courseDB 
+	 * @throws IOException Exception handling
+	 * @throws ClassNotFoundException Class not found exception handling
+	 */
 	
 	{
 		 try
@@ -55,6 +70,10 @@ public class CourseDB extends Database {
 	        } 
 	}
 	/*public static void serializeCourseDB(Dictionary courseDB)
+	/**
+	 * serialize course DB
+	 * @param courseDB Course database
+	 */
 	{
 		 
         
@@ -81,6 +100,11 @@ public class CourseDB extends Database {
             
         } 
 	}*/
+	/**
+	 * get course object from courseCode
+	 * @param courseCode - existing courseCode
+	 * @return Student
+	 */
 	public static Course getCourseObj(String courseCode)
 	{
 		Course aStudent = (Course)courseDB.get(courseCode);
@@ -91,6 +115,11 @@ public class CourseDB extends Database {
 		courseDB.put(courseCode,course);
 	}*/
 	public void addToDB(String MatricNo,Object course)
+	/**
+	 * add a course
+	 * @param courseCode - new courseCode
+	 * @param course - new course
+	 */
 	{
 		if(course instanceof Course)
 		{
@@ -101,10 +130,17 @@ public class CourseDB extends Database {
 			System.out.println("Object is not a course");
 	}
 	public void deleteFromDB(String courseCode)
+	/**
+	 * delete an existing course
+	 * @param courseCode - existing courseCode
+	 */
 	{
 		courseDB.remove(courseCode);
 	}
 	public void printDB()
+	/**
+	 * Print courses method
+	 */
 	{
 		Dictionary departmentCourses = new Hashtable();
 		
@@ -146,6 +182,10 @@ public class CourseDB extends Database {
         
         
 	}
+	/**
+	 * Delete student from index method
+	 * @param matricNo Matriculation number of student
+	 */
 	public static void deleteStudentFromIndex(String matricNo)
 	{
 		Set<String> keys = ((Hashtable) courseDB).keySet();
@@ -178,6 +218,9 @@ public class CourseDB extends Database {
 		}
 		
 	}
+	/**
+	 * Reformat string method
+	 */
 	public static String fixedLengthString(String string, int length) {
 	    return String.format("%1$-"+length+ "s", string);
 	}

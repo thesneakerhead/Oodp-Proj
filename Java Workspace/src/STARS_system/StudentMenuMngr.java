@@ -6,9 +6,20 @@ import java.util.Dictionary;
 import java.util.Scanner;
 
 public class StudentMenuMngr {
+/**
+ * 
+ * Student Menu Manager Class
+ *
+ */
 	Scanner sc = new Scanner(System.in);
 	
 	public StudentMenuMngr(int choice,Student student) throws IOException, ClassNotFoundException
+	/**
+	 * Student menu manager constructor
+	 * @param choice Choice of function
+	 * @param student Student
+	 * @throws IOException Exception handling
+	 */
 	{
 		Student currentStudent = student;
 		switch(choice)
@@ -42,6 +53,12 @@ public class StudentMenuMngr {
 	}
 	
 	private void changeDetails(Student student) throws IOException, ClassNotFoundException
+	/**
+	 * Change email and password method
+	 * @param student Student
+	 * @throws IOException Exception handling
+	 */
+	private void changeDetails(Student student) throws IOException
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -103,6 +120,11 @@ public class StudentMenuMngr {
 		
 	}
 	
+	/**
+	 * Swap index method
+	 * @param student1 Student
+	 * @throws IOException Exception handling
+	 */
 	private void swapIndex(Student student1) throws IOException
 	{
 		Boolean firstRegistered=false,secRegistered=false;
@@ -193,6 +215,11 @@ public class StudentMenuMngr {
 		
 	}
 	
+	/**
+	 * Change index method
+	 * @param student Student
+	 * @throws IOException Exception handling
+	 */
 	private void changeIndex (Student student) throws IOException
     {
     Boolean curWaitlist = false;
@@ -373,7 +400,7 @@ public class StudentMenuMngr {
 	 }
 	 /**
 	  * Print course method
-	  * @param student
+	  * @param student Student
 	  */
 	 private void printCourse(Student student) {
 	  
@@ -397,6 +424,10 @@ public class StudentMenuMngr {
 	 }
 	 
 	 private void addCourse(Student student) throws ClassNotFoundException, IOException 
+	 /**
+	  * Add course method
+	  * @param student Student
+	  */
 	 {
 		 System.out.println(student.getMatricNo());
 		 
@@ -498,6 +529,9 @@ public class StudentMenuMngr {
 
  }
 	 private void checkVacancy() throws ClassNotFoundException, IOException
+	 /**
+	  * Check vacancy method
+	  */
 	   {
 		 
 		 String check;

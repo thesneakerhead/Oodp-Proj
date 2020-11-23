@@ -9,6 +9,15 @@ import java.util.Scanner;
 
 public class AdminMenuMngr {
 	public AdminMenuMngr(int choice) throws IOException, ClassNotFoundException
+/**
+ * Administrator Menu Manager class
+ *
+ */
+	/**
+	 * Administrator menu manager constructor (do functions based on user's selection)
+	 * @param choice - choice selection
+	 * @throws IOException Exception handling
+	 */
 	{
 		switch(choice)
 		{
@@ -43,6 +52,9 @@ public class AdminMenuMngr {
 		}
 	}
 	private void addupdateCourse() throws ClassNotFoundException, IOException
+	/**
+	 * Add update course method
+	 */
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -232,6 +244,10 @@ public class AdminMenuMngr {
 	}
 	
 	private void addStudent() throws IOException, ClassNotFoundException {
+	/**
+	 * Add new student method
+	 * @throws IOException Exception handling
+	 */
 		Scanner sc = new Scanner(System.in);
 		Boolean valid = false;
 		String matricNo=null;
@@ -337,6 +353,10 @@ public class AdminMenuMngr {
 	}
 	private void deleteStudent() throws IOException, ClassNotFoundException {
 		RegisteredCourses regCourses = new RegisteredCourses();
+	/**
+	 * Delete existing student method
+	 * @throws IOException Exception handling
+	 */
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the matriculation number of the student you want to delete:");
 		String matricNo = sc.nextLine();
@@ -347,16 +367,32 @@ public class AdminMenuMngr {
 		System.out.println("Student Deleted!");
 	}
 	private void addCourse(String courseName,String courseCode,Department department) throws ClassNotFoundException, IOException
+	/**
+	 * Add new course method
+	 * @param courseName - new courseName
+	 * @param courseCode - new courseCode
+	 * @param department - choose a department to add to
+	 */
 	{
 		Course course = new Course(courseName, courseCode, department);
 		System.out.println("Course added!");
 	}
+	/**
+	 * Add new Index for an existing course
+	 * @param courseCode - existing courseCode
+	 * @param indexId - new indexId
+	 */
 	private void addIndex(String courseCode,String indexId)
 	{
 		Course course = CourseDB.getCourseObj(courseCode);
 		course.addIndex(indexId);
 	}
 	private void removeIndex(String courseCode,String indexId) throws ClassNotFoundException, IOException
+	/**
+	 * Remove existing index method
+	 * @param courseCode - existing courseCode
+	 * @param indexId - existing indexId to be removed
+	 */
 	{
 		Course course = CourseDB.getCourseObj(courseCode);
 		boolean removed = course.removeIndex(indexId);
@@ -369,6 +405,9 @@ public class AdminMenuMngr {
 			}
 		}
 	}
+	/**
+	 * Print list of students by index method
+	 */
 	private void printStudentsByIndex()
 	{	
 		try {
@@ -384,6 +423,9 @@ public class AdminMenuMngr {
 			System.out.println("Combination of course and index not found!");
 		}
 	}
+	/**
+	 * Print list of students by course method
+	 */
 	private void printStudentsByCourse()
 	{
 		try {
@@ -400,6 +442,9 @@ public class AdminMenuMngr {
 			System.out.println("Course not found");
 		}
 	}
+	/**
+	 * Check available slots by index method
+	 */
 	private void checkAvailableSlotsByIndex()
 	{
 		try {
@@ -414,6 +459,9 @@ public class AdminMenuMngr {
 			System.out.println("Combination of course and index not found!");
 		}
 	}
+	/**
+	 * Edit student access period method
+	 */
 	private void editStudentAccessPeriod()
 	{
 		int year=0,month=0,day=0,hour=0,min=0,duration=0;

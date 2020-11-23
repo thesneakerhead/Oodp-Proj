@@ -14,14 +14,42 @@ import java.util.Scanner;
 
 
 
+/**
+ * Stars Account class
+ *
+ */
 public class STARSaccount implements Serializable {
+	/**
+	 * Account id
+	 */
 	private String accountID;
+	/**
+	 * Account password
+	 */
 	private String accountPW;
+	/**
+	 * Student
+	 */
 	private Student student;
+	/**
+	 * Check if admin
+	 */
 	private boolean isAdmin;
+	/**
+	 * Inbox
+	 */
 	public String inbox[];
+	/**
+	 * Number of messages
+	 */
 	public int numOfMessages = 0;
 	
+	/**
+	 * Stars Account constructor
+	 * @param accountID Account ID
+	 * @param accountPW Account Password
+	 * @throws IOException Exception handling
+	 */
 	public STARSaccount(String accountID,String accountPW) throws IOException
 	{
 		this.accountID = accountID;
@@ -32,6 +60,13 @@ public class STARSaccount implements Serializable {
 		saveToDb();
 	}
 	
+	/**
+	 * Stars Account constructor
+	 * @param accountID Account ID
+	 * @param accountPW Account Password
+	 * @param student Student
+	 * @throws IOException Exception handling
+	 */
 	public STARSaccount(String accountID,String accountPW,Student student) throws IOException
 	{
 		this.accountID = accountID;
@@ -50,28 +85,54 @@ public class STARSaccount implements Serializable {
 	
 	
 	
-	//getters========================================
+	/**
+	 * Get account method
+	 * @return accountID
+	 */
 	public String getAccountID() {
 		return accountID;
 	}
+	/**
+	 * Get account password method
+	 * @return Account Password
+	 */
 	public String getAccountPW() {
 		return accountPW;
 	}
+	/**
+	 * Get student method
+	 * @return student
+	 */
 	public Student getStudent() {
 		return student;
 	}
 	
 	//setters========================================
+	/**
+	 * Set account ID method
+	 * @param accountID account ID
+	 */
 	public void setAccountID(String accountID) {
 		this.accountID = accountID;
 	}
+	/**
+	 * Set account password method
+	 * @param accountPW account password
+	 */
 	public void setAccountPW(String accountPW) {
 		this.accountPW = accountPW;
 	}
-	
+	/**
+	 * Set student method
+	 * @param student student
+	 */
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	/**
+	 * Save to database method
+	 * @throws IOException Exception handling
+	 */
 	private void saveToDb() throws IOException
 	{
 		
@@ -83,11 +144,18 @@ public class STARSaccount implements Serializable {
 			
 		STARSaccMngr.write(st.toString(),this.isAdmin);
 	}
+	/**
+	 * Add notification method
+	 * @param notification notification
+	 */
 	public void addNotification(String notification)
 	{
 		this.inbox[numOfMessages] = notification;
 		numOfMessages++;
 	}
+	/**
+	 * Print notifications method
+	 */
 	public void printNotifications()
 	{
 		if (numOfMessages!=0)

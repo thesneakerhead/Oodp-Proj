@@ -8,6 +8,15 @@ import java.util.Scanner;
 
 public class ActionMenu {
 	public ActionMenu(String loginType, Student currentStudent) throws IOException
+/**
+ * Action menu class
+ *
+ */
+	/**
+	 * Action menu constructor (choose to login as Administrator or Student)
+	 * @param login - Administrator/Student login
+	 * @throws IOException Exception handling
+	 */
 	{
 		if (loginType == "Student")
 		{
@@ -20,12 +29,12 @@ public class ActionMenu {
 				choice = student_menu();}
 				
 				catch (Exception e)
-				{ STARSapp.terminate();}
+				{ StarsApp.terminate();}
 				
 				try {
-					new StudentMenuMngr(choice,currentStudent);	
+					new studentMenuMngr(choice,login.currentStudent);	
 				} catch (Exception e) {
-					STARSapp.terminate();
+					StarsApp.terminate();
 				}
 				
 				
@@ -33,7 +42,7 @@ public class ActionMenu {
 			
 			}
 		}
-		else if(loginType == "Admin")
+		else if(login.loginType == "Admin")
 		{
 			int choice = 0;
 			while(true) {
@@ -42,12 +51,12 @@ public class ActionMenu {
 				choice = admin_menu();}
 				
 				catch (Exception e)
-				{ STARSapp.terminate();}
+				{ StarsApp.terminate();}
 				
 				try {
-					new AdminMenuMngr(choice);	
+					new adminMenuMngr(choice);	
 				} catch (Exception e) {
-					STARSapp.terminate();
+					StarsApp.terminate();
 				}
 				
 				
@@ -63,6 +72,10 @@ public class ActionMenu {
 		}
 		
 	}
+	/**
+	 * print student menu
+	 * @return - choice selection
+	 */
 	public int student_menu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -80,6 +93,10 @@ public class ActionMenu {
 		int Choice = sc.nextInt();
 		return Choice;
 	}
+	/**
+	 * print admin menu
+	 * @return - choice selection
+	 */
 	public int admin_menu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");

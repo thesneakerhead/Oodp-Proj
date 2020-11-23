@@ -10,8 +10,17 @@ import java.util.Scanner;
 
 public class AccVerify {
 	
+/**
+ * Account Verify class
+ *
+ */
 		private static Dictionary verify; //stores all username/password pairs
 		public AccVerify(boolean isAdmin) throws IOException
+		/**
+		 * Account verify constructor (verify login details for Student/Administrator)
+		 * @param isAdmin Check is user is administrator
+		 * @throws IOException Exception handling
+		 */
 		{
 			String accDB;
 			if (isAdmin == true)
@@ -31,6 +40,12 @@ public class AccVerify {
 				}
 				this.verify = verify;
 		}
+		/**
+		 * verify username and password are in the database
+		 * @param username - Admin/Student username
+		 * @param password - Admin/Student password
+		 * @return - verified
+		 */
 		public static boolean verification(String username,String password)
 		{
 			String dbPassword = (String)verify.get(username);
@@ -42,6 +57,12 @@ public class AccVerify {
 			else {
 			return false;}
 		}
+		/**
+		 * read the student/admin database filled with the username and passwords
+		 * @param fileName - aLoginDB.txt or sLoginDB.txt
+		 * @return - list of username and passwords
+		 * @throws IOException Exception handling
+		 */
 		public static List readDB(String fileName) throws IOException {
 			List data = new ArrayList();
 			

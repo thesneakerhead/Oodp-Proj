@@ -2,9 +2,19 @@ package STARS_system;
 
 import java.util.ArrayList;
 
+/**
+ * Timetable class
+ *
+ */
 public class Timetable {
+	/**
+	 * Timetable array
+	 */
 	public String[][] timetable = new String[5][10];
 	
+	/**
+	 * Construct timetable
+	 */
 	public Timetable() {
 	    for (int i = 0; i < 5; i++)
 	    {
@@ -16,6 +26,11 @@ public class Timetable {
 	  }
 	
 	  public boolean checkClash(ArrayList<CourseIndex>studentIndexes,CourseIndex newIndex)
+	/**
+	 * Check if indexes clash
+	 * @param studentIndexes Array of indexes
+	 * @param newIndex Index to check
+	 */
 	  {
 		
 	    for(int i = 0; i < studentIndexes.size(); i++)
@@ -47,6 +62,11 @@ public class Timetable {
 	  }
 	  
 	  public boolean checkLessonClash(ArrayList<Lesson>lessonList, Lesson newLesson)
+	  /**
+	   * Check for lesson clash
+	   * @param lessonList List of lesson
+	   * @param newLesson New lesson to check
+	   */
 	  {
 
 			  for (int j = 0; j < lessonList.size(); j++)
@@ -64,6 +84,13 @@ public class Timetable {
 	      return checkclash;	    
 	  }
 	  
+	  /**
+	   * Add lesson method
+	   * @param classType Class type
+	   * @param timeStart Start time
+	   * @param timeEnd End time
+	   * @param day Day
+	   */
 	  public boolean addLes(String classType,int timeStart,int timeEnd,int day)
 	  {
 		  
@@ -85,6 +112,14 @@ public class Timetable {
 	     return true;
 	  }
 	  
+	  /**
+		 * Add slot method
+		 * @param nameOfCourse Name of course
+		 * @param classType Class type
+		 * @param timeStart Start time
+		 * @param timeEnd End time
+		 * @param day Day
+		 */
 	  public boolean addSlot(String nameOfCourse,String classType,int timeStart,int timeEnd,int day)
 	  {
 		  
@@ -107,6 +142,9 @@ public class Timetable {
 	  }
 	
 	
+	  /**
+		 * Print time table method
+		 */
 	public void printTimetable()
 	{
 		for (int i = 0; i < 10; i++)
@@ -117,6 +155,9 @@ public class Timetable {
 	    		
 	    }
 	}
+	/**
+	 * Format String method
+	 */
 	public static String fixedLengthString(String string, int length) {
 	    return String.format("%1$"+length+ "s", string);
 	}

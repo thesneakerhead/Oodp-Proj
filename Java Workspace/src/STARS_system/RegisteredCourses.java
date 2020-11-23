@@ -12,8 +12,18 @@ import java.util.Hashtable;
 import java.util.Set;
 
 public class RegisteredCourses extends Database implements Serializable {
+/**
+ * Registered courses class
+ *
+ */
+	/**
+	 * Stores all registered courses
+	 */
 	public static Dictionary registerDict;
 
+	/**
+	 * File name
+	 */
 	private static String filename = "registeredCourses.ser";
 	public RegisteredCourses() throws IOException, ClassNotFoundException
 	
@@ -55,6 +65,13 @@ public class RegisteredCourses extends Database implements Serializable {
 	        } 
 	}
 
+	/**
+	 * Method to register index
+	 * @param matricNo Method to register index
+	 * @param courseCode Course code
+	 * @param courseindex Course index
+	 * @param isWaitlist Check if on wait list
+	 */
 	public static void registerIndex(String matricNo, String courseCode,String courseindex,boolean isWaitlist)
 	{
 		ArrayList<CourseIndex> indexList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
@@ -97,7 +114,10 @@ public class RegisteredCourses extends Database implements Serializable {
 		}
 		
 	}
-	/*public static void serializeRegisterDict(Dictionary registerDict)
+	/**
+	 * Serialize Register Dictionary method
+	 * @param registerDict Register Dictionary
+	 */
 	{
 		 
         
@@ -126,15 +146,29 @@ public class RegisteredCourses extends Database implements Serializable {
 	}*/
 	public void addToDB(String key, Object object) {}
 	public void deleteFromDB(String matricNo)
+	/**
+	 * Remove student index method
+	 * @param matricNo Student matric number
+	 */
 	{
 		registerDict.remove(matricNo);
 	}
 	public static ArrayList<CourseIndex> getIndexes(String matricNo)
+	/**
+	 * Get indexes method
+	 * @param matricNo Matriculation number of student
+	 * @return Array of course index
+	 */
 	{
 		return (ArrayList<CourseIndex>)registerDict.get(matricNo);
 	}
 	public void printDB() {}
 	public void printDB(String matricNo)
+	/**
+	 * Print registered indexes method
+	 * @param matricNo Matriculation number of student
+	 */
+	public void printRegisteredIndexes(String matricNo)
 	{
 		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
 		for (int i = 0;i<arrayList.size();i++)
@@ -142,6 +176,10 @@ public class RegisteredCourses extends Database implements Serializable {
 			System.out.println(arrayList.get(i).indexID);
 		}
 	}
+	/**
+	 * Delete index from course method
+	 * @param courseCode courseCode
+	 */
 	public static void deleteIndexFromCourse(String courseCode)
 	{
 		Set<String> keys = ((Hashtable) registerDict).keySet();
@@ -158,6 +196,10 @@ public class RegisteredCourses extends Database implements Serializable {
         	
         }
 	}
+	/**
+	 * Delete index method
+	 * @param indexID indexID
+	 */
 	public static void deleteIndex(String indexID)
 	{
 		Set<String> keys = ((Hashtable) registerDict).keySet();

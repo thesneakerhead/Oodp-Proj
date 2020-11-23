@@ -5,15 +5,45 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CourseIndex implements Serializable {
+/**
+ * Course index class
+ *
+ */
+	/**
+	 * Index id
+	 */
 	public String indexID;
 	public ArrayList<Lesson> lessonList;
+	/**
+	 * Array list for lessons
+	 */
+	/**
+	 * Vacancy for index
+	 */
 	public int indexVacancy;
+	/**
+	 * Student list
+	 */
 	public ArrayList<Student> studentList;
+	/**
+	 * Wait list
+	 */
 	public ArrayList<Student> waitList;
+	/**
+	 * Course code
+	 */
 	public String courseCode;
+	/**
+	 * Check if on waiting list
+	 */
 	public boolean isWaitList;
 	
 	public CourseIndex(String indexID,String courseCode)
+	/**
+	 * Constructor for courseIndex
+	 * @param indexID - user's given indexID
+	 * @param courseCode - user's given courseCode
+	 */
 	{
 		this.courseCode = courseCode;
 		Scanner sc = new Scanner(System.in);
@@ -27,6 +57,10 @@ public class CourseIndex implements Serializable {
 	}
 	
 	public static ArrayList<Lesson> addLessons()
+	/**
+	  * add lessons to a courseIndex
+	  * @return - arraylist of lessons
+	  */
 	  {
 		Boolean clash=false;
 		Timetable timetable = new Timetable();
@@ -172,14 +206,25 @@ public class CourseIndex implements Serializable {
 	    return lessonList;    
 	}
 	
+	/**
+	 * add a student to a courseIndex 	
+	 */
 	public void addStudent(Student student){
 		studentList.add(student);
 	}
+	/**
+	 * Add student to waitlist method
+	 * @param student student to add
+	 */
 	public void addToWaitlist(Student student)
 	{
 		waitList.add(student);
 	}
 	
+	/**
+	 * Remove student from waitlist method
+	 * @param student student to remove
+	 */
 	public void removeFromWaitlist(Student student)
 	{
 		int oSize = waitList.size();
@@ -196,6 +241,10 @@ public class CourseIndex implements Serializable {
 			System.out.println("Student not in waitlist");
 		}
 	}
+	/**
+	 * remove student from a courseIndex
+	 * @param student - student who is registered in the courseIndex
+	 */
 	public void removeStudent(Student student){
 		int oSize = studentList.size();
 		for(int i = 0;i<studentList.size();i++)
@@ -211,6 +260,9 @@ public class CourseIndex implements Serializable {
 			System.out.println("Student not registered in this course!");
 		}
 	}
+	/**
+	 * Print student list method
+	 */
 	public void printStudentList()
 	{
 		
@@ -219,6 +271,9 @@ public class CourseIndex implements Serializable {
 			System.out.println(studentList.get(i).getMatricNo()+ " "+studentList.get(i).getName());
 		}
 	}
+	/**
+	 * Print wait list method
+	 */
 	public void printWaitList()
 	{
 		
@@ -227,6 +282,9 @@ public class CourseIndex implements Serializable {
 			System.out.println(waitList.get(i).getMatricNo()+ " "+waitList.get(i).getName());
 		}
 	}
+	/**
+	 * Dequeue student method
+	 */
 	public void dequeueStudent()
 	{
 		Student student = waitList.get(0);

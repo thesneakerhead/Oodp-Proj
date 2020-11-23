@@ -10,6 +10,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendEmail implements SendNotifications {
+/**
+ * Send email class
+ *
+ */
+	/**
+	 * Login notification method
+	 */
 	public void loginNotification(Student student)
 	{
 		
@@ -52,6 +59,9 @@ public class SendEmail implements SendNotifications {
 		
 		
 	}
+	/**
+	 * Register Course Index notification
+	 */
 	public void courseIndexRegNotification(Student student,String courseCode,String courseIndex)
 	{
 	
@@ -93,6 +103,9 @@ public class SendEmail implements SendNotifications {
 			}
 		}
 		
+	/**
+	 * Notification for waiting list
+	 */
 	public void waitingListNotification(Student student,String courseCode,String courseIndex)
 	{
 	
@@ -133,6 +146,9 @@ public class SendEmail implements SendNotifications {
 				throw new RuntimeException(e);
 			}
 		}
+	/**
+	 * Notification for exit waiting list
+	 */
 	public void exitWaitingListNotification(Student student,String courseCode,String courseIndex)
 	{
 	

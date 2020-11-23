@@ -7,11 +7,35 @@ import java.util.Scanner;
 
 public class STARSapp {
 	public static StudentDB studentDB;
+/**
+ * Stars App class
+ *
+ */
+	/**
+	 * Student database
+	 */
+	/**
+	 * Current date
+	 */
 	public static Calendar currentDate;
 	public static CourseDB courseDB;
 	public static RegisteredCourses registeredcourses;
 	public static SendEmail emailSender;
 
+	/**
+	 * Course database
+	 */
+	/**
+	 * Registered courses
+	 */
+	/**
+	 * Send email
+	 */
+	/**
+	 * Main Method
+	 * @throws ClassNotFoundException Class not found Exception handling
+	 * @throws IOException Exception handling
+	 */
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		init();
 		
@@ -29,6 +53,11 @@ public class STARSapp {
 	
 	
 	
+	/**
+	 * Initialize method
+	 * @throws ClassNotFoundException Class not found Exception handling
+	 * @throws IOException Exception handling
+	 */
 	public static void init() throws ClassNotFoundException, IOException 
 	{
 		emailSender = new SendEmail();
@@ -39,6 +68,10 @@ public class STARSapp {
 		System.out.println("Welcome to STARS system");
 		
 	}
+	/**
+	 * Start method
+	 * @throws IOException Exception handling
+	 */
 	public static void start() throws IOException
 	{
 		
@@ -58,6 +91,9 @@ public class STARSapp {
 		}
 		
 	}
+	/**
+	 * Terminate method
+	 */
 	public static void terminate()
 	{
 		

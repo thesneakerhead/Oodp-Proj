@@ -1,5 +1,9 @@
 package STARS_system;
 
+/**
+ * Stores all the department
+ *
+ */
 public enum Department {
 	CBE,
 	EEE,
