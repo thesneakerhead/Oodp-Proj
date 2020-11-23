@@ -12,20 +12,6 @@ public abstract class Login {
 	//public String loginType;
 	private String username;
 	private String password;
-/**
- * Login class
- *
- */
-	/**
-	 * Current student
-	 */
-	/**
-	 * Login type
-	 */
-	/**
-	 * Login Constructor
-	 * @throws IOException Exception handling
-	 */
 	public Login() throws IOException
 	{	
 		
@@ -81,11 +67,6 @@ public abstract class Login {
 		return this.password;
 	}
 	/*private String studentLogin() throws IOException
-	/**
-	 * Student Login method
-	 * @return username
-	 * @throws IOException Exception handling
-	 */
 	{
 		Scanner sc = new Scanner(System.in);
 		accVerify verifier = new accVerify(false);
@@ -115,10 +96,6 @@ public abstract class Login {
 				}
 		}
 	}
-	/**
-	 * Admin login method
-	 * @throws IOException Exception handling
-	 */
 	private void adminLogin() throws IOException
 	{
 		Scanner sc = new Scanner(System.in);

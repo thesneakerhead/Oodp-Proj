@@ -99,7 +99,9 @@ public class CourseDB extends Database {
             System.out.println("IOException is caught"); 
             
         } 
-	}*/
+        
+	}
+
 	/**
 	 * get course object from courseCode
 	 * @param courseCode - existing courseCode

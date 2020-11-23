@@ -165,6 +165,13 @@ public class RegisteredCourses extends Database implements Serializable {
 	}
 	public void printDB() {}
 	public void printDB(String matricNo)
+	{
+		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
+		for (int i = 0;i<arrayList.size();i++)
+		{
+			System.out.println(arrayList.get(i).indexID);
+		}
+	}
 	/**
 	 * Print registered indexes method
 	 * @param matricNo Matriculation number of student

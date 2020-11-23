@@ -91,7 +91,7 @@ public class StudentDB extends Database {
         { 
             System.out.println("IOException is caught");    
         } 
-	}*/
+	}
 	/**
 	 * Get student object method
 	 * @param MatricNo Matriculation number of student
