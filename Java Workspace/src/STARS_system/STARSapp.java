@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class STARSapp {
+public class STARSApp {
 	public static StudentDB studentDB;
 /**
  * Stars App class

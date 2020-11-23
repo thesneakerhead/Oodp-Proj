@@ -79,12 +79,7 @@ public class AdminMenuMngr {
 		    	{
 			    	System.out.println("Course Code");
 			    	courseCode = sc.nextLine();
-			    	if (!courseCode.matches("[A-Za-z0-9]+")||(courseCode.length() <7))
-			    	{
-			    		System.out.println("Invalid Course Code! Course Code has to be alphanumeric and have a maximum of 6 characters!");
-			    	}
 			    	Course course = CourseDB.getCourseObj(courseCode);
-			    	
 			    	if(course!=null)
 			    	{
 			    		System.out.println("There is an existing course of the same course code");
@@ -120,7 +115,7 @@ public class AdminMenuMngr {
 		    	
 		    	addCourse(courseName, courseCode, department);
 		    	System.out.println("");
-		    	STARSapp.courseDB.printDB();
+		    	STARSApp.courseDB.printDB();
 		    	break;
 		    	
 		    case 2:
@@ -212,7 +207,7 @@ public class AdminMenuMngr {
 		    	
 		    	break;
 		    case 4:
-		    	STARSapp.courseDB.printDB();
+		    	STARSApp.courseDB.printDB();
 		    	String cCode=null;
 		    	course =null;
 		    	while(course==null)
@@ -237,7 +232,7 @@ public class AdminMenuMngr {
 		    	String sel = sc.nextLine();
 		    	if (sel.equals("y")||sel.equals("Y"))
 		    	{
-		    		STARSapp.courseDB.deleteFromDB(cCode);
+		    		STARSApp.courseDB.deleteFromDB(cCode);
 		    		RegisteredCourses.deleteIndexFromCourse(cCode);
 		    	}
 		}
@@ -361,7 +356,7 @@ public class AdminMenuMngr {
 		System.out.println("Enter the matriculation number of the student you want to delete:");
 		String matricNo = sc.nextLine();
 		STARSaccMngr.deleteAcc(matricNo, false);
-		STARSapp.studentDB.deleteFromDB(matricNo);
+		STARSApp.studentDB.deleteFromDB(matricNo);
 		CourseDB.deleteStudentFromIndex(matricNo);
 		regCourses.deleteFromDB(matricNo);
 		System.out.println("Student Deleted!");

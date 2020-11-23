@@ -18,13 +18,13 @@ public class LoginTimeCheck extends StudentLogin
 	{
 		String matricNo = this.matricNo;
 		this.currentStudent = StudentDB.getStudentObj(matricNo);
-		if (STARSapp.currentDate.after(this.currentStudent.accessStartTime) && STARSapp.currentDate.before(this.currentStudent.accessEndTime))
+		if (STARSApp.currentDate.after(this.currentStudent.accessStartTime) && STARSApp.currentDate.before(this.currentStudent.accessEndTime))
 		{
 			return;
 		}
 		else {
 			System.out.println("Access Denied, login during your allocated access period");
-			STARSapp.terminate();
+			STARSApp.terminate();
 		}
 	}
 	public Student getStudent()

@@ -33,7 +33,7 @@ public class AdminLogin extends Login
 			String again= sc.nextLine();
 			if(again.equals("n"))
 			{
-				STARSapp.terminate();
+				STARSApp.terminate();
 			}
 			return false;
 		}

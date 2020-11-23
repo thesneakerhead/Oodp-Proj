@@ -118,6 +118,7 @@ public class RegisteredCourses extends Database implements Serializable {
 	 * Serialize Register Dictionary method
 	 * @param registerDict Register Dictionary
 	 */
+	/*public static void serializeRegisterDict(Dictionary registerDict)
 	{
 		 
         

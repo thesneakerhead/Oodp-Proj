@@ -20,7 +20,7 @@ public class ActionMenu {
 	{
 		if (loginType == "Student")
 		{
-			STARSapp.emailSender.loginNotification(currentStudent);
+			STARSApp.emailSender.loginNotification(currentStudent);
 			currentStudent.getSaccount().printNotifications();
 			int choice = 0;
 			while(true) {
@@ -29,12 +29,12 @@ public class ActionMenu {
 				choice = student_menu();}
 				
 				catch (Exception e)
-				{ StarsApp.terminate();}
+				{ STARSApp.terminate();}
 				
 				try {
-					new studentMenuMngr(choice,login.currentStudent);	
+					new StudentMenuMngr(choice,currentStudent);	
 				} catch (Exception e) {
-					StarsApp.terminate();
+					STARSApp.terminate();
 				}
 				
 				
@@ -42,7 +42,7 @@ public class ActionMenu {
 			
 			}
 		}
-		else if(login.loginType == "Admin")
+		else if(loginType == "Admin")
 		{
 			int choice = 0;
 			while(true) {
@@ -51,12 +51,12 @@ public class ActionMenu {
 				choice = admin_menu();}
 				
 				catch (Exception e)
-				{ StarsApp.terminate();}
+				{ STARSApp.terminate();}
 				
 				try {
-					new adminMenuMngr(choice);	
+					new AdminMenuMngr(choice);	
 				} catch (Exception e) {
-					StarsApp.terminate();
+					STARSApp.terminate();
 				}
 				
 				
