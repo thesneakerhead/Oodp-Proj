@@ -6,10 +6,10 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class StarsApp {
-	private static StudentDB studentDB;
+	public static StudentDB studentDB;
 	public static Calendar currentDate;
-	private static courseDB courseDB;
-	private static registeredCourses registeredcourses;
+	public static courseDB courseDB;
+	public static registeredCourses registeredcourses;
 	public static sendEmail emailSender;
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
@@ -60,9 +60,10 @@ public class StarsApp {
 	}
 	public static void terminate()
 	{
-		studentDB.serializeStudentDB(studentDB.studentDB);
-		registeredcourses.serializeRegisterDict(registeredcourses.registerDict);
-		courseDB.serializeCourseDB(courseDB.courseDB);
+		
+		studentDB.serializeDB(studentDB.studentDB,"studentDB.ser");
+		registeredcourses.serializeDB(registeredcourses.registerDict,"registeredCourses.ser");
+		courseDB.serializeDB(courseDB.courseDB,"courseDB.ser");
 		System.out.println("Exiting..........");
 		System.exit(0);
 	}

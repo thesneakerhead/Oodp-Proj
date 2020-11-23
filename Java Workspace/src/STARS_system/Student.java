@@ -14,9 +14,9 @@ public class Student implements Serializable {
 	private STARSaccount saccount;
 	private String email;
 	
-	public Student(String matricNo,String name,String gender,String nationality,Calendar accessStartTime,Calendar accessEndTime,String email) throws IOException
+	public Student(String matricNo,String name,String gender,String nationality,Calendar accessStartTime,Calendar accessEndTime,String email) throws IOException, ClassNotFoundException
 	{
-		
+		StudentDB studentDB = new StudentDB();
 		this.matricNo = matricNo;
 		this.name = name;
 		this.gender = gender;
@@ -25,7 +25,7 @@ public class Student implements Serializable {
 		this.accessEndTime = accessEndTime;
 		this.saccount = new STARSaccount(matricNo,name,this);
 		this.email = email;
-		StudentDB.addStudent(matricNo, this);
+		studentDB.addToDB(matricNo, this);
 		System.out.println("Student Created!");
 	}
 	//getters========================================

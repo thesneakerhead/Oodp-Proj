@@ -14,7 +14,7 @@ public class loginTimeCheck extends studentLogin
 		checkAccessTime();
 	}
 
-	public void checkAccessTime()
+	public void checkAccessTime() throws IOException
 	{
 		String matricNo = this.matricNo;
 		this.currentStudent = StudentDB.getStudentObj(matricNo);

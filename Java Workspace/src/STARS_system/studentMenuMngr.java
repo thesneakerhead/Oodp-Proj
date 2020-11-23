@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class studentMenuMngr {
 	Scanner sc = new Scanner(System.in);
 	
-	public studentMenuMngr(int choice,Student student) throws IOException
+	public studentMenuMngr(int choice,Student student) throws IOException, ClassNotFoundException
 	{
 		Student currentStudent = student;
 		switch(choice)
@@ -41,7 +41,7 @@ public class studentMenuMngr {
 		}
 	}
 	
-	private void changeDetails(Student student) throws IOException
+	private void changeDetails(Student student) throws IOException, ClassNotFoundException
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -61,8 +61,9 @@ public class studentMenuMngr {
 						String repw = sc.nextLine();
 						if (pw.equals(repw))
 						{
+							
 							student.getSaccount().setAccountPW(starsaccMngr.passwordHash(pw));
-							StudentDB.addStudent(student.getMatricNo(), student);
+							StarsApp.studentDB.addToDB(student.getMatricNo(), student);
 							starsaccMngr.editPassword(student.getMatricNo(), starsaccMngr.passwordHash(pw), false);
 							break;
 						}
@@ -94,7 +95,8 @@ public class studentMenuMngr {
 				        }
 				        }while(!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")));
 				 student.setEmail(email);
-				 StudentDB.addStudent(student.getMatricNo(), student);
+				 
+				 StarsApp.studentDB.addToDB(student.getMatricNo(), student);
 					
 				break;
 		}
@@ -394,10 +396,11 @@ public class studentMenuMngr {
 	  }
 	 }
 	 
-	 private void addCourse(Student student) 
+	 private void addCourse(Student student) throws ClassNotFoundException, IOException 
 	 {
 		 System.out.println(student.getMatricNo());
-		 courseDB.printCourses();
+		 
+		 StarsApp.courseDB.printDB();
 		 Scanner sc = new Scanner(System.in);
 		 System.out.println("Enter course(code) that you want to register for:");
 		 String courseCode = sc.nextLine();		
@@ -494,14 +497,15 @@ public class studentMenuMngr {
 		}
 
  }
-	 private void checkVacancy()
+	 private void checkVacancy() throws ClassNotFoundException, IOException
 	   {
 		 
 		 String check;
 		 Course course=null;
 		 
 		 while(true) {
-			 courseDB.printCourses();
+			 
+			 StarsApp.courseDB.printDB();
 		     System.out.println("Enter course code to check vacancy");
 		     check = sc.nextLine();
 		     course = courseDB.getCourseObj(check);

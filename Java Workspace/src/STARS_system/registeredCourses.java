@@ -11,7 +11,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Set;
 
-public class registeredCourses implements Serializable{
+public class registeredCourses extends Database implements Serializable {
 	public static Dictionary registerDict;
 
 	private static String filename = "registeredCourses.ser";
@@ -35,7 +35,7 @@ public class registeredCourses implements Serializable{
 		 catch(IOException ex) 
 	        { 
 	            Dictionary dictionary = new Hashtable();
-	            serializeRegisterDict(dictionary);
+	            serializeDB(dictionary,filename);
 	            FileInputStream file = new FileInputStream(filename); 
 	            ObjectInputStream in = new ObjectInputStream(file); 
 	              
@@ -97,7 +97,7 @@ public class registeredCourses implements Serializable{
 		}
 		
 	}
-	public static void serializeRegisterDict(Dictionary registerDict)
+	/*public static void serializeRegisterDict(Dictionary registerDict)
 	{
 		 
         
@@ -123,8 +123,9 @@ public class registeredCourses implements Serializable{
             System.out.println("IOException is caught"); 
             
         } 
-	}
-	public static void removeStudentIndexes(String matricNo)
+	}*/
+	public void addToDB(String key, Object object) {}
+	public void deleteFromDB(String matricNo)
 	{
 		registerDict.remove(matricNo);
 	}
@@ -132,7 +133,8 @@ public class registeredCourses implements Serializable{
 	{
 		return (ArrayList<courseIndex>)registerDict.get(matricNo);
 	}
-	public void printRegisteredIndexes(String matricNo)
+	public void printDB() {}
+	public void printDB(String matricNo)
 	{
 		ArrayList<courseIndex>arrayList = (ArrayList<courseIndex>)registerDict.get(matricNo);
 		for (int i = 0;i<arrayList.size();i++)

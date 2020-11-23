@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class adminMenuMngr {
-	public adminMenuMngr(int choice) throws IOException
+	public adminMenuMngr(int choice) throws IOException, ClassNotFoundException
 	{
 		switch(choice)
 		{
@@ -42,7 +42,7 @@ public class adminMenuMngr {
 			
 		}
 	}
-	private void addupdateCourse()
+	private void addupdateCourse() throws ClassNotFoundException, IOException
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -56,6 +56,7 @@ public class adminMenuMngr {
 		sc.nextLine();
 		Boolean valid=false;
 		String courseCode=null;
+		
 		switch(selection)
 		{
 		    case 1:
@@ -102,7 +103,7 @@ public class adminMenuMngr {
 		    	
 		    	addCourse(courseName, courseCode, department);
 		    	System.out.println("");
-		    	courseDB.printCourses();
+		    	StarsApp.courseDB.printDB();
 		    	break;
 		    	
 		    case 2:
@@ -194,7 +195,7 @@ public class adminMenuMngr {
 		    	
 		    	break;
 		    case 4:
-		    	courseDB.printCourses();
+		    	StarsApp.courseDB.printDB();
 		    	String cCode=null;
 		    	course =null;
 		    	while(course==null)
@@ -219,13 +220,13 @@ public class adminMenuMngr {
 		    	String sel = sc.nextLine();
 		    	if (sel.equals("y")||sel.equals("Y"))
 		    	{
-		    		courseDB.deleteCourse(cCode);
+		    		StarsApp.courseDB.deleteFromDB(cCode);
 		    		registeredCourses.deleteIndexFromCourse(cCode);
 		    	}
 		}
 	}
 	
-	private void addStudent() throws IOException {
+	private void addStudent() throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		Boolean valid = false;
 		String matricNo=null;
@@ -329,17 +330,18 @@ public class adminMenuMngr {
         }while(!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")));
 		new Student(matricNo, name, gender, nationality,regDate,regDate_end,email);
 	}
-	private void deleteStudent() throws IOException {
+	private void deleteStudent() throws IOException, ClassNotFoundException {
+		registeredCourses regCourses = new registeredCourses();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the matriculation number of the student you want to delete:");
 		String matricNo = sc.nextLine();
 		starsaccMngr.deleteAcc(matricNo, false);
-		StudentDB.deleteStudent(matricNo);
+		StarsApp.studentDB.deleteFromDB(matricNo);
 		courseDB.deleteStudentFromIndex(matricNo);
-		registeredCourses.removeStudentIndexes(matricNo);
+		regCourses.deleteFromDB(matricNo);
 		System.out.println("Student Deleted!");
 	}
-	private void addCourse(String courseName,String courseCode,Department department)
+	private void addCourse(String courseName,String courseCode,Department department) throws ClassNotFoundException, IOException
 	{
 		Course course = new Course(courseName, courseCode, department);
 		System.out.println("Course added!");
@@ -349,7 +351,7 @@ public class adminMenuMngr {
 		Course course = courseDB.getCourseObj(courseCode);
 		course.addIndex(indexId);
 	}
-	private void removeIndex(String courseCode,String indexId)
+	private void removeIndex(String courseCode,String indexId) throws ClassNotFoundException, IOException
 	{
 		Course course = courseDB.getCourseObj(courseCode);
 		boolean removed = course.removeIndex(indexId);
