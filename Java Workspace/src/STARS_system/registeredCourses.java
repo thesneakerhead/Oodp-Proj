@@ -14,21 +14,15 @@ import java.util.Set;
 =======
 
 public class RegisteredCourses extends Database implements Serializable {
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 /**
  * Registered courses class
  *
  */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 public class RegisteredCourses extends Database implements Serializable {
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 	/**
 	 * Stores all registered courses
 	 */
@@ -36,15 +30,11 @@ public class RegisteredCourses extends Database implements Serializable {
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 =======
 
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 	/**
 	 * File name
 	 */
 	private static String filename = "registeredCourses.ser";
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 	/**
 	 * Registered courses constructor
@@ -53,8 +43,6 @@ public class RegisteredCourses extends Database implements Serializable {
 	 */
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 	public RegisteredCourses() throws IOException, ClassNotFoundException
 	
 	{
@@ -97,10 +85,7 @@ public class RegisteredCourses extends Database implements Serializable {
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 =======
 
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 	/**
 	 * Method to register index
 	 * @param matricNo Method to register index
@@ -113,7 +98,6 @@ public class RegisteredCourses extends Database implements Serializable {
 		ArrayList<CourseIndex> indexList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
 		if (indexList == null)
 		{
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 			ArrayList<courseIndex> newindexList = new ArrayList<courseIndex>();
 			Course course = CourseDB.getCourseObj(courseCode);
@@ -123,11 +107,6 @@ public class RegisteredCourses extends Database implements Serializable {
 			Course course = CourseDB.getCourseObj(courseCode);
 			CourseIndex cindex = course.getIndex(courseindex);
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
-			ArrayList<CourseIndex> newindexList = new ArrayList<CourseIndex>();
-			Course course = CourseDB.getCourseObj(courseCode);
-			CourseIndex cindex = course.getIndex(courseindex);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 			newindexList.add(cindex);
 			if (isWaitlist == true)
 			{
@@ -143,15 +122,11 @@ public class RegisteredCourses extends Database implements Serializable {
 		}
 		else {
 			Course course = CourseDB.getCourseObj(courseCode);
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 			courseIndex cindex = course.getIndex(courseindex);
 =======
 			CourseIndex cindex = course.getIndex(courseindex);
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
-			CourseIndex cindex = course.getIndex(courseindex);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 			indexList.add(cindex);
 			if (isWaitlist==true)
 			{
@@ -214,26 +189,19 @@ public class RegisteredCourses extends Database implements Serializable {
 	{
 		registerDict.remove(matricNo);
 	}
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 =======
 	public static ArrayList<CourseIndex> getIndexes(String matricNo)
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
-	public static ArrayList<CourseIndex> getIndexes(String matricNo)
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 	/**
 	 * Get indexes method
 	 * @param matricNo Matriculation number of student
 	 * @return Array of course index
 	 */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 	public static ArrayList<courseIndex> getIndexes(String matricNo)
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 	{
 		return (ArrayList<CourseIndex>)registerDict.get(matricNo);
 	}
@@ -245,7 +213,6 @@ public class RegisteredCourses extends Database implements Serializable {
 	public void printDB(String matricNo)
 	{
 		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
 		for (int i = 0;i<arrayList.size();i++)
 		{
 			System.out.println(arrayList.get(i).indexID);
@@ -262,29 +229,12 @@ public class RegisteredCourses extends Database implements Serializable {
 =======
 		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 		for (int i = 0;i<arrayList.size();i++)
 		{
 			System.out.println(arrayList.get(i).indexID);
 		}
 	}
 	/**
-<<<<<<< HEAD:Java Workspace/src/STARS_system/registeredCourses.java
-=======
-	 * Print registered indexes method
-	 * @param matricNo Matriculation number of student
-	 */
-	public void printRegisteredIndexes(String matricNo)
-	{
-		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
-		for (int i = 0;i<arrayList.size();i++)
-		{
-			System.out.println(arrayList.get(i).indexID);
-		}
-	}
-	/**
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/RegisteredCourses.java
 	 * Delete index from course method
 	 * @param courseCode courseCode
 	 */

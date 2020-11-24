@@ -32,10 +32,7 @@ public class StudentLogin extends Login {
 	 */
 =======
 	
-<<<<<<< HEAD:Java Workspace/src/STARS_system/studentLogin.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentLogin.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/StudentLogin.java
 	public StudentLogin()throws IOException
 	{
 		Boolean valid = false;

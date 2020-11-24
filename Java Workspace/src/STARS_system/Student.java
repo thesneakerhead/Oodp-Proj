@@ -6,9 +6,6 @@ import java.util.GregorianCalendar;
 <<<<<<< HEAD
 =======
 
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 /**
  * Student class
@@ -96,9 +93,6 @@ public class Student implements Serializable {
 <<<<<<< HEAD
 =======
 	
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * get student's gender
@@ -125,9 +119,6 @@ public class Student implements Serializable {
 <<<<<<< HEAD
 =======
 	
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * set student's gender
@@ -139,9 +130,6 @@ public class Student implements Serializable {
 <<<<<<< HEAD
 =======
 	
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * set student's matric no 

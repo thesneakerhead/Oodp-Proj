@@ -6,21 +6,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-<<<<<<< HEAD:Java Workspace/src/STARS_system/actionMenu.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
 =======
 public class ActionMenu {
 	public ActionMenu(String loginType, Student currentStudent) throws IOException
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
-=======
-public class ActionMenu {
-	public ActionMenu(String loginType, Student currentStudent) throws IOException
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/ActionMenu.java
 /**
  * Action menu class
  *
  */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/actionMenu.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
 public class ActionMenu {
 	/**
@@ -31,17 +25,12 @@ public class ActionMenu {
 	 */
 	public ActionMenu(String loginType, Student currentStudent) throws IOException
 =======
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/ActionMenu.java
 	/**
 	 * Action menu constructor (choose to login as Administrator or Student)
 	 * @param login - Administrator/Student login
 	 * @throws IOException Exception handling
 	 */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/actionMenu.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/ActionMenu.java
 	{
 		if (loginType == "Student")
 		{
@@ -98,7 +87,6 @@ public class ActionMenu {
 		
 	}
 	/**
-<<<<<<< HEAD:Java Workspace/src/STARS_system/actionMenu.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
 	 * Print student menu method
 	 * @return Choice of student
@@ -106,10 +94,6 @@ public class ActionMenu {
 	 * print student menu
 	 * @return - choice selection
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
-=======
-	 * print student menu
-	 * @return - choice selection
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/ActionMenu.java
 	 */
 	public int student_menu() {
 		Scanner sc = new Scanner(System.in);
@@ -129,7 +113,6 @@ public class ActionMenu {
 		return Choice;
 	}
 	/**
-<<<<<<< HEAD:Java Workspace/src/STARS_system/actionMenu.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
 	 * Print administrator menu method
 	 * @return Choice of administrator
@@ -137,10 +120,6 @@ public class ActionMenu {
 	 * print admin menu
 	 * @return - choice selection
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
-=======
-	 * print admin menu
-	 * @return - choice selection
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/ActionMenu.java
 	 */
 	public int admin_menu() {
 		Scanner sc = new Scanner(System.in);

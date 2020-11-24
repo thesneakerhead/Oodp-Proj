@@ -13,21 +13,15 @@ import java.util.Set;
 =======
 
 public class CourseDB extends Database {
-<<<<<<< HEAD:Java Workspace/src/STARS_system/courseDB.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseDB.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseDB.java
 /**
  * Course database class
  *
  */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/courseDB.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseDB.java
 public class CourseDB extends Database {
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseDB.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseDB.java
 	/**
 	 * Stores all course code and course pairs
 	 */
@@ -45,22 +39,16 @@ public class CourseDB extends Database {
 	private static String filename = "courseDB.ser";
 
 	public CourseDB() throws IOException, ClassNotFoundException
-<<<<<<< HEAD:Java Workspace/src/STARS_system/courseDB.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseDB.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseDB.java
 	/**
 	 * Course database constructor that read the database and deserialize the objects in courseDB 
 	 * @throws IOException Exception handling
 	 * @throws ClassNotFoundException Class not found exception handling
 	 */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/courseDB.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseDB.java
 	public CourseDB() throws IOException, ClassNotFoundException
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseDB.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseDB.java
 	
 	{
 		 try
@@ -129,25 +117,19 @@ public class CourseDB extends Database {
             System.out.println("IOException is caught"); 
             
         } 
-<<<<<<< HEAD:Java Workspace/src/STARS_system/courseDB.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseDB.java
 	}*/
 	/**
 	 * Get Course object method (get course object from courseCode)
 	 * @param courseCode existing courseCode
 =======
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseDB.java
         
 	}
 
 	/**
 	 * get course object from courseCode
 	 * @param courseCode - existing courseCode
-<<<<<<< HEAD:Java Workspace/src/STARS_system/courseDB.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseDB.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseDB.java
 	 * @return Student
 	 */
 	public static Course getCourseObj(String courseCode)

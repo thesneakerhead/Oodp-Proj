@@ -16,9 +16,6 @@ import java.util.Scanner;
 <<<<<<< HEAD
 =======
 
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 /**
  * Stars Account class
@@ -60,11 +57,7 @@ public class STARSaccount implements Serializable {
 	{
 		this.accountID = accountID;
 <<<<<<< HEAD
-<<<<<<< HEAD
 		this.accountPW = STARSAccMngr.passwordHash(accountPW);
-=======
-		this.accountPW = STARSaccMngr.passwordHash(accountPW);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 		this.accountPW = STARSaccMngr.passwordHash(accountPW);
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
@@ -76,9 +69,6 @@ public class STARSaccount implements Serializable {
 <<<<<<< HEAD
 =======
 	
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * Stars Account constructor
@@ -91,11 +81,7 @@ public class STARSaccount implements Serializable {
 	{
 		this.accountID = accountID;
 <<<<<<< HEAD
-<<<<<<< HEAD
 		this.accountPW = STARSAccMngr.passwordHash(accountPW);
-=======
-		this.accountPW = STARSaccMngr.passwordHash(accountPW);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 		this.accountPW = STARSaccMngr.passwordHash(accountPW);
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
@@ -115,9 +101,6 @@ public class STARSaccount implements Serializable {
 <<<<<<< HEAD
 =======
 	
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * Get account method
@@ -178,11 +161,7 @@ public class STARSaccount implements Serializable {
 		st.append(this.accountPW.trim());
 			
 <<<<<<< HEAD
-<<<<<<< HEAD
 		STARSAccMngr.write(st.toString(),this.isAdmin);
-=======
-		STARSaccMngr.write(st.toString(),this.isAdmin);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 		STARSaccMngr.write(st.toString(),this.isAdmin);
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697

@@ -1,10 +1,17 @@
 package STARS_system;
+<<<<<<< HEAD
+=======
 
 public interface SendNotifications {
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 /**
  * Send notification interface
  *
  */
+<<<<<<< HEAD
+public interface SendNotifications {
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * Login notification
 	 * @param student Student

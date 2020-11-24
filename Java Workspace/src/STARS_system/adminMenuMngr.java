@@ -11,33 +11,24 @@ import java.util.Scanner;
 
 public class AdminMenuMngr {
 	public AdminMenuMngr(int choice) throws IOException, ClassNotFoundException
-<<<<<<< HEAD:Java Workspace/src/STARS_system/adminMenuMngr.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/AdminMenuMngr.java
 /**
  * Administrator Menu Manager class
  *
  */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/adminMenuMngr.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/AdminMenuMngr.java
 public class AdminMenuMngr {
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/AdminMenuMngr.java
 	/**
 	 * Administrator menu manager constructor (do functions based on user's selection)
 	 * @param choice - choice selection
 	 * @throws IOException Exception handling
 	 */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/adminMenuMngr.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/AdminMenuMngr.java
 	public AdminMenuMngr(int choice) throws IOException, ClassNotFoundException
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/AdminMenuMngr.java
 	{
 		switch(choice)
 		{
@@ -380,15 +371,12 @@ public class AdminMenuMngr {
 	 */
 	private void deleteStudent() throws IOException, ClassNotFoundException {
 		RegisteredCourses regCourses = new RegisteredCourses();
-<<<<<<< HEAD:Java Workspace/src/STARS_system/adminMenuMngr.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/AdminMenuMngr.java
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the matriculation number of the student you want to delete:");
 		String matricNo = sc.nextLine();
 		STARSAccMngr.deleteAcc(matricNo, false);
 =======
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/AdminMenuMngr.java
 	/**
 	 * Delete existing student method
 	 * @throws IOException Exception handling
@@ -397,10 +385,7 @@ public class AdminMenuMngr {
 		System.out.println("Enter the matriculation number of the student you want to delete:");
 		String matricNo = sc.nextLine();
 		STARSaccMngr.deleteAcc(matricNo, false);
-<<<<<<< HEAD:Java Workspace/src/STARS_system/adminMenuMngr.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/AdminMenuMngr.java
 		STARSApp.studentDB.deleteFromDB(matricNo);
 		CourseDB.deleteStudentFromIndex(matricNo);
 		regCourses.deleteFromDB(matricNo);

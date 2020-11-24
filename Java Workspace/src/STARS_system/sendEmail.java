@@ -8,27 +8,19 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/sendEmail.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/SendEmail.java
 =======
 
 public class SendEmail implements SendNotifications {
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/sendEmail.java
-=======
-
-public class SendEmail implements SendNotifications {
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/SendEmail.java
 /**
  * Send email class
  *
  */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/sendEmail.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/SendEmail.java
 public class SendEmail implements SendNotifications {
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/sendEmail.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/SendEmail.java
 	/**
 	 * Login notification method
 	 */
@@ -120,10 +112,7 @@ public class SendEmail implements SendNotifications {
 <<<<<<< HEAD:Java Workspace/src/STARS_system/SendEmail.java
 =======
 		
-<<<<<<< HEAD:Java Workspace/src/STARS_system/sendEmail.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/sendEmail.java
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/SendEmail.java
 	/**
 	 * Notification for waiting list
 	 */

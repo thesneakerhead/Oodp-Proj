@@ -14,19 +14,13 @@ import java.util.Scanner;
 =======
 
 public class STARSaccMngr {
-<<<<<<< HEAD:Java Workspace/src/STARS_system/starsaccMngr.java
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
 /**
  * Stars account manager class
  *
  */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/starsaccMngr.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/STARSAccMngr.java
 public class STARSAccMngr {
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
 	/**
@@ -136,9 +130,6 @@ public class STARSAccMngr {
 <<<<<<< HEAD:Java Workspace/src/STARS_system/STARSAccMngr.java
 =======
 	
-<<<<<<< HEAD:Java Workspace/src/STARS_system/starsaccMngr.java
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
 	/**
 	 * Edit password method

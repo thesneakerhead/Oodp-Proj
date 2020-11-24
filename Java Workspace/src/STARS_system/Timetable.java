@@ -4,9 +4,6 @@ import java.util.ArrayList;
 <<<<<<< HEAD
 =======
 
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 /**
  * Timetable class
@@ -20,9 +17,6 @@ public class Timetable {
 <<<<<<< HEAD
 =======
 	
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * Construct timetable
@@ -40,9 +34,6 @@ public class Timetable {
 =======
 	
 	  public boolean checkClash(ArrayList<CourseIndex>studentIndexes,CourseIndex newIndex)
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * Check if indexes clash
@@ -50,10 +41,7 @@ public class Timetable {
 	 * @param newIndex Index to check
 	 */
 <<<<<<< HEAD
-<<<<<<< HEAD
 	  public boolean checkClash(ArrayList<courseIndex>studentIndexes,courseIndex newIndex)
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	  {
@@ -89,9 +77,6 @@ public class Timetable {
 =======
 	  
 	  public boolean checkLessonClash(ArrayList<Lesson>lessonList, Lesson newLesson)
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	  /**
 	   * Check for lesson clash
@@ -99,10 +84,7 @@ public class Timetable {
 	   * @param newLesson New lesson to check
 	   */
 <<<<<<< HEAD
-<<<<<<< HEAD
 	  public boolean checkLessonClash(ArrayList<lesson>lessonList, lesson newLesson)
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	  {
@@ -124,9 +106,6 @@ public class Timetable {
 <<<<<<< HEAD
 =======
 	  
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	  /**
 	   * Add lesson method
@@ -174,9 +153,6 @@ public class Timetable {
 		 * @param timeEnd End time
 		 * @param day Day
 		 */
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	  public boolean addSlot(String nameOfCourse,String classType,int timeStart,int timeEnd,int day)
 	  {
@@ -208,9 +184,6 @@ public class Timetable {
 	  /**
 		 * Print time table method
 		 */
-<<<<<<< HEAD
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	public void printTimetable()
 	{
