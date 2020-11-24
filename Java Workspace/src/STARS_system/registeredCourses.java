@@ -10,12 +10,40 @@ import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Set;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
+=======
 
-public class registeredCourses extends Database implements Serializable {
+public class RegisteredCourses extends Database implements Serializable {
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
+/**
+ * Registered courses class
+ *
+ */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
+public class RegisteredCourses extends Database implements Serializable {
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
+	/**
+	 * Stores all registered courses
+	 */
 	public static Dictionary registerDict;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
+=======
 
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
+	/**
+	 * File name
+	 */
 	private static String filename = "registeredCourses.ser";
-	public registeredCourses() throws IOException, ClassNotFoundException
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
+	/**
+	 * Registered courses constructor
+	 * @throws IOException Exception handling
+	 * @throws ClassNotFoundException Class not found exception handling
+	 */
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
+	public RegisteredCourses() throws IOException, ClassNotFoundException
 	
 	{
 		 try
@@ -54,20 +82,36 @@ public class registeredCourses extends Database implements Serializable {
 	            System.out.println("ClassNotFoundException is caught"); 
 	        } 
 	}
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
+=======
 
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
+	/**
+	 * Method to register index
+	 * @param matricNo Method to register index
+	 * @param courseCode Course code
+	 * @param courseindex Course index
+	 * @param isWaitlist Check if on wait list
+	 */
 	public static void registerIndex(String matricNo, String courseCode,String courseindex,boolean isWaitlist)
 	{
-		ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registerDict.get(matricNo);
+		ArrayList<CourseIndex> indexList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
 		if (indexList == null)
 		{
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 			ArrayList<courseIndex> newindexList = new ArrayList<courseIndex>();
-			Course course = courseDB.getCourseObj(courseCode);
+			Course course = CourseDB.getCourseObj(courseCode);
 			courseIndex cindex = course.getIndex(courseindex);
+=======
+			ArrayList<CourseIndex> newindexList = new ArrayList<CourseIndex>();
+			Course course = CourseDB.getCourseObj(courseCode);
+			CourseIndex cindex = course.getIndex(courseindex);
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
 			newindexList.add(cindex);
 			if (isWaitlist == true)
 			{
 			registerDict.put(matricNo, newindexList);
-			courseIndex cdex = newindexList.get(0);
+			CourseIndex cdex = newindexList.get(0);
 			cdex.isWaitList = true;
 			
 			}
@@ -77,8 +121,12 @@ public class registeredCourses extends Database implements Serializable {
 			
 		}
 		else {
-			Course course = courseDB.getCourseObj(courseCode);
+			Course course = CourseDB.getCourseObj(courseCode);
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 			courseIndex cindex = course.getIndex(courseindex);
+=======
+			CourseIndex cindex = course.getIndex(courseindex);
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
 			indexList.add(cindex);
 			if (isWaitlist==true)
 			{
@@ -97,6 +145,10 @@ public class registeredCourses extends Database implements Serializable {
 		}
 		
 	}
+	/**
+	 * Serialize Register Dictionary method
+	 * @param registerDict Register Dictionary
+	 */
 	/*public static void serializeRegisterDict(Dictionary registerDict)
 	{
 		 
@@ -125,28 +177,72 @@ public class registeredCourses extends Database implements Serializable {
         } 
 	}*/
 	public void addToDB(String key, Object object) {}
+	/**
+	 * Remove student index method
+	 * @param matricNo Student matric number
+	 */
 	public void deleteFromDB(String matricNo)
+	/**
+	 * Remove student index method
+	 * @param matricNo Student matric number
+	 */
 	{
 		registerDict.remove(matricNo);
 	}
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
+=======
+	public static ArrayList<CourseIndex> getIndexes(String matricNo)
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
+	/**
+	 * Get indexes method
+	 * @param matricNo Matriculation number of student
+	 * @return Array of course index
+	 */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
 	public static ArrayList<courseIndex> getIndexes(String matricNo)
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
 	{
-		return (ArrayList<courseIndex>)registerDict.get(matricNo);
+		return (ArrayList<CourseIndex>)registerDict.get(matricNo);
 	}
 	public void printDB() {}
+	/**
+	 * Print database method
+	 * @param matricNo Matriculation number
+	 */
 	public void printDB(String matricNo)
 	{
-		ArrayList<courseIndex>arrayList = (ArrayList<courseIndex>)registerDict.get(matricNo);
+		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
 		for (int i = 0;i<arrayList.size();i++)
 		{
 			System.out.println(arrayList.get(i).indexID);
 		}
 	}
+	/**
+	 * Print registered indexes method
+	 * @param matricNo Matriculation number of student
+	 */
+	public void printRegisteredIndexes(String matricNo)
+	{
+<<<<<<< HEAD:Java Workspace/src/STARS_system/RegisteredCourses.java
+		ArrayList<courseIndex>arrayList = (ArrayList<courseIndex>)registerDict.get(matricNo);
+=======
+		ArrayList<CourseIndex>arrayList = (ArrayList<CourseIndex>)registerDict.get(matricNo);
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/registeredCourses.java
+		for (int i = 0;i<arrayList.size();i++)
+		{
+			System.out.println(arrayList.get(i).indexID);
+		}
+	}
+	/**
+	 * Delete index from course method
+	 * @param courseCode courseCode
+	 */
 	public static void deleteIndexFromCourse(String courseCode)
 	{
 		Set<String> keys = ((Hashtable) registerDict).keySet();
         for(String key: keys){
-        	ArrayList<courseIndex> tempList = (ArrayList<courseIndex>)registerDict.get(key);
+        	ArrayList<CourseIndex> tempList = (ArrayList<CourseIndex>)registerDict.get(key);
         	for (int i=0;i<tempList.size();i++)
         	{
         		if(tempList.get(i).courseCode.equals(courseCode))
@@ -158,11 +254,15 @@ public class registeredCourses extends Database implements Serializable {
         	
         }
 	}
+	/**
+	 * Delete index method
+	 * @param indexID indexID
+	 */
 	public static void deleteIndex(String indexID)
 	{
 		Set<String> keys = ((Hashtable) registerDict).keySet();
         for(String key: keys){
-        	ArrayList<courseIndex> tempList = (ArrayList<courseIndex>)registerDict.get(key);
+        	ArrayList<CourseIndex> tempList = (ArrayList<CourseIndex>)registerDict.get(key);
         	for (int i=0;i<tempList.size();i++)
         	{
         		if(tempList.get(i).indexID.equals(indexID))

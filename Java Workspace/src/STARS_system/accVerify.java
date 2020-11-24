@@ -8,18 +8,44 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 
-public class accVerify {
+<<<<<<< HEAD:Java Workspace/src/STARS_system/AccVerify.java
+=======
+public class AccVerify {
 	
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/accVerify.java
+/**
+ * Account Verify class
+ *
+ */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/AccVerify.java
+public class AccVerify {
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/accVerify.java
+		/**
+		 * Stores all username and password pairs
+		 */
 		private static Dictionary verify; //stores all username/password pairs
-		public accVerify(boolean isAdmin) throws IOException
+<<<<<<< HEAD:Java Workspace/src/STARS_system/AccVerify.java
+=======
+		public AccVerify(boolean isAdmin) throws IOException
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/accVerify.java
+		/**
+		 * Account verify constructor (verify login details for Student/Administrator)
+		 * @param isAdmin Check is user is administrator
+		 * @throws IOException Exception handling
+		 */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/AccVerify.java
+		public AccVerify(boolean isAdmin) throws IOException
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/accVerify.java
 		{
 			String accDB;
 			if (isAdmin == true)
 			{
-				accDB = usrnamePwFILE.getAdminFilename();
+				accDB = UsrnamePwFILE.getAdminFilename();
 			}
 			else {
-				accDB = usrnamePwFILE.getStudentFilename();
+				accDB = UsrnamePwFILE.getStudentFilename();
 			}
 			Dictionary verify = new Hashtable();
 			
@@ -31,10 +57,26 @@ public class accVerify {
 				}
 				this.verify = verify;
 		}
+		/**
+<<<<<<< HEAD:Java Workspace/src/STARS_system/AccVerify.java
+		 * Verification method (verify username and password are in the database)
+		 * @param username - Administrator/Student username
+		 * @param password - Administrator/Student password
+=======
+		 * verify username and password are in the database
+		 * @param username - Admin/Student username
+		 * @param password - Admin/Student password
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/accVerify.java
+		 * @return - verified
+		 */
 		public static boolean verification(String username,String password)
 		{
 			String dbPassword = (String)verify.get(username);
-			String temppw = starsaccMngr.passwordHash(password);
+<<<<<<< HEAD:Java Workspace/src/STARS_system/AccVerify.java
+			String temppw = STARSAccMngr.passwordHash(password);
+=======
+			String temppw = STARSaccMngr.passwordHash(password);
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/accVerify.java
 			if(temppw.equals(dbPassword))
 			{
 				return true;
@@ -42,6 +84,16 @@ public class accVerify {
 			else {
 			return false;}
 		}
+		/**
+<<<<<<< HEAD:Java Workspace/src/STARS_system/AccVerify.java
+		 * Read database method (read the student/admin database filled with the username and passwords)
+=======
+		 * read the student/admin database filled with the username and passwords
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/accVerify.java
+		 * @param fileName - aLoginDB.txt or sLoginDB.txt
+		 * @return - list of username and passwords
+		 * @throws IOException Exception handling
+		 */
 		public static List readDB(String fileName) throws IOException {
 			List data = new ArrayList();
 			

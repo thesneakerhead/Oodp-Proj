@@ -3,17 +3,68 @@ package STARS_system;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+=======
 
+public class CourseIndex implements Serializable {
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+/**
+ * Course index class
+ *
+ */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 public class courseIndex implements Serializable {
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+	/**
+	 * Index id
+	 */
 	public String indexID;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+	/**
+	 * Array list for lessons
+	 */
 	public ArrayList<lesson> lessonList;
+=======
+	public ArrayList<Lesson> lessonList;
+	/**
+	 * Array list for lessons
+	 */
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+	/**
+	 * Vacancy for index
+	 */
 	public int indexVacancy;
+	/**
+	 * Student list
+	 */
 	public ArrayList<Student> studentList;
+	/**
+	 * Wait list
+	 */
 	public ArrayList<Student> waitList;
+	/**
+	 * Course code
+	 */
 	public String courseCode;
+	/**
+	 * Check if on waiting list
+	 */
 	public boolean isWaitList;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+=======
 	
+	public CourseIndex(String indexID,String courseCode)
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+	/**
+	 * Constructor for courseIndex
+	 * @param indexID - user's given indexID
+	 * @param courseCode - user's given courseCode
+	 */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 	public courseIndex(String indexID,String courseCode)
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
 	{
 		this.courseCode = courseCode;
 		Scanner sc = new Scanner(System.in);
@@ -25,13 +76,25 @@ public class courseIndex implements Serializable {
 		this.waitList = new ArrayList<Student>();
 		this.isWaitList = false;
 	}
-	
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+	/**
+	  * Add lessons to a courseIndex
+	  * @return Array list of lessons
+	  */
 	public static ArrayList<lesson> addLessons()
+=======
+	
+	public static ArrayList<Lesson> addLessons()
+	/**
+	  * add lessons to a courseIndex
+	  * @return - arraylist of lessons
+	  */
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
 	  {
 		Boolean clash=false;
 		Timetable timetable = new Timetable();
 		int startTime=0,endTime=0,Day=0;
-	    ArrayList<lesson> lessonList = new ArrayList<lesson>();
+	    ArrayList<Lesson> lessonList = new ArrayList<Lesson>();
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println("No. of lectures per week:");
 	    int numLectures = sc.nextInt();
@@ -67,7 +130,7 @@ public class courseIndex implements Serializable {
 			    Day = sc.nextInt();
 			}while(Day<1||Day>5);
 	      	
-	      lesson lesson = new lesson("LEC", Day, startTime, endTime);
+	      Lesson lesson = new Lesson("LEC", Day, startTime, endTime);
 	      clash = timetable.checkLessonClash(lessonList, lesson);
 	      if(clash)
 	    	  lessonList.add(lesson);
@@ -112,7 +175,7 @@ public class courseIndex implements Serializable {
 			    Day = sc.nextInt();
 			}while(Day<1||Day>5);
 	      	
-	      	lesson lesson = new lesson("TUT",Day, startTime, endTime);
+	      	Lesson lesson = new Lesson("TUT",Day, startTime, endTime);
 	      	clash = timetable.checkLessonClash(lessonList, lesson);
 		      if(clash)
 		      {
@@ -158,7 +221,7 @@ public class courseIndex implements Serializable {
 			    }
 			    Day = sc.nextInt();
 			}while(Day<1||Day>5);
-	      lesson lesson = new lesson("LAB",Day, startTime, endTime);
+	      Lesson lesson = new Lesson("LAB",Day, startTime, endTime);
 	      clash = timetable.checkLessonClash(lessonList, lesson);
 	      if(clash)
 	      {
@@ -171,15 +234,34 @@ public class courseIndex implements Serializable {
 	    }
 	    return lessonList;    
 	}
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+	/**
+	 * Add a student to a courseIndex 	
+=======
 	
+	/**
+	 * add a student to a courseIndex 	
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+	 */
 	public void addStudent(Student student){
 		studentList.add(student);
 	}
+	/**
+	 * Add student to waitlist method
+	 * @param student student to add
+	 */
 	public void addToWaitlist(Student student)
 	{
 		waitList.add(student);
 	}
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+=======
 	
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+	/**
+	 * Remove student from waitlist method
+	 * @param student student to remove
+	 */
 	public void removeFromWaitlist(Student student)
 	{
 		int oSize = waitList.size();
@@ -196,6 +278,15 @@ public class courseIndex implements Serializable {
 			System.out.println("Student not in waitlist");
 		}
 	}
+	/**
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+	 * Remove student from a courseIndex
+	 * @param student student who is registered in the courseIndex
+=======
+	 * remove student from a courseIndex
+	 * @param student - student who is registered in the courseIndex
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+	 */
 	public void removeStudent(Student student){
 		int oSize = studentList.size();
 		for(int i = 0;i<studentList.size();i++)
@@ -211,6 +302,9 @@ public class courseIndex implements Serializable {
 			System.out.println("Student not registered in this course!");
 		}
 	}
+	/**
+	 * Print student list method
+	 */
 	public void printStudentList()
 	{
 		
@@ -219,6 +313,9 @@ public class courseIndex implements Serializable {
 			System.out.println(studentList.get(i).getMatricNo()+ " "+studentList.get(i).getName());
 		}
 	}
+	/**
+	 * Print wait list method
+	 */
 	public void printWaitList()
 	{
 		
@@ -227,10 +324,17 @@ public class courseIndex implements Serializable {
 			System.out.println(waitList.get(i).getMatricNo()+ " "+waitList.get(i).getName());
 		}
 	}
+	/**
+	 * Dequeue student method
+	 */
 	public void dequeueStudent()
 	{
 		Student student = waitList.get(0);
-		ArrayList<courseIndex> indexList = registeredCourses.getIndexes(student.getMatricNo());
+<<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
+		ArrayList<courseIndex> indexList = RegisteredCourses.getIndexes(student.getMatricNo());
+=======
+		ArrayList<CourseIndex> indexList = RegisteredCourses.getIndexes(student.getMatricNo());
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
 		for (int i =0;i<indexList.size();i++)
 		{
 			if(indexList.get(i).indexID.equals(this.indexID))
@@ -240,7 +344,7 @@ public class courseIndex implements Serializable {
 		}
 		Student tempStudent = StudentDB.getStudentObj(student.getMatricNo());
 		tempStudent.getSaccount().addNotification("You have sucessfully registered for the course: "+this.courseCode+" indexID:"+this.indexID);
-		StarsApp.emailSender.exitWaitingListNotification(tempStudent, this.courseCode, this.indexID);
+		STARSApp.emailSender.exitWaitingListNotification(tempStudent, this.courseCode, this.indexID);
 		waitList.remove(0);
 		studentList.add(student);
 		

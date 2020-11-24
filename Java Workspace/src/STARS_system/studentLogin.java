@@ -2,14 +2,38 @@ package STARS_system;
 
 import java.io.IOException;
 import java.util.Scanner;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentLogin.java
+/**
+ * Student login class
+ *
+ */
+public class StudentLogin extends Login {
+	/**
+	 * Student username
+	 */
+=======
 
-public class studentLogin extends Login {
+public class StudentLogin extends Login {
 
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentLogin.java
 	private String username;
+	/**
+	 * Student password
+	 */
 	private String password;
+	/**
+	 * Current student
+	 */
 	private Student currentStudent;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentLogin.java
+	/**
+	 * Student login constructor
+	 * @throws IOException Exception handling
+	 */
+=======
 	
-	public studentLogin()throws IOException
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentLogin.java
+	public StudentLogin()throws IOException
 	{
 		Boolean valid = false;
 		while(valid == false)
@@ -19,14 +43,15 @@ public class studentLogin extends Login {
 			this.password = super.getPassword();
 			valid = systemLogin(this.username,this.password);
 		}
-		
-		
-		
+	
 	}
+	/**
+	 * System login method (check whether username and password entered are correct)
+	 */
 	public Boolean systemLogin(String username, String password) throws IOException
 	{
 		Scanner sc = new Scanner(System.in);
-		accVerify verifier = new accVerify(false);
+		AccVerify verifier = new AccVerify(false);
 				
 		if (verifier.verification(username, password)==true) 			
 			return true;
@@ -38,12 +63,15 @@ public class studentLogin extends Login {
 			String again= sc.nextLine();
 			if(again.equals("n"))
 			{
-				StarsApp.terminate();
+				STARSApp.terminate();
 			}
 			return false;
 		}
 	}
-
+	/**
+	 * Get student method
+	 * @return Current student
+	 */
 	public Student getStudent()
 	{
 		String matricNo = this.username;

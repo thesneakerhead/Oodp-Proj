@@ -8,8 +8,22 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/SendEmail.java
+=======
 
-public class sendEmail implements sendNotifications {
+public class SendEmail implements SendNotifications {
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/sendEmail.java
+/**
+ * Send email class
+ *
+ */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/SendEmail.java
+public class SendEmail implements SendNotifications {
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/sendEmail.java
+	/**
+	 * Login notification method
+	 */
 	public void loginNotification(Student student)
 	{
 		
@@ -52,6 +66,9 @@ public class sendEmail implements sendNotifications {
 		
 		
 	}
+	/**
+	 * Register Course Index notification
+	 */
 	public void courseIndexRegNotification(Student student,String courseCode,String courseIndex)
 	{
 	
@@ -92,7 +109,13 @@ public class sendEmail implements sendNotifications {
 				throw new RuntimeException(e);
 			}
 		}
+<<<<<<< HEAD:Java Workspace/src/STARS_system/SendEmail.java
+=======
 		
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/sendEmail.java
+	/**
+	 * Notification for waiting list
+	 */
 	public void waitingListNotification(Student student,String courseCode,String courseIndex)
 	{
 	
@@ -133,6 +156,9 @@ public class sendEmail implements sendNotifications {
 				throw new RuntimeException(e);
 			}
 		}
+	/**
+	 * Notification for exit waiting list
+	 */
 	public void exitWaitingListNotification(Student student,String courseCode,String courseIndex)
 	{
 	

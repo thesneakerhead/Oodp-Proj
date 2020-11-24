@@ -6,12 +6,35 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class actionMenu {
-	public actionMenu(String loginType, Student currentStudent) throws IOException
+<<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
+=======
+public class ActionMenu {
+	public ActionMenu(String loginType, Student currentStudent) throws IOException
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
+/**
+ * Action menu class
+ *
+ */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
+public class ActionMenu {
+	/**
+	 * Action menu constructor (choose to login as Administrator or Student)
+	 * @param loginType Student type
+	 * @param currentStudent Current student
+	 * @throws IOException Exception handling
+	 */
+	public ActionMenu(String loginType, Student currentStudent) throws IOException
+=======
+	/**
+	 * Action menu constructor (choose to login as Administrator or Student)
+	 * @param login - Administrator/Student login
+	 * @throws IOException Exception handling
+	 */
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
 	{
 		if (loginType == "Student")
 		{
-			StarsApp.emailSender.loginNotification(currentStudent);
+			STARSApp.emailSender.loginNotification(currentStudent);
 			currentStudent.getSaccount().printNotifications();
 			int choice = 0;
 			while(true) {
@@ -20,12 +43,12 @@ public class actionMenu {
 				choice = student_menu();}
 				
 				catch (Exception e)
-				{ StarsApp.terminate();}
+				{ STARSApp.terminate();}
 				
 				try {
-					new studentMenuMngr(choice,currentStudent);	
+					new StudentMenuMngr(choice,currentStudent);	
 				} catch (Exception e) {
-					StarsApp.terminate();
+					STARSApp.terminate();
 				}
 				
 				
@@ -42,12 +65,12 @@ public class actionMenu {
 				choice = admin_menu();}
 				
 				catch (Exception e)
-				{ StarsApp.terminate();}
+				{ STARSApp.terminate();}
 				
 				try {
-					new adminMenuMngr(choice);	
+					new AdminMenuMngr(choice);	
 				} catch (Exception e) {
-					StarsApp.terminate();
+					STARSApp.terminate();
 				}
 				
 				
@@ -63,6 +86,15 @@ public class actionMenu {
 		}
 		
 	}
+	/**
+<<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
+	 * Print student menu method
+	 * @return Choice of student
+=======
+	 * print student menu
+	 * @return - choice selection
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
+	 */
 	public int student_menu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -80,6 +112,15 @@ public class actionMenu {
 		int Choice = sc.nextInt();
 		return Choice;
 	}
+	/**
+<<<<<<< HEAD:Java Workspace/src/STARS_system/ActionMenu.java
+	 * Print administrator menu method
+	 * @return Choice of administrator
+=======
+	 * print admin menu
+	 * @return - choice selection
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/actionMenu.java
+	 */
 	public int admin_menu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
