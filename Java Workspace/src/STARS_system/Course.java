@@ -8,6 +8,9 @@ import java.util.Dictionary;
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
+=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 /**
  * Course class
@@ -27,6 +30,7 @@ public class Course implements Serializable{
 	 */
 	private Department department;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/**
 	 * Course indexes
 	 */
@@ -34,12 +38,17 @@ public class Course implements Serializable{
 	/**
 	 * Number of course indexes
 =======
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	public  CourseIndex courseIndex[]=new CourseIndex[20];
 	/**
 	 * Course index
 	 */
 	/**
 	 * Index number
+<<<<<<< HEAD
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
+=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	 */
 	public  int numIndex=0;
@@ -62,7 +71,11 @@ public class Course implements Serializable{
 	 */
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
+=======
+		CourseDB CourseDB = new CourseDB();
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 		CourseDB CourseDB = new CourseDB();
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
@@ -93,6 +106,10 @@ public class Course implements Serializable{
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	public CourseIndex getIndex(String indexID)
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 	public CourseIndex getIndex(String indexID)
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
@@ -102,7 +119,10 @@ public class Course implements Serializable{
 	 * @return - courseIndex
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public courseIndex getIndex(String indexID)
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	{

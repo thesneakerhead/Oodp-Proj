@@ -7,30 +7,42 @@ import java.util.Scanner;
 =======
 
 public class CourseIndex implements Serializable {
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 /**
  * Course index class
  *
  */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 public class courseIndex implements Serializable {
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	/**
 	 * Index id
 	 */
 	public String indexID;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 	/**
 	 * Array list for lessons
 	 */
 	public ArrayList<lesson> lessonList;
 =======
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	public ArrayList<Lesson> lessonList;
 	/**
 	 * Array list for lessons
 	 */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	/**
 	 * Vacancy for index
 	 */
@@ -55,16 +67,22 @@ public class courseIndex implements Serializable {
 =======
 	
 	public CourseIndex(String indexID,String courseCode)
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	/**
 	 * Constructor for courseIndex
 	 * @param indexID - user's given indexID
 	 * @param courseCode - user's given courseCode
 	 */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 	public courseIndex(String indexID,String courseCode)
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	{
 		this.courseCode = courseCode;
 		Scanner sc = new Scanner(System.in);
@@ -76,6 +94,7 @@ public class courseIndex implements Serializable {
 		this.waitList = new ArrayList<Student>();
 		this.isWaitList = false;
 	}
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 	/**
 	  * Add lessons to a courseIndex
@@ -83,13 +102,18 @@ public class courseIndex implements Serializable {
 	  */
 	public static ArrayList<lesson> addLessons()
 =======
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	
 	public static ArrayList<Lesson> addLessons()
 	/**
 	  * add lessons to a courseIndex
 	  * @return - arraylist of lessons
 	  */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	  {
 		Boolean clash=false;
 		Timetable timetable = new Timetable();
@@ -241,7 +265,10 @@ public class courseIndex implements Serializable {
 	
 	/**
 	 * add a student to a courseIndex 	
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	 */
 	public void addStudent(Student student){
 		studentList.add(student);
@@ -257,7 +284,10 @@ public class courseIndex implements Serializable {
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 =======
 	
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	/**
 	 * Remove student from waitlist method
 	 * @param student student to remove
@@ -279,6 +309,7 @@ public class courseIndex implements Serializable {
 		}
 	}
 	/**
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 	 * Remove student from a courseIndex
 	 * @param student student who is registered in the courseIndex
@@ -286,6 +317,10 @@ public class courseIndex implements Serializable {
 	 * remove student from a courseIndex
 	 * @param student - student who is registered in the courseIndex
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+	 * remove student from a courseIndex
+	 * @param student - student who is registered in the courseIndex
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 	 */
 	public void removeStudent(Student student){
 		int oSize = studentList.size();
@@ -330,11 +365,15 @@ public class courseIndex implements Serializable {
 	public void dequeueStudent()
 	{
 		Student student = waitList.get(0);
+<<<<<<< HEAD:Java Workspace/src/STARS_system/courseIndex.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/CourseIndex.java
 		ArrayList<courseIndex> indexList = RegisteredCourses.getIndexes(student.getMatricNo());
 =======
 		ArrayList<CourseIndex> indexList = RegisteredCourses.getIndexes(student.getMatricNo());
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/courseIndex.java
+=======
+		ArrayList<CourseIndex> indexList = RegisteredCourses.getIndexes(student.getMatricNo());
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/CourseIndex.java
 		for (int i =0;i<indexList.size();i++)
 		{
 			if(indexList.get(i).indexID.equals(this.indexID))

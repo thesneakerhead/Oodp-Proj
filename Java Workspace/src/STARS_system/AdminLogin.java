@@ -9,7 +9,10 @@ import java.util.Scanner;
  */
 =======
 
+<<<<<<< HEAD:Java Workspace/src/STARS_system/adminLogin.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminLogin.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/AdminLogin.java
 public class AdminLogin extends Login 
 {
 	/**
@@ -27,7 +30,10 @@ public class AdminLogin extends Login
 	 */
 =======
 
+<<<<<<< HEAD:Java Workspace/src/STARS_system/adminLogin.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminLogin.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/AdminLogin.java
 	public AdminLogin() throws IOException
 	{
 		Boolean valid = false;

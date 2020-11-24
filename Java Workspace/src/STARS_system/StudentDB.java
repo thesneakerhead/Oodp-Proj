@@ -15,11 +15,17 @@ import java.util.Hashtable;
  */
 public class StudentDB extends Database {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 /**
  * Student database class
  *
  */
+<<<<<<< HEAD
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
+=======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 	/**
 	 * Stores all matriculation number and student pairs
@@ -27,9 +33,14 @@ public class StudentDB extends Database {
 	public  static Dictionary studentDB;//stores all matricno Student pairs
 	/**
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * File name of serialized student database
 	 */
 	
+=======
+	 * File name
+	 */
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 	 * File name
 	 */
@@ -104,7 +115,11 @@ public class StudentDB extends Database {
             System.out.println("IOException is caught");    
         } 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}*/
+=======
+	}
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
 =======
 	}
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697

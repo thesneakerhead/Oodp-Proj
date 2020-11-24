@@ -9,7 +9,10 @@ import java.util.Scanner;
 <<<<<<< HEAD:Java Workspace/src/STARS_system/LoginTimeCheck.java
 =======
 
+<<<<<<< HEAD:Java Workspace/src/STARS_system/loginTimeCheck.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/loginTimeCheck.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/LoginTimeCheck.java
 public class LoginTimeCheck extends StudentLogin
 {
 	/**
@@ -20,6 +23,7 @@ public class LoginTimeCheck extends StudentLogin
 	 * Current student
 	 */
 	private Student currentStudent;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/loginTimeCheck.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/LoginTimeCheck.java
 	/**
 	 * Login time check constructor
@@ -27,6 +31,8 @@ public class LoginTimeCheck extends StudentLogin
 	 */
 =======
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/loginTimeCheck.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/LoginTimeCheck.java
 	public LoginTimeCheck() throws IOException
 	{
 		super();

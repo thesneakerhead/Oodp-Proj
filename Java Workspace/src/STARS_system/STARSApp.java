@@ -25,11 +25,15 @@ public class STARSApp {
 	/**
 	 * Student database
 	 */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/StarsApp.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/StarsApp.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSApp.java
 	/**
 	 * Current date
 	 */
 	public static Calendar currentDate;
+<<<<<<< HEAD:Java Workspace/src/STARS_system/StarsApp.java
 <<<<<<< HEAD:Java Workspace/src/STARS_system/STARSApp.java
 	/**
 	 * Course database
@@ -44,6 +48,8 @@ public class STARSApp {
 	 */
 	public static SendEmail emailSender;
 =======
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSApp.java
 	public static CourseDB courseDB;
 	public static RegisteredCourses registeredcourses;
 	public static SendEmail emailSender;
@@ -57,7 +63,10 @@ public class STARSApp {
 	/**
 	 * Send email
 	 */
+<<<<<<< HEAD:Java Workspace/src/STARS_system/StarsApp.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/StarsApp.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSApp.java
 	/**
 	 * Main Method
 	 * @throws ClassNotFoundException Class not found Exception handling
@@ -82,7 +91,10 @@ public class STARSApp {
 <<<<<<< HEAD:Java Workspace/src/STARS_system/STARSApp.java
 =======
 	
+<<<<<<< HEAD:Java Workspace/src/STARS_system/StarsApp.java
 >>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/StarsApp.java
+=======
+>>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSApp.java
 	/**
 	 * Initialize method
 	 * @throws ClassNotFoundException Class not found Exception handling
