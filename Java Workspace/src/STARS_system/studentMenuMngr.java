@@ -4,34 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Scanner;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-=======
 
-public class StudentMenuMngr {
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
-/**
- * 
- * Student Menu Manager Class
- *
- */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-public class StudentMenuMngr {
-	Scanner sc = new Scanner(System.in);
-=======
+public class studentMenuMngr {
 	Scanner sc = new Scanner(System.in);
 	
-	public StudentMenuMngr(int choice,Student student) throws IOException, ClassNotFoundException
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
-	/**
-	 * Student menu manager constructor
-	 * @param choice Choice of function
-	 * @param student Student
-	 * @throws IOException Exception handling
-	 */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-	public StudentMenuMngr(int choice,Student student) throws IOException, ClassNotFoundException
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+	public studentMenuMngr(int choice,Student student) throws IOException, ClassNotFoundException
 	{
 		Student currentStudent = student;
 		switch(choice)
@@ -63,17 +40,8 @@ public class StudentMenuMngr {
 				//	break;
 		}
 	}
-	/**
-	 * Change email and password method
-	 * @param student Student
-	 * @throws IOException Exception handling
-	 */
+	
 	private void changeDetails(Student student) throws IOException, ClassNotFoundException
-	/**
-	 * Change email and password method
-	 * @param student Student
-	 * @throws IOException Exception handling
-	 */
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -94,15 +62,9 @@ public class StudentMenuMngr {
 						if (pw.equals(repw))
 						{
 							
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-							student.getSaccount().setAccountPW(STARSAccMngr.passwordHash(pw));
-							STARSApp.studentDB.addToDB(student.getMatricNo(), student);
-							STARSAccMngr.editPassword(student.getMatricNo(), STARSAccMngr.passwordHash(pw), false);
-=======
-							student.getSaccount().setAccountPW(STARSaccMngr.passwordHash(pw));
-							STARSApp.studentDB.addToDB(student.getMatricNo(), student);
-							STARSaccMngr.editPassword(student.getMatricNo(), STARSaccMngr.passwordHash(pw), false);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+							student.getSaccount().setAccountPW(starsaccMngr.passwordHash(pw));
+							StarsApp.studentDB.addToDB(student.getMatricNo(), student);
+							starsaccMngr.editPassword(student.getMatricNo(), starsaccMngr.passwordHash(pw), false);
 							break;
 						}
 						else {
@@ -134,38 +96,26 @@ public class StudentMenuMngr {
 				        }while(!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")));
 				 student.setEmail(email);
 				 
-				 STARSApp.studentDB.addToDB(student.getMatricNo(), student);
+				 StarsApp.studentDB.addToDB(student.getMatricNo(), student);
 					
 				break;
 		}
 		
 	}
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-=======
 	
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
-	/**
-	 * Swap index method
-	 * @param student1 Student
-	 * @throws IOException Exception handling
-	 */
 	private void swapIndex(Student student1) throws IOException
 	{
 		Boolean firstRegistered=false,secRegistered=false;
 		String course1 = null,course2=null;
 		int i =0,j=0;
-		CourseIndex index1 = null,index2 = null;
+		courseIndex index1 = null,index2 = null;
 		
 		System.out.println("What is your current index number");
 		String stud1Index = sc.next();
 		System.out.println("Student 2 login:");
-		StudentLogin login2 = new StudentLogin();
+		studentLogin login2 = new studentLogin();
 		
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-		ArrayList<courseIndex> indexList1 = (ArrayList<courseIndex>)RegisteredCourses.getIndexes(student1.getMatricNo());
-=======
-		ArrayList<CourseIndex> indexList1 = (ArrayList<CourseIndex>)RegisteredCourses.getIndexes(student1.getMatricNo());
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+		ArrayList<courseIndex> indexList1 = (ArrayList<courseIndex>)registeredCourses.getIndexes(student1.getMatricNo());
 		for(i=0;i<indexList1.size();i++)
 		{
 			index1 = indexList1.get(i);
@@ -182,11 +132,7 @@ public class StudentMenuMngr {
 		System.out.println("What is student 2's index number");
 		String stud2Index = sc.next();
 		
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-		ArrayList<courseIndex> indexList2 = (ArrayList<courseIndex>)RegisteredCourses.getIndexes(student2.getMatricNo());
-=======
-		ArrayList<CourseIndex> indexList2 = (ArrayList<CourseIndex>)RegisteredCourses.getIndexes(student2.getMatricNo());
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+		ArrayList<courseIndex> indexList2 = (ArrayList<courseIndex>)registeredCourses.getIndexes(student2.getMatricNo());
 		for(j=0;j<indexList2.size();j++)
 		{
 			index2 = indexList2.get(j);
@@ -201,14 +147,9 @@ public class StudentMenuMngr {
 		{
 			if(course1.equals(course2))
 			{
-				Course course = CourseDB.getCourseObj(course1);
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
+				Course course = courseDB.getCourseObj(course1);
 				courseIndex cIndex1 = course.getIndex(stud1Index);
 				courseIndex cIndex2 = course.getIndex(stud2Index);
-=======
-				CourseIndex cIndex1 = course.getIndex(stud1Index);
-				CourseIndex cIndex2 = course.getIndex(stud2Index);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
 				String[] DAY = new String[] {"","M","T","W","TH","F"};
 		        System.out.println("Current index: "+stud1Index);
 		        System.out.println("Lesson:\tDay:\tST(hr):\tET(hr):");
@@ -216,7 +157,7 @@ public class StudentMenuMngr {
 		        for(int l=0;l<cIndex1.lessonList.size();l++)
 		        {
 		            
-		            Lesson les =cIndex1.lessonList.get(l);
+		            lesson les =cIndex1.lessonList.get(l);
 		            
 		            System.out.println(les.getLesType()+"\t "+DAY[les.getLesday()]+"\t "+les.getLesST()+"\t "+les.getLesET());
 		        }
@@ -225,7 +166,7 @@ public class StudentMenuMngr {
 		        System.out.println("Lesson:\tDay:\tST(hr):\tET(hr):");
 		        for(int nl=0;nl<cIndex2.lessonList.size();nl++)
 		        {
-		            Lesson nles = cIndex2.lessonList.get(nl);
+		            lesson nles = cIndex2.lessonList.get(nl);
 		            System.out.println(nles.getLesType()+"\t "+DAY[nles.getLesday()]+"\t "+nles.getLesST()+"\t "+nles.getLesET());
 		        }
 		        System.out.println("(Y) to confirm change, any other key to cancel");
@@ -251,15 +192,7 @@ public class StudentMenuMngr {
 			System.out.println("1 or both of the indexes have not been registered by the students");
 		
 	}
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-=======
 	
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
-	/**
-	 * Change index method
-	 * @param student Student
-	 * @throws IOException Exception handling
-	 */
 	private void changeIndex (Student student) throws IOException
     {
     Boolean curWaitlist = false;
@@ -270,11 +203,7 @@ public class StudentMenuMngr {
       String newIndex = sc.next();
       String coursecode = null;
       int counter = 0;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-      ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)RegisteredCourses.getIndexes(student.getMatricNo());
-=======
-      ArrayList<CourseIndex> indexList = (ArrayList<CourseIndex>)RegisteredCourses.getIndexes(student.getMatricNo());
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+      ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(student.getMatricNo());
 
       for(int i=0;i<indexList.size();i++)
       {
@@ -292,14 +221,9 @@ public class StudentMenuMngr {
           return;
         }
       }
-      Course indexCourse = CourseDB.getCourseObj(coursecode);
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
+      Course indexCourse = courseDB.getCourseObj(coursecode);
       courseIndex newCourseIndex = indexCourse.getIndex(newIndex);
       courseIndex curCourseIndex = indexCourse.getIndex(curIndex);
-=======
-      CourseIndex newCourseIndex = indexCourse.getIndex(newIndex);
-      CourseIndex curCourseIndex = indexCourse.getIndex(curIndex);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
       if(newCourseIndex == null)
       {
         System.out.println("New index is not part of the course "+coursecode);
@@ -314,7 +238,7 @@ public class StudentMenuMngr {
           for(int l=0;l<curCourseIndex.lessonList.size();l++)
           {
             
-            Lesson les =curCourseIndex.lessonList.get(l);
+            lesson les =curCourseIndex.lessonList.get(l);
             
             System.out.println(les.getLesType()+"\t "+DAY[les.getLesday()]+"\t "+les.getLesST()+"\t "+les.getLesET());
           }
@@ -323,7 +247,7 @@ public class StudentMenuMngr {
           System.out.println("Lesson:\tDay:\tST(hr):\tET(hr):");
           for(int nl=0;nl<newCourseIndex.lessonList.size();nl++)
           {
-            Lesson nles = newCourseIndex.lessonList.get(nl);
+            lesson nles = newCourseIndex.lessonList.get(nl);
             System.out.println(nles.getLesType()+"\t "+DAY[nles.getLesday()]+"\t "+nles.getLesST()+"\t "+nles.getLesET());
           }
           int vacancy = newCourseIndex.indexVacancy;
@@ -348,7 +272,7 @@ public class StudentMenuMngr {
               }
               else {
             	  
-                RegisteredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);   
+                registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);   
                 newCourseIndex.addStudent(student);
                 curCourseIndex.removeStudent(student);
                 System.out.println("Index Changed to "+newIndex);
@@ -375,7 +299,7 @@ public class StudentMenuMngr {
                   }
                   else 
                   {
-                      RegisteredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
+                      registeredCourses.registerIndex(student.getMatricNo(),coursecode,newIndex,false);
                       
                       newCourseIndex.addStudent(student);
                       curCourseIndex.removeFromWaitlist(student);
@@ -391,7 +315,7 @@ public class StudentMenuMngr {
                 if(confirm.equals("y")||confirm.equals("Y"))
                 {  
                 	indexList.remove(curCourseIndex);
-                	RegisteredCourses.registerIndex(student.getMatricNo(),curCourseIndex.courseCode,newIndex,true);
+                	registeredCourses.registerIndex(student.getMatricNo(),curCourseIndex.courseCode,newIndex,true);
                 	newCourseIndex.addToWaitlist(student);
                 }
             }
@@ -407,30 +331,26 @@ public class StudentMenuMngr {
 	  printCourse(student);
 	  String matricNo=student.getMatricNo();
 	  Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)RegisteredCourses.getIndexes(matricNo);
-=======
-	  ArrayList<CourseIndex> indexList = (ArrayList<CourseIndex>)RegisteredCourses.getIndexes(matricNo);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
 	  if(indexList==null||indexList.size()==0)
 		  return;
 	  
 	  System.out.println("Enter course code you would like to drop:");
 	  String courseToDrop = sc.nextLine();
-	  Course course = CourseDB.getCourseObj(courseToDrop);
+	  Course course = courseDB.getCourseObj(courseToDrop);
 	  while(course == null)
 	  { 			 
 			 System.out.println("Please enter a valid course code:");
 			 courseToDrop = sc.nextLine();	
-			 course = CourseDB.getCourseObj(courseToDrop);	
+			 course = courseDB.getCourseObj(courseToDrop);	
 	  }
 	  for(int i=0;i<indexList.size();i++) 
 	  {
 		  if(indexList.get(i).courseCode.equals(courseToDrop))
 		  {
 			  
-			  CourseIndex cindex = course.getIndex(indexList.get(i).indexID);
-			  CourseIndex cidx = indexList.get(i);
+			  courseIndex cindex = course.getIndex(indexList.get(i).indexID);
+			  courseIndex cidx = indexList.get(i);
 			  if(cidx.isWaitList==true)
 				  cindex.removeFromWaitlist(student);
 			  else
@@ -458,11 +378,7 @@ public class StudentMenuMngr {
 	 private void printCourse(Student student) {
 	  
 	  String matricNo=student.getMatricNo();
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)RegisteredCourses.getIndexes(matricNo);
-=======
-	  ArrayList<CourseIndex> indexList = (ArrayList<CourseIndex>)RegisteredCourses.getIndexes(matricNo);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+	  ArrayList<courseIndex> indexList = (ArrayList<courseIndex>)registeredCourses.getIndexes(matricNo);
 	  if(indexList==null||indexList.size()==0)
 	  {
 		  System.out.println("No courses registered!");
@@ -479,34 +395,23 @@ public class StudentMenuMngr {
 		  }
 	  }
 	 }
-	 /**
-	  * Add course method
-	  * @param student Student
-	  */
+	 
 	 private void addCourse(Student student) throws ClassNotFoundException, IOException 
-	 /**
-	  * Add course method
-	  * @param student Student
-	  */
 	 {
 		 System.out.println(student.getMatricNo());
 		 
-		 STARSApp.courseDB.printDB();
+		 StarsApp.courseDB.printDB();
 		 Scanner sc = new Scanner(System.in);
 		 System.out.println("Enter course(code) that you want to register for:");
 		 String courseCode = sc.nextLine();		
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
- 		 Course course = CourseDB.getCourseObj(courseCode);
-=======
 		 System.out.println(student.getMatricNo());
- 		 Course course = CourseDB.getCourseObj(courseCode);
+ 		 Course course = courseDB.getCourseObj(courseCode);
  		 System.out.println(student.getMatricNo());
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
  		 while(course == null)
  		 { 			 
  			 System.out.println("Please enter a valid course code:");
  			 courseCode = sc.nextLine();	
- 			 course = CourseDB.getCourseObj(courseCode);	
+ 			 course = courseDB.getCourseObj(courseCode);	
  		 }
  		 if(course.numIndex == 0)
 		 {
@@ -515,33 +420,29 @@ public class StudentMenuMngr {
  		 course.printIndexes();	
 		 System.out.println("Enter course index that you want to register for:");
 		 String courseIndexString = sc.nextLine();
-		 CourseIndex courseIndex = course.getIndex(courseIndexString);
+		 courseIndex courseIndex = course.getIndex(courseIndexString);
 		 while(courseIndex == null)
  		 { 			 
  			 System.out.println("Please enter a valid course index:");
  			 courseIndexString = sc.nextLine();
  			 courseIndex = course.getIndex(courseIndexString);	
  		 }
-		
+		 System.out.println(student.getMatricNo());
 		 int vacancy = courseIndex.indexVacancy;
 		 Timetable timetable = new Timetable();
-<<<<<<< HEAD:Java Workspace/src/STARS_system/StudentMenuMngr.java
-		 ArrayList<courseIndex> indexlist = RegisteredCourses.getIndexes(student.getMatricNo());
-=======
-		 ArrayList<CourseIndex> indexlist = RegisteredCourses.getIndexes(student.getMatricNo());
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/studentMenuMngr.java
+		 ArrayList<courseIndex> indexlist = registeredCourses.getIndexes(student.getMatricNo());
 		if (indexlist==null)
 		{
 			if(vacancy<1)
 			{
-				RegisteredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
-				STARSApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+				StarsApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
 				courseIndex.addToWaitlist(student);
 				System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
 			}
 			else {
-				RegisteredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
-				STARSApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+				StarsApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
 				System.out.println("Course registered!");
 				courseIndex.indexVacancy--;
 				courseIndex.addStudent(student);
@@ -559,15 +460,15 @@ public class StudentMenuMngr {
 			{
 				if(vacancy<1)
 				{
-					RegisteredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
-					STARSApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
+					registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+					StarsApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
 					courseIndex.addToWaitlist(student);
 					System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
 				}
 				else {
-						RegisteredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+						registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
 						System.out.println("Course registered!");
-						STARSApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
+						StarsApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
 						courseIndex.indexVacancy--;
 						courseIndex.addStudent(student);
 
@@ -578,8 +479,8 @@ public class StudentMenuMngr {
 		{
 			if(vacancy<1)
 			{
-				RegisteredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
-				STARSApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,true);
+				StarsApp.emailSender.waitingListNotification(student, courseCode, courseIndexString);
 				courseIndex.addToWaitlist(student);
 				System.out.println("There are no vacancies for the course! you'll be added to the waitlist");
 			}
@@ -587,8 +488,8 @@ public class StudentMenuMngr {
 			else
 			{
 
-				RegisteredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
-				STARSApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
+				registeredCourses.registerIndex(student.getMatricNo(),courseCode,courseIndexString,false);
+				StarsApp.emailSender.courseIndexRegNotification(student, courseCode, courseIndexString);
 				System.out.println("Course registered!");
 				courseIndex.indexVacancy--;
 				courseIndex.addStudent(student);
@@ -596,13 +497,7 @@ public class StudentMenuMngr {
 		}
 
  }
-	 /**
-	  * Check vacancy method
-	  */
 	 private void checkVacancy() throws ClassNotFoundException, IOException
-	 /**
-	  * Check vacancy method
-	  */
 	   {
 		 
 		 String check;
@@ -610,10 +505,10 @@ public class StudentMenuMngr {
 		 
 		 while(true) {
 			 
-			 STARSApp.courseDB.printDB();
+			 StarsApp.courseDB.printDB();
 		     System.out.println("Enter course code to check vacancy");
 		     check = sc.nextLine();
-		     course = CourseDB.getCourseObj(check);
+		     course = courseDB.getCourseObj(check);
 		     if (course == null)
 		     {
 		    	 System.out.println("Course code non-existent! press (y) to re-enter Course code");
@@ -634,7 +529,7 @@ public class StudentMenuMngr {
 	     for(int i=0;i<course.numIndex;i++)
 	     {
 	       String ID = course.courseIndex[i].indexID;
-	       CourseIndex cIndex = course.getIndex(ID);
+	       courseIndex cIndex = course.getIndex(ID);
 	       System.out.println(cIndex.indexID+"\t"+cIndex.indexVacancy+"\t\t"+cIndex.waitList.size());
 	       
 	     }

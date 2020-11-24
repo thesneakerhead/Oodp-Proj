@@ -10,24 +10,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/STARSAccMngr.java
-=======
 
-public class STARSaccMngr {
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
-/**
- * Stars account manager class
- *
- */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/STARSAccMngr.java
-public class STARSAccMngr {
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
-	/**
-	 * Hash password method
-	 * @param passwordToHash Password to hash
-	 * @return Hashed password
-	 */
+public class starsaccMngr {
 	public static String passwordHash(String passwordToHash)
 	{
 		String hashedPW = null;
@@ -55,20 +39,14 @@ public class STARSAccMngr {
 	        
 		return hashedPW;
 	}
-	/**
-	 * Write method
-	 * @param usernamepwString Username string
-	 * @param isAdmin Check if user is admin
-	 * @throws IOException Exception handling
-	 */
 	public static void write(String usernamepwString,boolean isAdmin) throws IOException  {
 		String filename;
 		if (isAdmin == true)
 		{
-			filename = UsrnamePwFILE.getAdminFilename();
+			filename = usrnamePwFILE.getAdminFilename();
 		}
 		else {
-			filename = UsrnamePwFILE.getStudentFilename();
+			filename = usrnamePwFILE.getStudentFilename();
 		}
 		
 		FileWriter fw = new FileWriter(filename, true);
@@ -83,25 +61,19 @@ public class STARSAccMngr {
 	      out.close();
 	    }
 	  }
-	/**
-	 * Delete account method
-	 * @param username Username
-	 * @param isAdmin Check if user is admin
-	 * @throws IOException Exception handling
-	 */
 	public static void deleteAcc(String username,boolean isAdmin) throws IOException  {
 	
 			String filename;
 			if (isAdmin == true)
 			{
-				filename = UsrnamePwFILE.getAdminFilename();
+				filename = usrnamePwFILE.getAdminFilename();
 			}
 			else 
 			{
 			
-				filename = UsrnamePwFILE.getStudentFilename();
+				filename = usrnamePwFILE.getStudentFilename();
 			}
-			List data = AccVerify.readDB(filename);
+			List data = accVerify.readDB(filename);
 			
 		    PrintWriter out = new PrintWriter(new FileWriter(filename));
 		    String matricNo;
@@ -127,27 +99,17 @@ public class STARSAccMngr {
 		      out.close();
 		    }
 		  }
-<<<<<<< HEAD:Java Workspace/src/STARS_system/STARSAccMngr.java
-=======
 	
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/STARSaccMngr.java
-	/**
-	 * Edit password method
-	 * @param studentMatric Student matriculation number
-	 * @param newPW new password
-	 * @param isAdmin check if administrator
-	 * @throws IOException Exception handling
-	 */
 	public static void editPassword(String studentMatric, String newPW, boolean isAdmin) throws IOException  {
 		String filename;
 		if (isAdmin == true)
 		{
-			filename = UsrnamePwFILE.getAdminFilename();
+			filename = usrnamePwFILE.getAdminFilename();
 		}
 		else {
-			filename = UsrnamePwFILE.getStudentFilename();
+			filename = usrnamePwFILE.getStudentFilename();
 		}
-		List data = AccVerify.readDB(filename);
+		List data = accVerify.readDB(filename);
 		String SEPARATOR = "|";
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 	    String matricNo;

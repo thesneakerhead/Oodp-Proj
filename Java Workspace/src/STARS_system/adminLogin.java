@@ -2,33 +2,13 @@ package STARS_system;
 
 import java.io.IOException;
 import java.util.Scanner;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/AdminLogin.java
-/**
- * Administrator login class
- *
- */
-=======
 
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminLogin.java
-public class AdminLogin extends Login 
+public class adminLogin extends Login 
 {
-	/**
-	 * Administrator username
-	 */
 	private String username;
-	/**
-	 * Administrator password
-	 */
 	private String password;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/AdminLogin.java
-	/**
-	 * Administrator login constructor
-	 * @throws IOException Exception handling
-	 */
-=======
 
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminLogin.java
-	public AdminLogin() throws IOException
+	public adminLogin() throws IOException
 	{
 		Boolean valid = false;
 		while(valid == false)
@@ -39,13 +19,11 @@ public class AdminLogin extends Login
 			valid = systemLogin(this.username,this.password);
 		}
 	}
-	/**
-	 * System login method (check whether username and password entered are correct)
-	 */
+
 	public Boolean systemLogin(String username, String password) throws IOException
 	{
 		Scanner sc = new Scanner(System.in);
-		AccVerify verifier = new AccVerify(true);
+		accVerify verifier = new accVerify(true);
 		if (verifier.verification(username, password)==true)
 			return true;
 		else 
@@ -55,7 +33,7 @@ public class AdminLogin extends Login
 			String again= sc.nextLine();
 			if(again.equals("n"))
 			{
-				STARSApp.terminate();
+				StarsApp.terminate();
 			}
 			return false;
 		}

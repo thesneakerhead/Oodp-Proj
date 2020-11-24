@@ -5,26 +5,13 @@ import java.awt.Container;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Scanner;
-/**
- * Login abstract class
- *
- */
+
 public abstract class Login {
 	
 	//public Student currentStudent;
 	//public String loginType;
-	/**
-	 * Username
-	 */
 	private String username;
-	/**
-	 * Password
-	 */
 	private String password;
-	/**
-	 * Login Constructor
-	 * @throws IOException Exception handling
-	 */
 	public Login() throws IOException
 	{	
 		
@@ -57,16 +44,7 @@ public abstract class Login {
 		
 		
 	}
-	/**
-	 * Abstract method system login
-	 * @param username Username
-	 * @param password Password
-	 * @throws IOException Exception handling
-	 */
 	public abstract Boolean systemLogin(String username, String password)throws IOException;
-	/**
-	 * Ask for input method
-	 */
 	public void askInput()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -80,18 +58,10 @@ public abstract class Login {
 		System.out.println("Password: ");
 		this.password = sc.nextLine();
 	}
-	/**
-	 * Get username method
-	 * @return Username
-	 */
 	public String getUsername()
 	{
 		return this.username;
 	}
-	/**
-	 * Get password method
-	 * @return Password
-	 */
 	public String getPassword()
 	{
 		return this.password;

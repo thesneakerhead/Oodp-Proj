@@ -6,29 +6,9 @@ import java.util.Dictionary;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/AdminMenuMngr.java
-=======
 
-public class AdminMenuMngr {
-	public AdminMenuMngr(int choice) throws IOException, ClassNotFoundException
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
-/**
- * Administrator Menu Manager class
- *
- */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/AdminMenuMngr.java
-public class AdminMenuMngr {
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
-	/**
-	 * Administrator menu manager constructor (do functions based on user's selection)
-	 * @param choice - choice selection
-	 * @throws IOException Exception handling
-	 */
-<<<<<<< HEAD:Java Workspace/src/STARS_system/AdminMenuMngr.java
-	public AdminMenuMngr(int choice) throws IOException, ClassNotFoundException
-=======
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
+public class adminMenuMngr {
+	public adminMenuMngr(int choice) throws IOException, ClassNotFoundException
 	{
 		switch(choice)
 		{
@@ -62,13 +42,7 @@ public class AdminMenuMngr {
 			
 		}
 	}
-	/**
-	 * Add update course method
-	 */
 	private void addupdateCourse() throws ClassNotFoundException, IOException
-	/**
-	 * Add update course method
-	 */
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=======================================================");
@@ -93,7 +67,7 @@ public class AdminMenuMngr {
 		    	{
 			    	System.out.println("Course Code");
 			    	courseCode = sc.nextLine();
-			    	Course course = CourseDB.getCourseObj(courseCode);
+			    	Course course = courseDB.getCourseObj(courseCode);
 			    	if(course!=null)
 			    	{
 			    		System.out.println("There is an existing course of the same course code");
@@ -129,7 +103,7 @@ public class AdminMenuMngr {
 		    	
 		    	addCourse(courseName, courseCode, department);
 		    	System.out.println("");
-		    	STARSApp.courseDB.printDB();
+		    	StarsApp.courseDB.printDB();
 		    	break;
 		    	
 		    case 2:
@@ -138,7 +112,7 @@ public class AdminMenuMngr {
 		    	String indexId=null;
 		    	System.out.println("Enter Course Code");
 		    	String coursecode = sc.nextLine();
-		    	Course course = CourseDB.getCourseObj(coursecode);
+		    	Course course = courseDB.getCourseObj(coursecode);
 		    	if(course==null)
 		    	{
 		    		System.out.println("There is no course of the course code "+coursecode);
@@ -181,7 +155,7 @@ public class AdminMenuMngr {
 		    	while (c == null)
 		    	{System.out.println("Enter Course Code");
 		    	courscode = sc.nextLine();
-		    	c = CourseDB.getCourseObj(courscode);
+		    	c = courseDB.getCourseObj(courscode);
 		    	if(c == null)
 		    	{
 		    		System.out.println("Course Does Not Exist!");
@@ -196,13 +170,11 @@ public class AdminMenuMngr {
 		    	
 		    	
 		    	}
-		    	CourseIndex cIndex=null;
+		    	courseIndex cIndex=null;
 		    	System.out.println("Current available indexes:");
 		    	c.printIndexes();
 		    	while(cIndex==null) 
 		    	{
-		    		if(c.numIndex==0)
-		    			return;
 		    		System.out.println("Enter the Index Id from current available indexes that you want to delete");
 		    		indexid = sc.nextLine();
 			    	cIndex=c.getIndex(indexid);
@@ -218,19 +190,19 @@ public class AdminMenuMngr {
 	
 			    	}
 		    	}
-		    	RegisteredCourses.deleteIndex(indexid);
+		    	registeredCourses.deleteIndex(indexid);
 		    	removeIndex(courscode, indexid);
 		    	
 		    	break;
 		    case 4:
-		    	STARSApp.courseDB.printDB();
+		    	StarsApp.courseDB.printDB();
 		    	String cCode=null;
 		    	course =null;
 		    	while(course==null)
 		    	{
 			    	System.out.println("Enter Course Code from existing courses to delete");
 			    	cCode = sc.nextLine();
-			    	course = CourseDB.getCourseObj(cCode);
+			    	course = courseDB.getCourseObj(cCode);
 			    	if(course == null)
 			    	{
 			    		System.out.println("Course Does Not Exist!");
@@ -248,20 +220,13 @@ public class AdminMenuMngr {
 		    	String sel = sc.nextLine();
 		    	if (sel.equals("y")||sel.equals("Y"))
 		    	{
-		    		STARSApp.courseDB.deleteFromDB(cCode);
-		    		RegisteredCourses.deleteIndexFromCourse(cCode);
+		    		StarsApp.courseDB.deleteFromDB(cCode);
+		    		registeredCourses.deleteIndexFromCourse(cCode);
 		    	}
 		}
 	}
-	/**
-	 * Add new student method
-	 * @throws IOException Exception handling
-	 */
+	
 	private void addStudent() throws IOException, ClassNotFoundException {
-	/**
-	 * Add new student method
-	 * @throws IOException Exception handling
-	 */
 		Scanner sc = new Scanner(System.in);
 		Boolean valid = false;
 		String matricNo=null;
@@ -365,72 +330,30 @@ public class AdminMenuMngr {
         }while(!((email.endsWith(".com")||email.endsWith(".com.sg")||email.endsWith(".net"))&&email.contains("@")));
 		new Student(matricNo, name, gender, nationality,regDate,regDate_end,email);
 	}
-	/**
-	 * Delete existing student method
-	 * @throws IOException Exception handling
-	 */
 	private void deleteStudent() throws IOException, ClassNotFoundException {
-		RegisteredCourses regCourses = new RegisteredCourses();
-<<<<<<< HEAD:Java Workspace/src/STARS_system/AdminMenuMngr.java
+		registeredCourses regCourses = new registeredCourses();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the matriculation number of the student you want to delete:");
 		String matricNo = sc.nextLine();
-		STARSAccMngr.deleteAcc(matricNo, false);
-=======
-	/**
-	 * Delete existing student method
-	 * @throws IOException Exception handling
-	 */
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the matriculation number of the student you want to delete:");
-		String matricNo = sc.nextLine();
-		STARSaccMngr.deleteAcc(matricNo, false);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/adminMenuMngr.java
-		STARSApp.studentDB.deleteFromDB(matricNo);
-		CourseDB.deleteStudentFromIndex(matricNo);
+		starsaccMngr.deleteAcc(matricNo, false);
+		StarsApp.studentDB.deleteFromDB(matricNo);
+		courseDB.deleteStudentFromIndex(matricNo);
 		regCourses.deleteFromDB(matricNo);
 		System.out.println("Student Deleted!");
 	}
-	/**
-	 * Add new course method
-	 * @param courseName - new courseName
-	 * @param courseCode - new courseCode
-	 * @param department - choose a department to add to
-	 */
 	private void addCourse(String courseName,String courseCode,Department department) throws ClassNotFoundException, IOException
-	/**
-	 * Add new course method
-	 * @param courseName - new courseName
-	 * @param courseCode - new courseCode
-	 * @param department - choose a department to add to
-	 */
 	{
 		Course course = new Course(courseName, courseCode, department);
 		System.out.println("Course added!");
 	}
-	/**
-	 * Add new Index for an existing course
-	 * @param courseCode - existing courseCode
-	 * @param indexId - new indexId
-	 */
 	private void addIndex(String courseCode,String indexId)
 	{
-		Course course = CourseDB.getCourseObj(courseCode);
+		Course course = courseDB.getCourseObj(courseCode);
 		course.addIndex(indexId);
 	}
-	/**
-	 * Remove existing index method
-	 * @param courseCode - existing courseCode
-	 * @param indexId - existing indexId to be removed
-	 */
 	private void removeIndex(String courseCode,String indexId) throws ClassNotFoundException, IOException
-	/**
-	 * Remove existing index method
-	 * @param courseCode - existing courseCode
-	 * @param indexId - existing indexId to be removed
-	 */
 	{
-		Course course = CourseDB.getCourseObj(courseCode);
+		Course course = courseDB.getCourseObj(courseCode);
 		boolean removed = course.removeIndex(indexId);
 		if (removed == true)
 		{
@@ -441,9 +364,6 @@ public class AdminMenuMngr {
 			}
 		}
 	}
-	/**
-	 * Print list of students by index method
-	 */
 	private void printStudentsByIndex()
 	{	
 		try {
@@ -452,23 +372,20 @@ public class AdminMenuMngr {
 			String courseCode = sc.nextLine();
 			System.out.println("Enter course index:");
 			String courseIndex = sc.nextLine();
-			Course course = CourseDB.getCourseObj(courseCode);
+			Course course = courseDB.getCourseObj(courseCode);
 			System.out.println("Students in this index:");
 			course.getIndex(courseIndex).printStudentList();}
 		catch (Exception e) {
 			System.out.println("Combination of course and index not found!");
 		}
 	}
-	/**
-	 * Print list of students by course method
-	 */
 	private void printStudentsByCourse()
 	{
 		try {
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Enter course code:");
 		String courseCode = sc.nextLine();
-		Course course = CourseDB.getCourseObj(courseCode);
+		Course course = courseDB.getCourseObj(courseCode);
 		System.out.println("Students in this Course:");
 		for (int i = 0;i<course.numIndex;i++)
 		{
@@ -478,9 +395,6 @@ public class AdminMenuMngr {
 			System.out.println("Course not found");
 		}
 	}
-	/**
-	 * Check available slots by index method
-	 */
 	private void checkAvailableSlotsByIndex()
 	{
 		try {
@@ -489,15 +403,12 @@ public class AdminMenuMngr {
 			String courseCode = sc.nextLine();
 			System.out.println("Enter course index:");
 			String courseIndex = sc.nextLine();
-			Course course = CourseDB.getCourseObj(courseCode);
+			Course course = courseDB.getCourseObj(courseCode);
 			System.out.println("There are "+course.getIndex(courseIndex).indexVacancy+" vacant spots");}
 		catch (Exception e) {
 			System.out.println("Combination of course and index not found!");
 		}
 	}
-	/**
-	 * Edit student access period method
-	 */
 	private void editStudentAccessPeriod()
 	{
 		int year=0,month=0,day=0,hour=0,min=0,duration=0;

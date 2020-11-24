@@ -4,65 +4,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/STARSApp.java
-/**
- * Stars App class
- *
- */
-public class STARSApp {
-	/**
-	 * Student database
-	 */
-	public static StudentDB studentDB;
-=======
 
-public class STARSApp {
+public class StarsApp {
 	public static StudentDB studentDB;
-/**
- * Stars App class
- *
- */
-	/**
-	 * Student database
-	 */
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/StarsApp.java
-	/**
-	 * Current date
-	 */
 	public static Calendar currentDate;
-<<<<<<< HEAD:Java Workspace/src/STARS_system/STARSApp.java
-	/**
-	 * Course database
-	 */
-	public static CourseDB courseDB;
-	/**
-	 * Registered courses
-	 */
-	public static RegisteredCourses registeredcourses;
-	/**
-	 * Send email
-	 */
-	public static SendEmail emailSender;
-=======
-	public static CourseDB courseDB;
-	public static RegisteredCourses registeredcourses;
-	public static SendEmail emailSender;
+	public static courseDB courseDB;
+	public static registeredCourses registeredcourses;
+	public static sendEmail emailSender;
 
-	/**
-	 * Course database
-	 */
-	/**
-	 * Registered courses
-	 */
-	/**
-	 * Send email
-	 */
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/StarsApp.java
-	/**
-	 * Main Method
-	 * @throws ClassNotFoundException Class not found Exception handling
-	 * @throws IOException Exception handling
-	 */
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		init();
 		
@@ -79,29 +28,17 @@ public class STARSApp {
 	
 	
 	
-<<<<<<< HEAD:Java Workspace/src/STARS_system/STARSApp.java
-=======
 	
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697:Java Workspace/src/STARS_system/StarsApp.java
-	/**
-	 * Initialize method
-	 * @throws ClassNotFoundException Class not found Exception handling
-	 * @throws IOException Exception handling
-	 */
 	public static void init() throws ClassNotFoundException, IOException 
 	{
-		emailSender = new SendEmail();
+		emailSender = new sendEmail();
 		studentDB = new StudentDB();
-		registeredcourses = new RegisteredCourses();
-		courseDB = new CourseDB();
+		registeredcourses = new registeredCourses();
+		courseDB = new courseDB();
 		currentDate = Calendar.getInstance();
 		System.out.println("Welcome to STARS system");
 		
 	}
-	/**
-	 * Start method
-	 * @throws IOException Exception handling
-	 */
 	public static void start() throws IOException
 	{
 		
@@ -110,20 +47,17 @@ public class STARSApp {
 		String choice = sc.nextLine();
 		if (choice.equals("Admin")||choice.equals("admin") )
 		{
-			AdminLogin admin = new AdminLogin();
-			new ActionMenu("Admin",null);
+			adminLogin admin = new adminLogin();
+			new actionMenu("Admin",null);
 		}
 		else if(choice.equals("Student")||choice.equals("student"))
 		{
-			LoginTimeCheck login = new LoginTimeCheck();
+			loginTimeCheck login = new loginTimeCheck();
 			System.out.println(login.getStudent().getMatricNo());
-			new ActionMenu("Student",login.getStudent());
+			new actionMenu("Student",login.getStudent());
 		}
 		
 	}
-	/**
-	 * Terminate method
-	 */
 	public static void terminate()
 	{
 		

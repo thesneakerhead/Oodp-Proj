@@ -13,78 +13,29 @@ import java.util.List;
 import java.util.Scanner;
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-/**
- * Stars Account class
- *
- */
 public class STARSaccount implements Serializable {
-	/**
-	 * Account id
-	 */
 	private String accountID;
-	/**
-	 * Account password
-	 */
 	private String accountPW;
-	/**
-	 * Student
-	 */
 	private Student student;
-	/**
-	 * Check if admin
-	 */
 	private boolean isAdmin;
-	/**
-	 * Inbox
-	 */
 	public String inbox[];
-	/**
-	 * Number of messages
-	 */
 	public int numOfMessages = 0;
 	
-	/**
-	 * Stars Account constructor
-	 * @param accountID Account ID
-	 * @param accountPW Account Password
-	 * @throws IOException Exception handling
-	 */
 	public STARSaccount(String accountID,String accountPW) throws IOException
 	{
 		this.accountID = accountID;
-<<<<<<< HEAD
-		this.accountPW = STARSAccMngr.passwordHash(accountPW);
-=======
-		this.accountPW = STARSaccMngr.passwordHash(accountPW);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
+		this.accountPW = starsaccMngr.passwordHash(accountPW);
 		this.isAdmin = true;
 		this.student = null;
 		this.inbox = new String[20];
 		saveToDb();
 	}
-<<<<<<< HEAD
-=======
 	
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-	/**
-	 * Stars Account constructor
-	 * @param accountID Account ID
-	 * @param accountPW Account Password
-	 * @param student Student
-	 * @throws IOException Exception handling
-	 */
 	public STARSaccount(String accountID,String accountPW,Student student) throws IOException
 	{
 		this.accountID = accountID;
-<<<<<<< HEAD
-		this.accountPW = STARSAccMngr.passwordHash(accountPW);
-=======
-		this.accountPW = STARSaccMngr.passwordHash(accountPW);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
+		this.accountPW = starsaccMngr.passwordHash(accountPW);
 		this.student = student;
 		this.isAdmin = false;
 		this.inbox = new String[20];
@@ -98,59 +49,29 @@ public class STARSaccount implements Serializable {
 	
 	
 	
-<<<<<<< HEAD
-=======
 	
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
-	/**
-	 * Get account method
-	 * @return accountID
-	 */
 	//getters========================================
 	public String getAccountID() {
 		return accountID;
 	}
-	/**
-	 * Get account password method
-	 * @return Account Password
-	 */
 	public String getAccountPW() {
 		return accountPW;
 	}
-	/**
-	 * Get student method
-	 * @return student
-	 */
 	public Student getStudent() {
 		return student;
 	}
 	
 	//setters========================================
-	/**
-	 * Set account ID method
-	 * @param accountID account ID
-	 */
 	public void setAccountID(String accountID) {
 		this.accountID = accountID;
 	}
-	/**
-	 * Set account password method
-	 * @param accountPW account password
-	 */
 	public void setAccountPW(String accountPW) {
 		this.accountPW = accountPW;
 	}
-	/**
-	 * Set student method
-	 * @param student student
-	 */
+	
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	/**
-	 * Save to database method
-	 * @throws IOException Exception handling
-	 */
 	private void saveToDb() throws IOException
 	{
 		
@@ -160,24 +81,13 @@ public class STARSaccount implements Serializable {
 		st.append(SEPARATOR);
 		st.append(this.accountPW.trim());
 			
-<<<<<<< HEAD
-		STARSAccMngr.write(st.toString(),this.isAdmin);
-=======
-		STARSaccMngr.write(st.toString(),this.isAdmin);
->>>>>>> fc3b94e5d4f07abbf8a276480c5dde9a6ed65697
+		starsaccMngr.write(st.toString(),this.isAdmin);
 	}
-	/**
-	 * Add notification method
-	 * @param notification notification
-	 */
 	public void addNotification(String notification)
 	{
 		this.inbox[numOfMessages] = notification;
 		numOfMessages++;
 	}
-	/**
-	 * Print notifications method
-	 */
 	public void printNotifications()
 	{
 		if (numOfMessages!=0)
